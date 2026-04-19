@@ -122,32 +122,6 @@ Zerodaytechlabs/
 
 ---
 
-## Branding Notes
-
-The README logo uses a white-background image so it displays clearly in GitHub light mode, dark mode, and other Markdown previews.
-
-Current README logo path:
-
-```text
-./assets/images/logo-white-bg.png
-```
-
-To update the README logo later, place the new image inside:
-
-```text
-assets/images/
-```
-
-Then update the image path at the top of this README.
-
-Example:
-
-```html
-<img src="./assets/images/logo-white-bg.png" alt="ZeroDay Tech Labs Logo" width="280">
-```
-
----
-
 ## Purpose
 
 ZeroDay Tech Labs exists to make cybersecurity education more approachable for:
