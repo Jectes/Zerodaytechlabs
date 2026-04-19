@@ -9,7 +9,7 @@
       requestTimeoutMs: 30000,
       welcome: {
         en: 'Hi, I’m the ZeroDay Tech Labs Assistant. I can help you find the right toolkit, spot phishing or scam texts, secure your home Wi-Fi, or learn where to report suspicious activity. What can I help you with?',
-        es: 'Hola, soy el asistente de ZeroDay Tech Labs. Puedo ayudarte a encontrar el toolkit correcto, identificar phishing o textos de estafa, asegurar tu Wi-Fi del hogar o saber dónde reportar actividad sospechosa. ¿En qué puedo ayudarte?'
+        es: 'Hola, soy el asistente de ZeroDay Tech Labs. Puedo ayudarte a encontrar el toolkit correcto, identificar phishing o textos de estafa, asegurar el Wi-Fi de tu hogar o saber dónde reportar actividad sospechosa. ¿En qué puedo ayudarte?'
       },
       prompts: {
         default: {
@@ -21,7 +21,7 @@
           ],
           es: [
             '¿Con qué sección del toolkit debo empezar?',
-            '¿Cómo identifico phishing o textos de estafa?',
+            '¿Cómo identifico phishing o mensajes de estafa?',
             '¿Cómo puedo asegurar el Wi-Fi de mi casa?',
             '¿Qué es malware?'
           ]
@@ -33,7 +33,7 @@
             'Which toolkit is best for parents and kids?'
           ],
           es: [
-            '¿Qué sección ayuda con textos de estafa?',
+            '¿Qué sección ayuda con mensajes de estafa?',
             '¿Qué debo descargar primero para el Wi-Fi del hogar?',
             '¿Qué toolkit sirve mejor para padres y menores?'
           ]
@@ -46,7 +46,7 @@
           ],
           es: [
             '¿Dónde puedo reportar fraude?',
-            '¿Qué recursos oficiales cubren phishing?',
+            '¿Qué recursos oficiales cubren el phishing?',
             '¿Dónde encuentro ayuda para recuperación por robo de identidad?'
           ]
         },
@@ -57,7 +57,7 @@
             'What does the location disclosure case teach?'
           ],
           es: [
-            '¿Qué enseña el Caso 1 sobre phishing?',
+            '¿Qué enseña el Caso de Estudio 1 sobre phishing?',
             '¿Cómo puedo evitar instalaciones riesgosas de apps?',
             '¿Qué enseña el caso de divulgación de ubicación?'
           ]
