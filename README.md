@@ -113,7 +113,6 @@ Zerodaytechlabs/
 ├── contact/
 ├── labs/
 ├── legal/
-├── quiz/
 ├── resources/
 ├── toolkit/
 ├── CNAME
