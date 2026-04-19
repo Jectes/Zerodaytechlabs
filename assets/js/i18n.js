@@ -6,7 +6,7 @@
       "nav.home": "Home",
       "nav.solutions": "Solutions",
       "nav.labs": "Case Studies",
-      "nav.quiz": "Survey",
+      "nav.survey": "Survey",
       "nav.toolkit": "Toolkit",
       "nav.learn": "Learn",
       "nav.blog": "Blog",
@@ -46,7 +46,7 @@
       "nav.home": "Inicio",
       "nav.solutions": "Soluciones",
       "nav.labs": "Estudios de caso",
-      "nav.quiz": "Encuesta",
+      "nav.survey": "Encuesta",
       "nav.toolkit": "Kit",
       "nav.learn": "Aprender",
       "nav.blog": "Blog",
@@ -88,23 +88,34 @@
     const q = url.searchParams.get('lang');
     const saved = localStorage.getItem('zdtl_lang');
     const lang = q || saved || 'en';
+
     return lang === 'es' ? 'es' : 'en';
   }
 
   function apply(lang){
     const dict = translations[lang] || translations.en;
+
     document.documentElement.setAttribute('lang', lang);
+
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
-      if (dict[key] != null) el.textContent = dict[key];
+
+      if (dict[key] != null) {
+        el.textContent = dict[key];
+      }
     });
+
     document.querySelectorAll('[data-lang]').forEach(el => {
-      el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
+      el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
     });
+
     document.querySelectorAll('[data-lang-btn]').forEach(btn => {
       btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
     });
-    if (window.ZDTL_renderDynamicContent) window.ZDTL_renderDynamicContent(lang);
+
+    if (window.ZDTL_renderDynamicContent) {
+      window.ZDTL_renderDynamicContent(lang);
+    }
   }
 
   function setLang(lang){
@@ -112,13 +123,20 @@
     apply(lang);
   }
 
-  window.ZDTL_i18n = { getLang, setLang };
+  window.ZDTL_i18n = {
+    getLang,
+    setLang
+  };
 
   document.addEventListener('DOMContentLoaded', () => {
     const lang = getLang();
+
     apply(lang);
+
     document.querySelectorAll('[data-lang-btn]').forEach(btn => {
-      btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang-btn')));
+      btn.addEventListener('click', () => {
+        setLang(btn.getAttribute('data-lang-btn'));
+      });
     });
   });
 })();
