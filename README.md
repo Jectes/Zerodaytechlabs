@@ -166,5 +166,3 @@ Planned improvements may include:
 
 ---
 
-
-Until a license is added, all rights are reserved by the project owner.
