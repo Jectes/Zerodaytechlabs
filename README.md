@@ -8,6 +8,13 @@
   Cybersecurity Education • Case Studies • Practical Defense
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Focus-Cybersecurity-orange" />
+  <img src="https://img.shields.io/badge/Type-Educational%20Platform-blue" />
+  <img src="https://img.shields.io/badge/Language-EN%20%2F%20ES-lightgrey" />
+  <img src="https://img.shields.io/badge/Status-Active%20Development-success" />
+</p>
+
 ---
 
 ## 🔍 Overview
@@ -16,8 +23,7 @@ ZeroDay Tech Labs is a cybersecurity education platform focused on **practical, 
 
 Rather than relying on abstract theory, the platform translates real-world attack patterns into structured, understandable guidance through **case studies, toolkits, and applied scenarios**.
 
-The objective is simple:  
-make cybersecurity **usable, actionable, and relevant to everyday users**.
+The objective is to make cybersecurity **usable, actionable, and relevant to everyday users**.
 
 ---
 
@@ -27,27 +33,27 @@ make cybersecurity **usable, actionable, and relevant to everyday users**.
 Controlled, research-based simulations designed to reflect real-world attack behavior in a safe and ethical environment.
 
 Current studies include:
-- Credential exposure at the point of entry (phishing simulation)
-- Malicious mobile application installation (APK sideloading)
-- Browser-based location disclosure (permission-based exposure)
+- Credential exposure at the point of entry (phishing simulation)  
+- Malicious mobile application installation (APK sideloading)  
+- Browser-based location disclosure (permission-based exposure)  
 
-Each case study focuses on:
-- Attack behavior at the point of interaction  
-- Evidence and observable system behavior  
-- Real-world impact to individuals and households  
-- Defensive mitigation and prevention  
+Each case study explains:
+- how the exposure occurs  
+- evidence and observable behavior  
+- real-world impact  
+- defensive mitigation and prevention  
 
 ---
 
 ### 🧰 Toolkit
 Structured, downloadable guides designed for immediate application.
 
-Topics include:
-- Home network security  
-- Account protection and multi-factor authentication  
-- Phishing detection and response  
-- Backup and recovery practices  
-- Family and household cybersecurity habits  
+Includes:
+- home network security  
+- account protection and multi-factor authentication  
+- phishing detection and response  
+- backup and recovery practices  
+- family cybersecurity habits  
 
 ---
 
@@ -66,8 +72,3 @@ A lightweight feedback system used to evaluate:
 
 ## ⚙️ Architecture
 
-```text
-Frontend  → GitHub Pages
-Backend   → Vercel (Serverless Functions)
-AI        → OpenRouter (Hermes Model)
-Domain    → Wix
