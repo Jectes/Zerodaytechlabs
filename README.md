@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/images/logo.png" alt="ZeroDay Tech Labs Logo" width="260">
+  <img src="./assets/images/logo-white-bg.png" alt="ZeroDay Tech Labs Logo" width="280">
 </p>
 
 <h1 align="center">ZeroDay Tech Labs</h1>
@@ -74,7 +74,7 @@ Topics include:
 
 The resources section provides curated cybersecurity references, reporting platforms, and official guidance from trusted organizations.
 
-Resources are designed to help users move from awareness to action without getting buried under technical noise. Cybersecurity already has enough acronyms. We do not need to summon the alphabet dragon unless necessary.
+Resources are designed to help users move from awareness to action without getting buried under technical noise. Cybersecurity already has enough acronyms. We do not need to summon the alphabet dragon unless absolutely necessary.
 
 ---
 
@@ -126,17 +126,17 @@ Zerodaytechlabs/
 
 ---
 
-## Image and Branding Notes
+## Branding Notes
 
-The README logo uses this local repository path:
+The README logo uses a white-background image so it displays clearly in GitHub light mode, dark mode, and other Markdown previews.
+
+Current README logo path:
 
 ```text
-./assets/images/logo.png
+./assets/images/logo-white-bg.png
 ```
 
-This keeps the image visible on GitHub without turning it into a plain hyperlink.
-
-If you later want to use a different logo, place it inside:
+To update the README logo later, place the new image inside:
 
 ```text
 assets/images/
@@ -147,7 +147,7 @@ Then update the image path at the top of this README.
 Example:
 
 ```html
-<img src="./assets/images/logo-mark.png" alt="ZeroDay Tech Labs Logo" width="180">
+<img src="./assets/images/logo-white-bg.png" alt="ZeroDay Tech Labs Logo" width="280">
 ```
 
 ---
@@ -217,5 +217,3 @@ Created and maintained by **ZeroDay Tech Labs**.
 No license has been specified yet.
 
 Until a license is added, all rights are reserved by the project owner.
-AI        -> OpenRouter Hermes
-Domain    -> Wix
