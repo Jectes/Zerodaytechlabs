@@ -1,29 +1,31 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Jectes/Zerodaytechlabs/main/assets/images/logo-white.png" alt="ZeroDay Tech Labs Logo" width="120">
+  <img src="./assets/images/logo.png" alt="ZeroDay Tech Labs Logo" width="260">
 </p>
 
 <h1 align="center">ZeroDay Tech Labs</h1>
 
 <p align="center">
-  Cybersecurity Education • Case Studies • Practical Defense
+  <strong>Cybersecurity Education • Case Studies • Practical Defense</strong>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Focus-Cybersecurity-orange" alt="Focus Cybersecurity">
-  <img src="https://img.shields.io/badge/Type-Educational%20Platform-blue" alt="Type Educational Platform">
-  <img src="https://img.shields.io/badge/Language-EN%20%2F%20ES-lightgrey" alt="Language EN and ES">
-  <img src="https://img.shields.io/badge/Status-Active%20Development-success" alt="Status Active Development">
+  <img src="https://img.shields.io/badge/Focus-Cybersecurity-orange.svg" alt="Focus: Cybersecurity">
+  <img src="https://img.shields.io/badge/Type-Educational%20Platform-blue.svg" alt="Type: Educational Platform">
+  <img src="https://img.shields.io/badge/Language-EN%20%2F%20ES-lightgrey.svg" alt="Language: EN / ES">
+  <img src="https://img.shields.io/badge/Status-Active%20Development-success.svg" alt="Status: Active Development">
 </p>
 
 ---
 
 ## Overview
 
-ZeroDay Tech Labs is a cybersecurity education platform focused on practical, real-world learning for households, students, and entry-level practitioners.
+**ZeroDay Tech Labs** is a cybersecurity education platform focused on practical, real-world learning for households, students, and entry-level practitioners.
 
-Rather than relying on abstract theory, the platform translates real-world attack patterns into structured, understandable guidance through case studies, toolkits, and applied scenarios.
+Rather than relying only on abstract theory, the platform translates real attack patterns into structured, understandable guidance through case studies, toolkits, resources, quizzes, and applied learning scenarios.
 
-The objective is to make cybersecurity usable, actionable, and relevant to everyday users.
+The goal is simple:
+
+> Make cybersecurity usable, actionable, and relevant to everyday users.
 
 ---
 
@@ -31,47 +33,189 @@ The objective is to make cybersecurity usable, actionable, and relevant to every
 
 ### Case Studies
 
-Controlled, research-based simulations designed to reflect real-world attack behavior in a safe and ethical environment.
+ZeroDay Tech Labs includes controlled, research-based simulations designed to reflect real-world attack behavior in a safe and ethical learning environment.
 
-Current studies include:
+Current case study topics include:
+
 - Credential exposure at the point of entry
 - Malicious mobile application installation
 - Browser-based location disclosure
+- Phishing awareness and response
+- Home network and device exposure
 
 Each case study explains:
-- how the exposure occurs
-- evidence and observable behavior
-- real-world impact
-- defensive mitigation and prevention
+
+- How the exposure occurs
+- What evidence or observable behavior appears
+- Why the risk matters in the real world
+- How users can prevent or reduce harm
+- Defensive mitigation steps
+
+---
 
 ### Toolkit
 
-Structured, downloadable guides designed for immediate application.
+The toolkit provides structured, practical guides designed for immediate use.
 
-Includes:
-- home network security
-- account protection and multi-factor authentication
-- phishing detection and response
-- backup and recovery practices
-- family cybersecurity habits
+Topics include:
+
+- Home network security
+- Account protection
+- Multi-factor authentication
+- Phishing detection and response
+- Backup and recovery practices
+- Family cybersecurity habits
+- Device hardening basics
+- Safer browsing and privacy habits
+
+---
 
 ### Resources
 
-Curated references to official cybersecurity guidance and reporting platforms from trusted organizations.
+The resources section provides curated cybersecurity references, reporting platforms, and official guidance from trusted organizations.
 
-### Survey
+Resources are designed to help users move from awareness to action without getting buried under technical noise. Cybersecurity already has enough acronyms. We do not need to summon the alphabet dragon unless necessary.
 
-A lightweight feedback system used to evaluate:
-- user understanding
-- confidence improvement
-- effectiveness of cybersecurity education
+---
+
+### Quiz and Survey
+
+The quiz and survey components help evaluate:
+
+- User understanding
+- Confidence improvement
+- Awareness of common cyber risks
+- Effectiveness of cybersecurity education
+
+These tools are intended to support learning, reflection, and improvement over time.
 
 ---
 
 ## Architecture
 
 ```text
-Frontend  -> GitHub Pages
-Backend   -> Vercel Serverless Functions
+Frontend        -> Static website / GitHub Pages
+Backend         -> Vercel Serverless Functions
+AI Integration  -> OpenRouter Hermes
+Domain          -> Wix
+Assets          -> Local images, CSS, and JavaScript
+```
+
+---
+
+## Repository Structure
+
+```text
+Zerodaytechlabs/
+├── about/
+├── api/
+├── assets/
+│   ├── css/
+│   ├── images/
+│   └── js/
+├── blog/
+├── contact/
+├── labs/
+├── legal/
+├── quiz/
+├── resources/
+├── toolkit/
+├── CNAME
+└── README.md
+```
+
+---
+
+## Image and Branding Notes
+
+The README logo uses this local repository path:
+
+```text
+./assets/images/logo.png
+```
+
+This keeps the image visible on GitHub without turning it into a plain hyperlink.
+
+If you later want to use a different logo, place it inside:
+
+```text
+assets/images/
+```
+
+Then update the image path at the top of this README.
+
+Example:
+
+```html
+<img src="./assets/images/logo-mark.png" alt="ZeroDay Tech Labs Logo" width="180">
+```
+
+---
+
+## Purpose
+
+ZeroDay Tech Labs exists to make cybersecurity education more approachable for:
+
+- Families and households
+- Students
+- Entry-level cybersecurity learners
+- Community educators
+- Non-technical users
+- Anyone trying to understand digital safety without needing a security clearance and three cups of coffee
+
+---
+
+## Ethical Use
+
+All materials, demonstrations, and case studies in this project are intended for:
+
+- Education
+- Awareness
+- Defensive learning
+- Safe simulation
+- Prevention and mitigation
+
+This project does **not** promote unauthorized access, credential theft, malware deployment, exploitation of real systems, or harmful activity.
+
+Use the content responsibly and only in environments where you have permission.
+
+---
+
+## Development Status
+
+ZeroDay Tech Labs is currently in active development.
+
+Planned improvements may include:
+
+- Additional case studies
+- Expanded toolkits
+- More bilingual content
+- Improved quizzes and survey feedback
+- Better visual learning materials
+- Additional defensive checklists
+
+---
+
+## Website
+
+Project site:
+
+```text
+https://project-fx5fh.vercel.app
+```
+
+---
+
+## Maintainer
+
+Created and maintained by **ZeroDay Tech Labs**.
+
+---
+
+## License
+
+No license has been specified yet.
+
+Until a license is added, all rights are reserved by the project owner.
 AI        -> OpenRouter Hermes
 Domain    -> Wix
