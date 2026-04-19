@@ -1,14 +1,12 @@
 const DEFAULT_MODEL = 'nousresearch/hermes-3-llama-3.1-405b:free';
 
-const DEFAULT_WELCOME_EN =
-  "Hi, I’m the ZeroDay Tech Labs Assistant. I can help you find the right toolkit, spot phishing or scam texts, secure your home Wi-Fi, or learn where to report suspicious activity. What can I help you with?";
-
-const DEFAULT_WELCOME_ES =
-  "Hola, soy el asistente de ZeroDay Tech Labs. Puedo ayudarte a encontrar el toolkit correcto, identificar phishing o textos de estafa, asegurar tu Wi-Fi del hogar o saber dónde reportar actividad sospechosa. ¿En qué puedo ayudarte?";
+const WELCOME = {
+  en: 'Hi, I’m the ZeroDay Tech Labs Assistant. I can help with phishing, scam texts, malware basics, home Wi-Fi security, account protection, reporting fraud, and finding the right toolkit. What can I help you with?',
+  es: 'Hola, soy el asistente de ZeroDay Tech Labs. Puedo ayudarte con phishing, textos de estafa, malware, seguridad de Wi-Fi, protección de cuentas, reportes de fraude y encontrar el toolkit correcto. ¿En qué puedo ayudarte?'
+};
 
 function setCors(req, res) {
-  const requestedHeaders =
-    req.headers['access-control-request-headers'] || 'Content-Type, Authorization';
+  const requestedHeaders = req.headers['access-control-request-headers'] || 'Content-Type, Authorization';
 
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -19,6 +17,28 @@ function setCors(req, res) {
 
 function sendJson(res, status, payload) {
   return res.status(status).json(payload);
+}
+
+function redactSecrets(value) {
+  return String(value || '')
+    .replace(/sk-or-v1-[A-Za-z0-9_-]+/g, '[redacted OpenRouter API key]')
+    .replace(/sk-[A-Za-z0-9_-]+/g, '[redacted API key]');
+}
+
+function resolveModel() {
+  const configured = String(process.env.OPENROUTER_MODEL || '').trim();
+
+  if (!configured) return DEFAULT_MODEL;
+
+  if (
+    configured.startsWith('sk-') ||
+    configured.startsWith('sk-or-') ||
+    configured.startsWith('sk-proj-')
+  ) {
+    return DEFAULT_MODEL;
+  }
+
+  return configured;
 }
 
 function normalizeMessages(body) {
@@ -48,96 +68,18 @@ function normalizeMessages(body) {
     .slice(-12);
 }
 
-function normalizeSection(section) {
-  if (!section || typeof section !== 'object') return null;
-
-  const title =
-    typeof section.title === 'string'
-      ? section.title.trim().slice(0, 180)
-      : '';
-
-  if (!title) return null;
-
-  return {
-    title,
-    description:
-      typeof section.description === 'string'
-        ? section.description.trim().slice(0, 300)
-        : '',
-    category:
-      typeof section.category === 'string'
-        ? section.category.trim().slice(0, 90)
-        : '',
-    pages:
-      typeof section.pages === 'string'
-        ? section.pages.trim().slice(0, 40)
-        : '',
-    sectionPath:
-      typeof section.sectionPath === 'string'
-        ? section.sectionPath.trim().slice(0, 220)
-        : '',
-    downloadPath:
-      typeof section.downloadPath === 'string'
-        ? section.downloadPath.trim().slice(0, 260)
-        : ''
-  };
-}
-
 function normalizeContext(context) {
   if (!context || typeof context !== 'object') return {};
 
-  const headings = Array.isArray(context.headings)
-    ? context.headings
-        .filter(item => typeof item === 'string')
-        .map(item => item.trim())
-        .filter(Boolean)
-        .slice(0, 12)
-    : [];
-
-  const sections = Array.isArray(context.sections)
-    ? context.sections.map(normalizeSection).filter(Boolean).slice(0, 24)
-    : [];
-
   return {
-    title:
-      typeof context.title === 'string'
-        ? context.title.trim().slice(0, 180)
-        : '',
-    path:
-      typeof context.path === 'string'
-        ? context.path.trim().slice(0, 180)
-        : '/',
-    pageKind:
-      typeof context.pageKind === 'string'
-        ? context.pageKind.trim().slice(0, 40)
-        : '',
-    headings,
-    summary:
-      typeof context.summary === 'string'
-        ? context.summary.trim().slice(0, 2600)
-        : '',
-    sections
+    title: typeof context.title === 'string' ? context.title.slice(0, 180) : '',
+    path: typeof context.path === 'string' ? context.path.slice(0, 180) : '/',
+    pageKind: typeof context.pageKind === 'string' ? context.pageKind.slice(0, 50) : 'default',
+    headings: Array.isArray(context.headings)
+      ? context.headings.filter(item => typeof item === 'string').slice(0, 12)
+      : [],
+    summary: typeof context.summary === 'string' ? context.summary.slice(0, 2200) : ''
   };
-}
-
-function buildSectionMap(context) {
-  if (!context.sections || !context.sections.length) {
-    return '- No page sections were provided.';
-  }
-
-  return context.sections
-    .map((section, index) => {
-      const parts = [`${index + 1}. ${section.title}`];
-      if (section.category) parts.push(`category: ${section.category}`);
-      if (section.pages) parts.push(`pages: ${section.pages}`);
-      if (section.sectionPath) parts.push(`section link: ${section.sectionPath}`);
-      if (section.downloadPath) parts.push(`download link: ${section.downloadPath}`);
-
-      let line = parts.join(' | ');
-      if (section.description) line += `\n   ${section.description}`;
-      return line;
-    })
-    .join('\n');
 }
 
 function extractText(content) {
@@ -148,9 +90,7 @@ function extractText(content) {
       .map(item => {
         if (typeof item === 'string') return item;
         if (item && typeof item.text === 'string') return item.text;
-        if (item && item.type === 'text' && typeof item.content === 'string') {
-          return item.content;
-        }
+        if (item && typeof item.content === 'string') return item.content;
         return '';
       })
       .join('\n')
@@ -160,73 +100,30 @@ function extractText(content) {
   return '';
 }
 
-function resolveModel() {
-  const configured = process.env.OPENROUTER_MODEL;
-
-  if (!configured || typeof configured !== 'string') {
-    return DEFAULT_MODEL;
-  }
-
-  const model = configured.trim();
-
-  if (!model) return DEFAULT_MODEL;
-
-  if (
-    model.startsWith('sk-') ||
-    model.startsWith('sk-or-') ||
-    model.startsWith('sk-proj-')
-  ) {
-    return DEFAULT_MODEL;
-  }
-
-  return model;
-}
-
-function redactSecrets(message) {
-  if (typeof message !== 'string') return '';
-
-  return message
-    .replace(/sk-or-v1-[A-Za-z0-9_-]+/g, '[redacted OpenRouter API key]')
-    .replace(/sk-[A-Za-z0-9_-]+/g, '[redacted API key]');
-}
-
-function getWelcome(locale) {
-  return locale === 'es' ? DEFAULT_WELCOME_ES : DEFAULT_WELCOME_EN;
-}
-
 function buildSystemPrompt(locale, rawContext) {
   const isSpanish = locale === 'es';
   const context = normalizeContext(rawContext);
-  const pageTitle = context.title || 'Unknown page';
-  const pagePath = context.path || '/';
-  const headings = context.headings.length
-    ? context.headings.join(' | ')
-    : 'No headings provided.';
-  const summary = context.summary || 'No summary provided.';
-  const sectionMap = buildSectionMap(context);
 
   return `
 ${isSpanish ? 'Respond mainly in Spanish unless the visitor clearly asks in English.' : 'Respond mainly in English unless the visitor clearly asks in Spanish.'}
 
 You are the public website assistant for ZeroDay Tech Labs.
 
-Start behavior:
-- If the visitor greets you or asks what you can do, briefly introduce yourself.
-- Say you can help with scam texts, phishing, malware basics, home Wi-Fi security, account protection, reporting fraud, and finding the right toolkit.
-
 Voice:
 - Professional, calm, clear, and human.
-- Helpful without being too long.
+- Keep answers practical and concise.
 - No emojis.
-- No hype.
 - For simple questions, answer in 2 to 4 short paragraphs.
-- For recommendations, give the best-fit answer first.
 
-Safety rules:
+Your job:
+- Help visitors understand cybersecurity basics.
+- Help visitors find the right ZeroDay Tech Labs page, case study, toolkit section, download, or resource.
+- Give defensive, legal, practical guidance for households, students, families, and everyday users.
+
+Safety:
 - Never ask for passwords, MFA codes, recovery codes, Social Security numbers, payment card numbers, or remote access.
-- Never provide instructions for phishing, malware, credential theft, evasion, unauthorized access, surveillance abuse, sabotage, or harmful cyber activity.
+- Never provide instructions for phishing, malware deployment, credential theft, evasion, unauthorized access, surveillance abuse, sabotage, or harmful cyber activity.
 - If asked for harmful instructions, refuse briefly and redirect to prevention, recovery, incident response, or reporting.
-- Keep all cybersecurity guidance legal, defensive, and practical.
 
 Site map:
 - Home: /index.html
@@ -238,55 +135,28 @@ Site map:
 - About: /about/index.html
 - Contact: /contact/index.html
 
-Known case studies:
-- Credential Exposure at the Point of Entry: /labs/index.html#credential-exposure-case-study
-- Malicious App Entry to a Mobile Device: /labs/index.html#malicious-app-case-study
-- Browser-Based Location Disclosure: /labs/index.html#location-disclosure-case-study
-
 Known toolkit sections:
 - Minimum Home Network Baseline Checklist: /toolkit/index.html#baseline-checklist
 - 30 Day Home Cyber Improvement Plan: /toolkit/index.html#thirty-day-plan
 - Stop Verify Report Playbook: /toolkit/index.html#stop-verify-report
 - Incident Response and Recovery Checklist: /toolkit/index.html#incident-response
-- Age-Tailored Cyber Safety Cards: /toolkit/index.html#age-cards-all
 - Mobile and Phone Number Protection: /toolkit/index.html#mobile-phone-protection
 - Safer Shopping and Payments: /toolkit/index.html#shopping-payments
 - Privacy and Online Presence: /toolkit/index.html#privacy-online-presence
 - Family Online Safety Plan: /toolkit/index.html#family-online-safety
-- Safe Device Handoff and Disposal: /toolkit/index.html#device-handoff-disposal
 
 Useful guidance:
-- For phishing and scam texts: stop, verify through official channels, and report suspicious activity.
-- For account protection: secure email first, enable MFA, use long unique passwords, use a password manager, and keep recovery options current.
-- For home networks: change the router admin password, use WPA3 or WPA2/WPA3, disable WPS if unused, enable updates, and use guest Wi-Fi when possible.
-- For suspected fraud or account compromise: use a clean device if needed, change important passwords, review account sessions, and contact the bank or card provider if money may be at risk.
-- Reporting references include 7726, ReportFraud.ftc.gov, IC3.gov, and IdentityTheft.gov.
-
-Phishing and scam text answer guidance:
-- Mention urgent language, strange links, unexpected package or bank alerts, requests for passwords or codes, and pressure to act immediately.
-- Tell users not to tap links or reply.
-- Tell users to open the official app or website directly, or call the number on the back of their card or official account page.
-
-Malware answer guidance:
-- Explain that malware means malicious software.
-- Give simple examples: viruses, ransomware, spyware, trojans, fake apps, and malicious browser extensions.
-- Explain common signs: pop-ups, slow device, unknown apps, changed browser settings, unusual logins, battery drain, and unexpected charges.
-- Give safe next steps: disconnect if needed, update, scan with trusted security tools, uninstall suspicious apps, change passwords from a clean device, and enable MFA.
-
-Website grounding:
-- Use the current page context and section map as the source of truth for exact section names on the current page.
-- Do not invent pages, anchors, downloads, or claims.
-- Only include internal links that are listed in the site map, known sections, or current page section map.
+- For phishing and scam texts: stop, verify through official channels, do not tap suspicious links, do not reply, and report suspicious messages.
+- Scam texts can often be forwarded to 7726. Serious fraud can be reported through ReportFraud.ftc.gov, IC3.gov, or IdentityTheft.gov.
+- For malware: explain that malware is malicious software. Examples include viruses, ransomware, spyware, trojans, fake apps, and malicious browser extensions. Give safe next steps only.
+- For home Wi-Fi: change router admin password, use WPA3 or WPA2/WPA3, disable WPS if unused, update firmware, and use guest Wi-Fi.
 
 Current page context:
-- Page title: ${pageTitle}
-- Page path: ${pagePath}
-- Page kind: ${context.pageKind || 'general'}
-- Page headings: ${headings}
-- Page summary: ${summary}
-
-Current page section map:
-${sectionMap}
+- Page title: ${context.title || 'Unknown page'}
+- Page path: ${context.path || '/'}
+- Page kind: ${context.pageKind || 'default'}
+- Page headings: ${context.headings.join(' | ') || 'No headings provided'}
+- Page summary: ${context.summary || 'No summary provided'}
 `.trim();
 }
 
@@ -317,7 +187,7 @@ module.exports = async function handler(req, res) {
       service: 'ZeroDay Tech Labs Assistant API',
       message: 'API route is live. Use POST to send chat messages.',
       model: resolveModel(),
-      welcome: DEFAULT_WELCOME_EN
+      welcome: WELCOME.en
     });
   }
 
@@ -337,11 +207,10 @@ module.exports = async function handler(req, res) {
 
   const locale = body.locale === 'es' ? 'es' : 'en';
   const messages = normalizeMessages(body);
-  const context = normalizeContext(body.context);
 
   if (!messages.length) {
     return sendJson(res, 200, {
-      reply: getWelcome(locale)
+      reply: WELCOME[locale]
     });
   }
 
@@ -353,25 +222,23 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const headers = {
-    Authorization: `Bearer ${apiKey}`,
-    'Content-Type': 'application/json',
-    'HTTP-Referer': process.env.SITE_URL || 'https://zerodaytechlabs.com',
-    'X-Title': process.env.SITE_TITLE || 'ZeroDay Tech Labs'
-  };
-
   try {
     const upstream = await fetchWithTimeout(
       'https://openrouter.ai/api/v1/chat/completions',
       {
         method: 'POST',
-        headers,
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': process.env.SITE_URL || 'https://zerodaytechlabs.com',
+          'X-Title': process.env.SITE_TITLE || 'ZeroDay Tech Labs'
+        },
         body: JSON.stringify({
           model: resolveModel(),
           messages: [
             {
               role: 'system',
-              content: buildSystemPrompt(locale, context)
+              content: buildSystemPrompt(locale, body.context)
             },
             ...messages
           ],
@@ -385,32 +252,24 @@ module.exports = async function handler(req, res) {
     const data = await upstream.json().catch(() => ({}));
 
     if (!upstream.ok) {
-      const errorMessage =
+      const message =
         data && data.error && data.error.message
           ? data.error.message
-          : locale === 'es'
-            ? 'La solicitud al modelo no se pudo completar.'
-            : 'The model request could not be completed.';
+          : 'The model request could not be completed.';
 
       return sendJson(res, upstream.status || 502, {
-        error: redactSecrets(errorMessage)
+        error: redactSecrets(message)
       });
     }
 
     const reply =
-      data &&
-      data.choices &&
-      data.choices[0] &&
-      data.choices[0].message
+      data && data.choices && data.choices[0] && data.choices[0].message
         ? extractText(data.choices[0].message.content)
         : '';
 
     if (!reply) {
       return sendJson(res, 502, {
-        error:
-          locale === 'es'
-            ? 'No llegó una respuesta válida del modelo.'
-            : 'The model did not return a valid response.'
+        error: 'The model did not return a valid response.'
       });
     }
 
@@ -421,15 +280,9 @@ module.exports = async function handler(req, res) {
     const timedOut = error && (error.name === 'AbortError' || error.code === 'ABORT_ERR');
 
     return sendJson(res, timedOut ? 504 : 500, {
-      error:
-        locale === 'es'
-          ? timedOut
-            ? 'El asistente tardó demasiado en responder. Inténtalo de nuevo.'
-            : `Error interno del asistente: ${redactSecrets(error && error.message ? error.message : 'desconocido')}`
-          : timedOut
-            ? 'The assistant took too long to respond. Please try again.'
-            : `Assistant internal error: ${redactSecrets(error && error.message ? error.message : 'unknown')}`
+      error: timedOut
+        ? 'The assistant took too long to respond. Please try again.'
+        : `Assistant internal error: ${redactSecrets(error && error.message ? error.message : 'unknown')}`
     });
   }
 };
-
