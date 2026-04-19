@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>ZeroDay Tech Labs — Case Studies</title>
+<link href="../assets/images/logo-mark.png" rel="icon"/>
+<link href="../assets/css/styles.css" rel="stylesheet"/>
+<script defer="" src="../assets/js/i18n.js"></script>
+<script defer="" src="../assets/js/nav.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="container header-inner">
+<a class="brand" href="../index.html">
+<img alt="ZeroDay Tech Labs logo" src="../assets/images/logo.png"/>
+<div class="title">
+<strong>ZERODAY TECH LABS</strong>
+<span data-i18n="brand.tagline">Cybersecurity education • Case Studies • Tools</span>
+</div>
+</a>
+<nav aria-label="Primary" class="nav nav-static">
+<a data-i18n="nav.home" href="../index.html">Home</a>
+<a data-i18n="nav.labs" href="../labs/index.html">Case Studies</a>
+<a data-i18n="nav.quiz" href="../quiz/index.html">Survey</a>
+<a data-i18n="nav.toolkit" href="../toolkit/index.html">Toolkit</a>
+<a data-i18n="nav.blog" href="../blog/index.html">Blog</a>
+<a data-i18n="nav.resources" href="../resources/index.html">Resources</a>
+<a data-i18n="nav.about" href="../about/index.html">About</a>
+<a data-i18n="nav.contact" href="../contact/index.html">Contact</a>
+</nav>
+<div class="header-controls">
+<div aria-label="Language" class="lang-toggle">
+<button aria-label="English" data-lang-btn="en" type="button">EN</button>
+<button aria-label="Español" data-lang-btn="es" type="button">ES</button>
+</div>
+</div>
+</div>
+</header>
+<main class="section" id="main">
+<div class="container">
+<div class="section-header">
+<div>
+<h2 data-lang="en">Case Studies</h2>
+<h2 data-lang="es">Estudios de caso</h2>
+<p class="note" data-lang="en">Controlled, defensive case studies that connect lab evidence to safer decisions for households, students, and community learners.</p>
+<p class="note" data-lang="es">Estudios controlados y defensivos que conectan evidencia de laboratorio con decisiones más seguras para hogares, estudiantes y aprendices de la comunidad.</p>
+</div>
+</div>
+
+<div class="card case-disclaimer" role="note" aria-label="Educational use disclaimer">
+<div class="case-disclaimer-mark" aria-hidden="true"></div>
+<div>
+<strong data-lang="en">Educational and defensive use only</strong>
+<strong data-lang="es">Uso educativo y defensivo solamente</strong>
+<p class="note" data-lang="en">These studies are for educational and defensive learning only. They document controlled simulations with researcher-owned systems, self-generated test data, and redacted evidence. Do not use them to access, test, monitor, or exploit any system, account, device, network, or person without explicit written permission.</p>
+<p class="note" data-lang="es">Estos estudios son solo para aprendizaje educativo y defensivo. Documentan simulaciones controladas con sistemas del investigador, datos de prueba propios y evidencia redactada. No deben usarse para acceder, probar, monitorear ni explotar sistemas, cuentas, dispositivos, redes o personas sin permiso explícito por escrito.</p>
+</div>
+</div>
+
+<div id="case-studies" class="case-grid-anchor" aria-hidden="true"></div>
+
+<div class="grid-3">
+<article class="card case-card case-card-live" id="credential-exposure-case-study">
+<div class="case-media">
+<img alt="No-text phishing illustration showing a sign-in screen, email, and security shield" loading="lazy" src="../assets/images/case-study-phishing-cover.png"/>
+</div>
+<div class="case-body">
+<div class="badges">
+<span class="badge" data-lang="en">Case Study 1</span>
+<span class="badge" data-lang="es">Caso 1</span>
+<span class="badge">Phishing</span>
+</div>
+<h3 data-lang="en">Credential Exposure at the Point of Entry</h3>
+<h3 data-lang="es">Exposición de credenciales en el punto de entrada</h3>
+<p data-lang="en">A controlled localhost phishing simulation showing how a familiar sign-in page can capture test credentials at the moment of form submission.</p>
+<p data-lang="es">Una simulación controlada de phishing en localhost que muestra cómo una página de inicio de sesión familiar puede capturar credenciales de prueba al momento de enviar el formulario.</p>
+<ul class="case-list" data-lang="en">
+<li>Focuses on point-of-entry exposure and redacted terminal evidence.</li>
+<li>Shows why visual trust alone is not enough for household logins.</li>
+<li>Reinforces password managers, passkeys, sign-in alerts, and safer login habits.</li>
+</ul>
+<ul class="case-list" data-lang="es">
+<li>Se enfoca en exposición en el punto de entrada y evidencia de terminal redactada.</li>
+<li>Muestra por qué la confianza visual no basta para inicios de sesión en el hogar.</li>
+<li>Refuerza gestores de contraseñas, passkeys, alertas de inicio de sesión y mejores hábitos.</li>
+</ul>
+<div class="case-meta-list">
+<div class="case-meta-item"><strong data-lang="en">Environment</strong><strong data-lang="es">Entorno</strong><span>Kali Linux, Firefox, SEToolkit, localhost</span></div>
+<div class="case-meta-item"><strong data-lang="en">Evidence</strong><strong data-lang="es">Evidencia</strong><span data-lang="en">Source page, localhost clone, and redacted terminal capture</span><span data-lang="es">Página fuente, clon local y captura de terminal redactada</span></div>
+</div>
+<div class="case-actions">
+<a class="btn primary" href="files/case-study-1-credential-exposure.pdf" rel="noopener" target="_blank">
+<span data-lang="en">Open PDF</span>
+<span data-lang="es">Abrir PDF</span>
+</a>
+<a class="btn" download="" href="files/case-study-1-credential-exposure.pdf">
+<span data-lang="en">Download PDF</span>
+<span data-lang="es">Descargar PDF</span>
+</a>
+</div>
+</div>
+</article>
+
+<article class="card case-card case-card-live" id="malicious-app-case-study">
+<div class="case-media">
+<img alt="No-text mobile app security illustration showing a phone, package icon, and warning shield" loading="lazy" src="../assets/images/case-study-mobile-app-cover.png"/>
+</div>
+<div class="case-body">
+<div class="badges">
+<span class="badge" data-lang="en">Case Study 2</span>
+<span class="badge" data-lang="es">Caso 2</span>
+<span class="badge" data-lang="en">Mobile</span>
+<span class="badge" data-lang="es">Móvil</span>
+</div>
+<h3 data-lang="en">Malicious App Entry to a Mobile Device</h3>
+<h3 data-lang="es">Entrada de una app maliciosa a un dispositivo móvil</h3>
+<p data-lang="en">A controlled Android APK sideloading simulation showing how an untrusted app package can move from download to execution on a virtual test device.</p>
+<p data-lang="es">Una simulación controlada de instalación lateral de APK en Android que muestra cómo un paquete no confiable puede pasar de descarga a ejecución en un dispositivo virtual de prueba.</p>
+<ul class="case-list" data-lang="en">
+<li>Examines sideloading risk on a legacy Android 8 test environment.</li>
+<li>Uses redacted build, staging, listener, download, and callback evidence.</li>
+<li>Emphasizes trusted app stores, supported devices, permission review, and fast response.</li>
+</ul>
+<ul class="case-list" data-lang="es">
+<li>Examina el riesgo de instalación lateral en un entorno de prueba Android 8 legado.</li>
+<li>Usa evidencia redactada de creación, preparación, listener, descarga y callback.</li>
+<li>Enfatiza tiendas confiables, dispositivos actualizados, revisión de permisos y respuesta rápida.</li>
+</ul>
+<div class="case-meta-list">
+<div class="case-meta-item"><strong data-lang="en">Environment</strong><strong data-lang="es">Entorno</strong><span>Kali Linux, Android Studio emulator, local delivery service</span></div>
+<div class="case-meta-item"><strong data-lang="en">Evidence</strong><strong data-lang="es">Evidencia</strong><span data-lang="en">APK staging, browser download prompt, and redacted callback capture</span><span data-lang="es">Preparación del APK, descarga en navegador y captura de callback redactada</span></div>
+</div>
+<div class="case-actions">
+<a class="btn primary" href="files/case-study-2-malicious-app-remote-access.pdf" rel="noopener" target="_blank">
+<span data-lang="en">Open PDF</span>
+<span data-lang="es">Abrir PDF</span>
+</a>
+<a class="btn" download="" href="files/case-study-2-malicious-app-remote-access.pdf">
+<span data-lang="en">Download PDF</span>
+<span data-lang="es">Descargar PDF</span>
+</a>
+</div>
+</div>
+</article>
+
+<article class="card case-card case-card-live" id="location-disclosure-case-study">
+<div class="case-media">
+<img alt="No-text location privacy illustration showing a browser map, phone, and location pin" loading="lazy" src="../assets/images/case-study-location-cover.png"/>
+</div>
+<div class="case-body">
+<div class="badges">
+<span class="badge" data-lang="en">Case Study 3</span>
+<span class="badge" data-lang="es">Caso 3</span>
+<span class="badge" data-lang="en">Location privacy</span>
+<span class="badge" data-lang="es">Privacidad de ubicación</span>
+</div>
+<h3 data-lang="en">Browser-Based Location Disclosure</h3>
+<h3 data-lang="es">Divulgación de ubicación basada en navegador</h3>
+<p data-lang="en">A controlled Seeker link simulation showing how a believable page and browser permission prompt can expose device and location context.</p>
+<p data-lang="es">Una simulación controlada con un enlace de Seeker que muestra cómo una página creíble y un permiso del navegador pueden exponer contexto del dispositivo y ubicación.</p>
+<ul class="case-list" data-lang="en">
+<li>Focuses on consent-driven exposure, not silent device compromise.</li>
+<li>Documents a public test link, mobile permission prompt, and redacted location fields.</li>
+<li>Reinforces origin verification, denying unexpected prompts, and reviewing site permissions.</li>
+</ul>
+<ul class="case-list" data-lang="es">
+<li>Se enfoca en exposición por consentimiento, no en compromiso silencioso del dispositivo.</li>
+<li>Documenta un enlace público de prueba, permiso móvil y campos de ubicación redactados.</li>
+<li>Refuerza verificar el origen, negar permisos inesperados y revisar permisos de sitios.</li>
+</ul>
+<div class="case-meta-list">
+<div class="case-meta-item"><strong data-lang="en">Environment</strong><strong data-lang="es">Entorno</strong><span>Kali Linux, Seeker, temporary tunnel, mobile browser</span></div>
+<div class="case-meta-item"><strong data-lang="en">Evidence</strong><strong data-lang="es">Evidencia</strong><span data-lang="en">Launch screen, tunnel request, permission prompt, and redacted terminal capture</span><span data-lang="es">Pantalla de inicio, solicitud del túnel, permiso del navegador y captura redactada</span></div>
+</div>
+<div class="case-actions">
+<a class="btn primary" href="files/case-study-3-seeker-location-disclosure.pdf" rel="noopener" target="_blank">
+<span data-lang="en">Open PDF</span>
+<span data-lang="es">Abrir PDF</span>
+</a>
+<a class="btn" download="" href="files/case-study-3-seeker-location-disclosure.pdf">
+<span data-lang="en">Download PDF</span>
+<span data-lang="es">Descargar PDF</span>
+</a>
+</div>
+</div>
+</article>
+</div>
+</div>
+</main>
+<section class="cta-band">
+<div class="container">
+<div class="cta-inner">
+<div>
+<h3 data-i18n="cta.title">Protect your digital world, start at home.</h3>
+<p data-i18n="cta.subtitle">Start with the fundamentals, then build practical habits and technical skills.</p>
+</div>
+<div class="cta-actions">
+<a class="btn primary" href="../resources/index.html">
+<span data-lang="en">Browse resources</span>
+<span data-lang="es">Ver recursos</span>
+</a>
+<a class="btn" data-i18n="cta.secondary" href="../blog/index.html">Browse the Blog</a>
+</div>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="container">
+<div class="footer-top">
+<div>
+<h4>ZeroDay Tech Labs</h4>
+<p class="note" data-i18n="footer.blurb">ZeroDay Tech Labs is a bilingual cybersecurity learning site focused on practical outcomes.</p>
+</div>
+<div>
+<h4 data-i18n="footer.solutions">Solutions</h4>
+<a data-i18n="nav.labs" href="../labs/index.html">Case Studies</a>
+<a data-i18n="nav.quiz" href="../quiz/index.html">Survey</a>
+<a data-i18n="nav.toolkit" href="../toolkit/index.html">Toolkit</a>
+</div>
+<div>
+<h4 data-i18n="footer.learn">Learn</h4>
+<a data-i18n="nav.blog" href="../blog/index.html">Blog</a>
+<a data-i18n="nav.resources" href="../resources/index.html">Resources</a>
+</div>
+<div>
+<h4 data-i18n="footer.legal">Legal</h4>
+<a data-i18n="footer.privacy" href="../legal/privacy.html">Privacy Policy</a>
+<a data-i18n="footer.terms" href="../legal/terms.html">Terms of Use</a>
+</div>
+<div><h4 data-lang="en">Company</h4><h4 data-lang="es">Organización</h4><a data-i18n="nav.about" href="../about/index.html">About</a><a data-i18n="nav.contact" href="../contact/index.html">Contact</a></div></div>
+<div class="footer-bottom"><small data-i18n="footer.copy">© ZeroDay Tech Labs</small></div>
+</div>
+</footer>
+<script src="../assets/js/posts.js"></script>
+<script src="../assets/js/blog.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/chat-config.js"></script>
+<script src="../assets/js/chat-widget.js"></script>
+</body>
+</html>
