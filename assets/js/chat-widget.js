@@ -13,7 +13,8 @@
       }
     } catch (error) {}
 
-    return document.documentElement.getAttribute('lang') === 'es' ? 'es' : 'en';
+    const htmlLang = document.documentElement.getAttribute('lang');
+    return htmlLang === 'es' ? 'es' : 'en';
   }
 
   function pageKind() {
@@ -88,6 +89,28 @@
     };
   }
 
+  function getUiStrings(lang) {
+    return lang === 'es'
+      ? {
+          title: 'Asistente de ciberseguridad',
+          subtitle: 'Ayuda del sitio y orientación práctica.',
+          launcher: 'Abrir asistente',
+          placeholder: 'Haz una pregunta',
+          send: 'Enviar',
+          working: 'Trabajando en eso...',
+          error: 'El asistente no está disponible ahora mismo.'
+        }
+      : {
+          title: 'Cybersecurity assistant',
+          subtitle: 'Website help and practical safety guidance.',
+          launcher: 'Ask assistant',
+          placeholder: 'Ask a question',
+          send: 'Send',
+          working: 'Working on that...',
+          error: 'The assistant is unavailable right now.'
+        };
+  }
+
   function addStyles() {
     if (document.getElementById('zdtl-chat-styles')) return;
 
@@ -154,27 +177,43 @@
     container.scrollTop = container.scrollHeight;
   }
 
+  function replacePromptButtons(promptsBox, promptList, input, form) {
+    promptsBox.innerHTML = '';
+
+    promptList.slice(0, 4).forEach(prompt => {
+      const button = document.createElement('button');
+      button.className = 'zdtl-chat-prompt';
+      button.type = 'button';
+      button.textContent = prompt;
+      button.addEventListener('click', () => {
+        input.value = prompt;
+        form.requestSubmit();
+      });
+      promptsBox.appendChild(button);
+    });
+  }
+
   function start() {
     if (document.querySelector('.zdtl-chat-launcher')) return;
 
     addStyles();
 
     const config = getConfig();
-    const lang = getLang();
-    const ui = {
-      title: lang === 'es' ? 'Asistente de ciberseguridad' : 'Cybersecurity assistant',
-      subtitle: lang === 'es' ? 'Ayuda del sitio y orientación práctica.' : 'Website help and practical safety guidance.',
-      launcher: lang === 'es' ? 'Abrir asistente' : 'Ask assistant',
-      placeholder: lang === 'es' ? 'Haz una pregunta' : 'Ask a question',
-      send: lang === 'es' ? 'Enviar' : 'Send',
-      working: lang === 'es' ? 'Trabajando en eso...' : 'Working on that...',
-      error: lang === 'es' ? 'El asistente no está disponible ahora mismo.' : 'The assistant is unavailable right now.'
-    };
-
+    let currentLang = getLang();
+    let ui = getUiStrings(currentLang);
     let messages = loadMessages();
 
     if (!messages.length) {
-      messages = [createMessage('assistant', config.welcome && config.welcome[lang] ? config.welcome[lang] : 'Hi, what can I help you with?')];
+      messages = [
+        createMessage(
+          'assistant',
+          config.welcome && config.welcome[currentLang]
+            ? config.welcome[currentLang]
+            : currentLang === 'es'
+              ? 'Hola, ¿en qué puedo ayudarte?'
+              : 'Hi, what can I help you with?'
+        )
+      ];
       saveMessages(messages);
     }
 
@@ -189,14 +228,14 @@
     panel.innerHTML = `
       <button class="zdtl-chat-close" type="button" aria-label="Close">×</button>
       <div class="zdtl-chat-header">
-        <p class="zdtl-chat-title">${ui.title}</p>
-        <p class="zdtl-chat-subtitle">${ui.subtitle}</p>
+        <p class="zdtl-chat-title"></p>
+        <p class="zdtl-chat-subtitle"></p>
       </div>
       <div class="zdtl-chat-messages" aria-live="polite"></div>
       <div class="zdtl-chat-prompts"></div>
       <form class="zdtl-chat-form">
-        <input class="zdtl-chat-input" type="text" autocomplete="off" placeholder="${ui.placeholder}">
-        <button class="zdtl-chat-send" type="submit">${ui.send}</button>
+        <input class="zdtl-chat-input" type="text" autocomplete="off">
+        <button class="zdtl-chat-send" type="submit"></button>
       </form>
     `;
 
@@ -208,91 +247,28 @@
     const promptsBox = panel.querySelector('.zdtl-chat-prompts');
     const form = panel.querySelector('.zdtl-chat-form');
     const input = panel.querySelector('.zdtl-chat-input');
+    const titleNode = panel.querySelector('.zdtl-chat-title');
+    const subtitleNode = panel.querySelector('.zdtl-chat-subtitle');
+    const sendButton = panel.querySelector('.zdtl-chat-send');
 
     messages.forEach(message => renderMessage(messagesBox, message));
 
-    const promptGroup = (config.prompts && (config.prompts[pageKind()] || config.prompts.default)) || null;
-    const promptList = promptGroup && promptGroup[lang] ? promptGroup[lang] : [];
+    function applyLanguageUi() {
+      currentLang = getLang();
+      ui = getUiStrings(currentLang);
 
-    promptList.slice(0, 4).forEach(prompt => {
-      const button = document.createElement('button');
-      button.className = 'zdtl-chat-prompt';
-      button.type = 'button';
-      button.textContent = prompt;
-      button.addEventListener('click', () => {
-        input.value = prompt;
-        form.requestSubmit();
-      });
-      promptsBox.appendChild(button);
-    });
+      launcher.textContent = ui.launcher;
+      titleNode.textContent = ui.title;
+      subtitleNode.textContent = ui.subtitle;
+      input.placeholder = ui.placeholder;
+      sendButton.textContent = ui.send;
 
-    function setOpen(isOpen) {
-      panel.classList.toggle('is-open', isOpen);
-      saveOpenState(isOpen);
-      if (isOpen) setTimeout(() => input.focus(), 50);
+      const promptGroup =
+        (config.prompts && (config.prompts[pageKind()] || config.prompts.default)) || null;
+      const promptList = promptGroup && promptGroup[currentLang] ? promptGroup[currentLang] : [];
+
+      replacePromptButtons(promptsBox, promptList, input, form);
     }
 
-    launcher.addEventListener('click', () => setOpen(!panel.classList.contains('is-open')));
-    closeButton.addEventListener('click', () => setOpen(false));
-
-    form.addEventListener('submit', async event => {
-      event.preventDefault();
-
-      const value = text(input.value);
-      if (!value) return;
-
-      input.value = '';
-
-      const userMessage = createMessage('user', value);
-      messages.push(userMessage);
-      renderMessage(messagesBox, userMessage);
-      saveMessages(messages);
-
-      const working = createMessage('assistant', ui.working);
-      renderMessage(messagesBox, working);
-      const workingNode = messagesBox.lastElementChild;
-
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), Number(config.requestTimeoutMs || 30000));
-
-      try {
-        const response = await fetch(config.endpoint || '/api/chat', {
-          method: 'POST',
-          mode: 'cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            locale: getLang(),
-            messages: messages
-              .filter(item => item.role === 'user' || item.role === 'assistant')
-              .map(item => ({ role: item.role, content: item.content }))
-              .slice(-Number(config.maxHistoryTurns || 12)),
-            context: collectContext()
-          }),
-          signal: controller.signal
-        });
-
-        const payload = await response.json().catch(() => ({}));
-        const reply = payload.reply || payload.text || payload.error || ui.error;
-
-        workingNode.textContent = reply;
-        messages.push(createMessage('assistant', reply));
-        saveMessages(messages);
-      } catch (error) {
-        workingNode.textContent = ui.error;
-        messages.push(createMessage('assistant', ui.error));
-        saveMessages(messages);
-      } finally {
-        clearTimeout(timeout);
-        messagesBox.scrollTop = messagesBox.scrollHeight;
-      }
-    });
-
-    setOpen(getOpenState());
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', start);
-  } else {
-    start();
-  }
-})();
+    function setOpen(isOpen) {
+      panel.classList.toggle('is-open',
