@@ -131,7 +131,7 @@ Site map:
 - Toolkit: /toolkit/index.html
 - Blog: /blog/index.html
 - Resources: /resources/index.html
-- Survey: /quiz/index.html
+- Survey: /survey/index.html
 - About: /about/index.html
 - Contact: /contact/index.html
 
