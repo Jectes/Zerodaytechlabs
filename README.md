@@ -17,7 +17,7 @@
 
 **ZeroDay Tech Labs** is a cybersecurity education platform focused on practical, real-world learning for households, students, and entry-level practitioners.
 
-Rather than relying only on abstract theory, the platform translates real attack patterns into structured, understandable guidance through case studies, toolkits, resources, quizzes, and applied learning scenarios.
+Rather than relying only on abstract theory, the platform translates real attack patterns into structured, understandable guidance through case studies, toolkits, resources, and applied learning scenarios.
 
 The goal is simple:
 
@@ -33,19 +33,19 @@ ZeroDay Tech Labs includes controlled, research-based simulations designed to re
 
 Current case study topics include:
 
-- Credential exposure at the point of entry
-- Malicious mobile application installation
-- Browser-based location disclosure
-- Phishing awareness and response
-- Home network and device exposure
+- Credential exposure at the point of entry  
+- Malicious mobile application installation  
+- Browser-based location disclosure  
+- Phishing awareness and response  
+- Home network and device exposure  
 
 Each case study explains:
 
-- How the exposure occurs
-- What evidence or observable behavior appears
-- Why the risk matters in the real world
-- How users can prevent or reduce harm
-- Defensive mitigation steps
+- How the exposure occurs  
+- What evidence or observable behavior appears  
+- Why the risk matters in the real world  
+- How users can prevent or reduce harm  
+- Defensive mitigation steps  
 
 ---
 
@@ -55,14 +55,14 @@ The toolkit provides structured, practical guides designed for immediate use.
 
 Topics include:
 
-- Home network security
-- Account protection
-- Multi-factor authentication
-- Phishing detection and response
-- Backup and recovery practices
-- Family cybersecurity habits
-- Device hardening basics
-- Safer browsing and privacy habits
+- Home network security  
+- Account protection  
+- Multi-factor authentication  
+- Phishing detection and response  
+- Backup and recovery practices  
+- Family cybersecurity habits  
+- Device hardening basics  
+- Safer browsing and privacy habits  
 
 ---
 
@@ -70,98 +70,35 @@ Topics include:
 
 The resources section provides curated cybersecurity references, reporting platforms, and official guidance from trusted organizations.
 
-Resources are designed to help users move from awareness to action without getting buried under technical noise. Cybersecurity already has enough acronyms. We do not need to summon the alphabet dragon unless absolutely necessary.
+Resources are designed to help users move from awareness to action without getting buried under technical noise.
+
+Cybersecurity already has enough acronyms. No need to summon the alphabet dragon unless absolutely necessary.
 
 ---
 
-### Quiz and Survey
+### Survey
 
-The quiz and survey components help evaluate:
+The survey component evaluates:
 
-- User understanding
-- Confidence improvement
-- Awareness of common cyber risks
-- Effectiveness of cybersecurity education
+- User understanding  
+- Confidence improvement  
+- Awareness of common cyber risks  
+- Effectiveness of cybersecurity education  
 
-These tools are intended to support learning, reflection, and improvement over time.
+It is divided into:
+
+- **Pre-survey** (baseline understanding)  
+- **Post-survey** (impact after using the platform)  
+
+This supports both user feedback and academic research analysis.
 
 ---
 
 ## Architecture
 
 ```text
-Frontend        -> Static website / GitHub Pages
+Frontend        -> Static Website (HTML/CSS/JS)
 Backend         -> Vercel Serverless Functions
-AI Integration  -> OpenRouter Hermes
-Domain          -> Wix
-Assets          -> Local images, CSS, and JavaScript
-```
-
----
-
-## Repository Structure
-
-```text
-Zerodaytechlabs/
-├── about/
-├── api/
-├── assets/
-│   ├── css/
-│   ├── images/
-│   └── js/
-├── blog/
-├── contact/
-├── labs/
-├── legal/
-├── resources/
-├── toolkit/
-├── CNAME
-└── README.md
-```
-
----
-
-## Purpose
-
-ZeroDay Tech Labs exists to make cybersecurity education more approachable for:
-
-- Families and households
-- Students
-- Entry-level cybersecurity learners
-- Community educators
-- Non-technical users
-- Anyone trying to understand digital safety without needing a security clearance and three cups of coffee
-
----
-
-## Ethical Use
-
-All materials, demonstrations, and case studies in this project are intended for:
-
-- Education
-- Awareness
-- Defensive learning
-- Safe simulation
-- Prevention and mitigation
-
-This project does **not** promote unauthorized access, credential theft, malware deployment, exploitation of real systems, or harmful activity.
-
-Use the content responsibly and only in environments where you have permission.
-
----
-
-## Development Status
-
-ZeroDay Tech Labs is currently in active development.
-
-Planned improvements may include:
-
-- Additional case studies
-- Expanded toolkits
-- More bilingual content
-- Improved quizzes and survey feedback
-- Better visual learning materials
-- Additional defensive checklists
-
----
-
+AI Integration  -> OpenRouter (auto model routing)
+Domain          -> Wix (DNS + email)
+Deployment      -> Vercel
