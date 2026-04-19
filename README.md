@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="./assets/images/logo-white-bg.png" alt="ZeroDay Tech Labs Logo" width="280">
-</p>
-
 <h1 align="center">ZeroDay Tech Labs</h1>
 
 <p align="center">
