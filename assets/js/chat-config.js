@@ -1,110 +1,22 @@
 const DEFAULT_MODEL = 'nousresearch/hermes-3-llama-3.1-405b:free';
 
-const DEFAULT_ALLOWED_ORIGINS = [
-  'https://zerodaytechlabs.com',
-  'https://www.zerodaytechlabs.com',
-  'https://project-fx5fh.vercel.app'
-];
+const DEFAULT_WELCOME_EN =
+  "Hi, I’m the ZeroDay Tech Labs Assistant. I can help you find the right toolkit, understand scam texts, secure your home Wi-Fi, or report suspicious activity. What can I help you with?";
 
-/*
-  IMPORTANT:
-  This file is configured to work immediately with Wix + Vercel.
+const DEFAULT_WELCOME_ES =
+  "Hola, soy el asistente de ZeroDay Tech Labs. Puedo ayudarte a encontrar el toolkit correcto, identificar textos de estafa, asegurar tu Wi-Fi del hogar o reportar actividad sospechosa. ¿En qué puedo ayudarte?";
 
-  By default, CORS is open so the Wix frontend can reach the Vercel API
-  without throwing "Failed to fetch".
-
-  Later, when everything is working, you can lock it down by adding this
-  environment variable in Vercel:
-
-  STRICT_CORS=true
-*/
-
-function cleanOrigin(origin) {
-  return String(origin || '').trim().replace(/\/+$/, '');
-}
-
-function getAllowedOrigins() {
-  const configured = process.env.ALLOWED_ORIGIN;
-
-  if (!configured) {
-    return DEFAULT_ALLOWED_ORIGINS;
-  }
-
-  return configured
-    .split(',')
-    .map(value => cleanOrigin(value))
-    .filter(Boolean);
-}
-
-function isTrustedPreviewOrigin(origin) {
-  try {
-    const url = new URL(origin);
-    const hostname = url.hostname.toLowerCase();
-
-    return (
-      hostname.endsWith('.wixsite.com') ||
-      hostname.endsWith('.wixstudio.io') ||
-      hostname.endsWith('.wix.com') ||
-      hostname === 'editor.wix.com' ||
-      hostname === 'manage.wix.com'
-    );
-  } catch (error) {
-    return false;
-  }
-}
-
-function allowedOrigin(requestOrigin) {
-  const origin = cleanOrigin(requestOrigin);
-
-  /*
-    Default mode: allow browser requests.
-    This fixes the Wix/Vercel "Failed to fetch" issue immediately.
-  */
-  if (process.env.STRICT_CORS !== 'true') {
-    return '*';
-  }
-
-  /*
-    Strict mode:
-    Only allow your configured domains and Wix preview/editor origins.
-  */
-  if (!origin) {
-    return '*';
-  }
-
-  const allowed = getAllowedOrigins();
-
-  if (allowed.includes(origin)) {
-    return origin;
-  }
-
-  if (isTrustedPreviewOrigin(origin)) {
-    return origin;
-  }
-
-  return null;
-}
 
 function setCors(req, res) {
-  const origin = allowedOrigin(req.headers.origin);
-
-  if (!origin) {
-    return false;
-  }
-
   const requestedHeaders =
     req.headers['access-control-request-headers'] ||
     'Content-Type, Authorization';
 
-  res.setHeader('Access-Control-Allow-Origin', origin);
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', requestedHeaders);
   res.setHeader('Access-Control-Max-Age', '86400');
   res.setHeader('Cache-Control', 'no-store');
-
-  if (origin !== '*') {
-    res.setHeader('Vary', 'Origin');
-  }
 
   return true;
 }
@@ -332,6 +244,10 @@ function redactSecrets(message) {
     .replace(/sk-[A-Za-z0-9_-]+/g, '[redacted API key]');
 }
 
+function getWelcome(locale) {
+  return locale === 'es' ? DEFAULT_WELCOME_ES : DEFAULT_WELCOME_EN;
+}
+
 function buildSystemPrompt(locale, rawContext) {
   const isSpanish = locale === 'es';
   const context = normalizeContext(rawContext);
@@ -348,6 +264,11 @@ function buildSystemPrompt(locale, rawContext) {
 ${isSpanish ? 'Respond mainly in Spanish unless the visitor clearly asks in English.' : 'Respond mainly in English unless the visitor clearly asks in Spanish.'}
 
 You are the public website assistant for ZeroDay Tech Labs.
+
+Start behavior:
+- If the visitor greets you or asks what you can do, briefly introduce yourself.
+- Use this style: "Hi, I’m the ZeroDay Tech Labs Assistant. I can help with scam texts, phishing, home Wi-Fi security, account protection, reporting fraud, and finding the right toolkit."
+- Do not over-explain your role unless asked.
 
 Voice:
 - Professional, calm, clear, and human.
@@ -405,11 +326,17 @@ Useful guidance:
 - Reporting references include 7726, ReportFraud.ftc.gov, IC3.gov, and IdentityTheft.gov.
 
 Phishing and scam text answer guidance:
-- Mention urgent language, strange links, unexpected package/bank alerts, requests for passwords or codes, and pressure to act immediately.
+- Mention urgent language, strange links, unexpected package or bank alerts, requests for passwords or codes, and pressure to act immediately.
 - Tell users not to tap links or reply.
 - Tell users to open the official app or website directly, or call the number on the back of their card or official account page.
 - Mention forwarding scam texts to 7726 when appropriate.
 - Mention ReportFraud.ftc.gov, IC3.gov, and IdentityTheft.gov when appropriate.
+
+Malware answer guidance:
+- Explain that malware means malicious software.
+- Give simple examples: viruses, ransomware, spyware, trojans, fake apps, and malicious browser extensions.
+- Explain common signs: pop-ups, slow device, unknown apps, changed browser settings, unusual logins, battery drain, and unexpected charges.
+- Give safe next steps: disconnect if needed, update, scan with trusted security tools, uninstall suspicious apps, change passwords from a clean device, and enable MFA.
 
 Case study answer guidance:
 - Credential Exposure: explain visual trust, domain verification, password managers, passkeys, sign-in alerts, and unexpected login errors as warning signs.
@@ -450,11 +377,7 @@ async function fetchWithTimeout(url, options, timeoutMs) {
 }
 
 module.exports = async function handler(req, res) {
-  if (!setCors(req, res)) {
-    return sendJson(res, 403, {
-      error: 'Origin not allowed.'
-    });
-  }
+  setCors(req, res);
 
   if (req.method === 'OPTIONS') {
     return res.status(204).end();
@@ -464,21 +387,14 @@ module.exports = async function handler(req, res) {
     return sendJson(res, 200, {
       ok: true,
       service: 'ZeroDay Tech Labs Assistant API',
-      message: 'API route is live. Use POST to send chat messages.'
+      message: 'API route is live. Use POST to send chat messages.',
+      welcome: DEFAULT_WELCOME_EN
     });
   }
 
   if (req.method !== 'POST') {
     return sendJson(res, 405, {
       error: 'Method not allowed.'
-    });
-  }
-
-  const apiKey = process.env.OPENROUTER_API_KEY;
-
-  if (!apiKey) {
-    return sendJson(res, 500, {
-      error: 'Missing OPENROUTER_API_KEY in Vercel environment variables.'
     });
   }
 
@@ -497,12 +413,22 @@ module.exports = async function handler(req, res) {
   const messages = normalizeMessages(body);
   const context = normalizeContext(body.context);
 
+  /*
+    Friendly automatic greeting:
+    If the frontend sends an empty POST request,
+    the API replies with a welcome message instead of an error.
+  */
   if (!messages.length) {
-    return sendJson(res, 400, {
-      error:
-        locale === 'es'
-          ? 'No se recibió ningún mensaje.'
-          : 'No message was provided.'
+    return sendJson(res, 200, {
+      reply: getWelcome(locale)
+    });
+  }
+
+  const apiKey = process.env.OPENROUTER_API_KEY;
+
+  if (!apiKey) {
+    return sendJson(res, 500, {
+      error: 'Missing OPENROUTER_API_KEY in Vercel environment variables.'
     });
   }
 
