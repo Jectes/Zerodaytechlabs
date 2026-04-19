@@ -11,7 +11,7 @@
 
   function basePrefix(){
     const p = window.location.pathname;
-    return p.includes("/blog/") || p.includes("/labs/") || p.includes("/quiz/") || p.includes("/toolkit/") || p.includes("/resources/") || p.includes("/about/") || p.includes("/contact/") || p.includes("/legal/")
+    return p.includes("/blog/") || p.includes("/labs/") || p.includes("/survey/") || p.includes("/toolkit/") || p.includes("/resources/") || p.includes("/about/") || p.includes("/contact/") || p.includes("/legal/")
       ? "../" : "";
   }
 
