@@ -1,7 +1,7 @@
 (function(){
   const existing = window.ZDTL_CHAT_CONFIG || {};
   window.ZDTL_CHAT_CONFIG = Object.assign({
-    endpoint: "/api/chat",
+    endpoint: "https://project-fx5fh.vercel.app/api/chat",
     assistantName: "ZeroDay Tech Labs Assistant",
     maxHistoryTurns: 12,
     requestTimeoutMs: 30000,
