@@ -166,24 +166,5 @@ Planned improvements may include:
 
 ---
 
-## Website
-
-Project site:
-
-```text
-https://project-fx5fh.vercel.app
-```
-
----
-
-## Maintainer
-
-Created and maintained by **ZeroDay Tech Labs**.
-
----
-
-## License
-
-No license has been specified yet.
 
 Until a license is added, all rights are reserved by the project owner.
