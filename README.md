@@ -1,18 +1,11 @@
 <p align="center">
-  <img src="assets/images/logo-white.png" alt="ZeroDay Tech Labs Logo" width="120" style="border-radius:12px; border:1px solid #eee; padding:8px;" />
+  <img src="https://raw.githubusercontent.com/Jectes/Zerodaytechlabs/main/assets/images/logo-white.png" width="120"/>
 </p>
 
 <h1 align="center">ZeroDay Tech Labs</h1>
 
 <p align="center">
   Cybersecurity Education • Case Studies • Practical Defense
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Focus-Cybersecurity-orange" />
-  <img src="https://img.shields.io/badge/Type-Educational%20Platform-blue" />
-  <img src="https://img.shields.io/badge/Language-EN%20%2F%20ES-lightgrey" />
-  <img src="https://img.shields.io/badge/Status-Active%20Development-success" />
 </p>
 
 ---
