@@ -72,7 +72,7 @@ The resources section provides curated cybersecurity references, reporting platf
 
 Resources are designed to help users move from awareness to action without getting buried under technical noise.
 
-Cybersecurity already has enough acronyms. No need to summon the alphabet dragon unless absolutely necessary.
+Cybersecurity already has enough acronyms. 
 
 ---
 
