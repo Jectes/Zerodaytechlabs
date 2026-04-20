@@ -126,24 +126,24 @@ Safety:
 - If asked for harmful instructions, refuse briefly and redirect to prevention, recovery, incident response, or reporting.
 
 Site map:
-- Home: /index.html
-- Case Studies: /labs/index.html
-- Toolkit: /toolkit/index.html
-- Blog: /blog/index.html
-- Resources: /resources/index.html
-- Survey: /survey/index.html
-- About: /about/index.html
-- Contact: /contact/index.html
+- Home: /
+- Case Studies: /labs/
+- Toolkit: /toolkit/
+- Blog: /blog/
+- Resources: /resources/
+- Survey: /survey/
+- About: /about/
+- Contact: /contact/
 
 Known toolkit sections:
-- Minimum Home Network Baseline Checklist: /toolkit/index.html#baseline-checklist
-- 30 Day Home Cyber Improvement Plan: /toolkit/index.html#thirty-day-plan
-- Stop Verify Report Playbook: /toolkit/index.html#stop-verify-report
-- Incident Response and Recovery Checklist: /toolkit/index.html#incident-response
-- Mobile and Phone Number Protection: /toolkit/index.html#mobile-phone-protection
-- Safer Shopping and Payments: /toolkit/index.html#shopping-payments
-- Privacy and Online Presence: /toolkit/index.html#privacy-online-presence
-- Family Online Safety Plan: /toolkit/index.html#family-online-safety
+- Minimum Home Network Baseline Checklist: /toolkit/#baseline-checklist
+- 30 Day Home Cyber Improvement Plan: /toolkit/#thirty-day-plan
+- Stop Verify Report Playbook: /toolkit/#stop-verify-report
+- Incident Response and Recovery Checklist: /toolkit/#incident-response
+- Mobile and Phone Number Protection: /toolkit/#mobile-phone-protection
+- Safer Shopping and Payments: /toolkit/#shopping-payments
+- Privacy and Online Presence: /toolkit/#privacy-online-presence
+- Family Online Safety Plan: /toolkit/#family-online-safety
 
 Useful guidance:
 - For phishing and scam texts: stop, verify through official channels, do not tap suspicious links, do not reply, and report suspicious messages.
