@@ -4,12 +4,247 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>ZeroDay Tech Labs — Start Here</title>
-<meta content="Cybersecurity basics for families, older adults, and children explained in simple steps with videos and trusted resources." name="description"/>
+<meta content="Cybersecurity basics for families, older adults, and children explained in simple steps with embedded videos, visual examples, and toolkit links." name="description"/>
 <link href="../assets/images/logo-mark.png" rel="icon"/>
 <link href="../assets/css/styles.css" rel="stylesheet"/>
 <script defer="" src="../assets/js/i18n.js"></script>
 <script defer="" src="../assets/js/nav.js"></script>
+
+<style>
+/* Page-only visual upgrades. Uses existing ZeroDay Tech Labs theme variables. */
+.start-page{
+  --friendly-gap: 18px;
+}
+
+.start-page p,
+.start-page li{
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.start-page .hero p{
+  font-size: clamp(17px, 1.6vw, 19px);
+}
+
+.start-page .easy-panel{
+  background: linear-gradient(135deg, rgba(240,122,47,0.12), rgba(255,255,255,0.92));
+  border: 1px solid rgba(240,122,47,0.18);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.start-page .quick-path-grid,
+.start-page .friendly-grid,
+.start-page .video-grid,
+.start-page .scenario-grid,
+.start-page .toolkit-path-grid{
+  display: grid;
+  gap: var(--friendly-gap);
+}
+
+.start-page .quick-path-grid{
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.start-page .friendly-grid{
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.start-page .video-grid{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.start-page .scenario-grid{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.start-page .toolkit-path-grid{
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.start-page .friendly-card,
+.start-page .path-card,
+.start-page .scenario-card,
+.start-page .video-card,
+.start-page .toolkit-card-visual{
+  position: relative;
+  overflow: hidden;
+  min-height: 100%;
+}
+
+.start-page .friendly-card::before,
+.start-page .path-card::before,
+.start-page .toolkit-card-visual::before{
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--brand), rgba(240,122,47,0.18));
+}
+
+.start-page .big-icon{
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  background: rgba(240,122,47,0.12);
+  border: 1px solid rgba(240,122,47,0.18);
+  margin-bottom: 12px;
+}
+
+.start-page .step-label{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(240,122,47,0.18);
+  background: rgba(240,122,47,0.10);
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.start-page .big-rule-number{
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 950;
+  margin-right: 8px;
+}
+
+.start-page .video-frame{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #000;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 14px;
+}
+
+.start-page .video-frame iframe{
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.start-page .watch-tip{
+  margin-top: 16px;
+}
+
+.start-page .watch-tip strong{
+  display: block;
+  margin-bottom: 6px;
+}
+
+.start-page .scenario-card{
+  border-left: 6px solid var(--brand);
+}
+
+.start-page .scenario-card h3,
+.start-page .toolkit-card-visual h3,
+.start-page .friendly-card h3,
+.start-page .path-card h3,
+.start-page .video-card h3{
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+.start-page .scenario-card p,
+.start-page .friendly-card p,
+.start-page .path-card p,
+.start-page .video-card p,
+.start-page .toolkit-card-visual p{
+  font-size: 16px;
+}
+
+.start-page .answer-box{
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(17,24,39,0.04);
+  border: 1px solid rgba(229,231,235,0.95);
+}
+
+.start-page .answer-box strong{
+  display: block;
+  margin-bottom: 3px;
+}
+
+.start-page .toolkit-panel{
+  background: linear-gradient(135deg, rgba(240,122,47,0.14), rgba(255,255,255,0.94));
+  border: 1px solid rgba(240,122,47,0.22);
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+}
+
+.start-page .large-link-card{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: inherit;
+}
+
+.start-page .large-link-card:hover{
+  color: inherit;
+}
+
+.start-page .large-link-card .feature-link{
+  margin-top: auto;
+  font-size: 15px;
+}
+
+.start-page .simple-list{
+  margin: 0;
+  padding-left: 20px;
+}
+
+.start-page .simple-list li{
+  margin: 8px 0;
+}
+
+.start-page .center-actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.start-page .print-note{
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+@media (max-width: 980px){
+  .start-page .quick-path-grid,
+  .start-page .friendly-grid,
+  .start-page .video-grid,
+  .start-page .scenario-grid,
+  .start-page .toolkit-path-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .start-page .hero-actions .btn,
+  .start-page .center-actions .btn{
+    width: 100%;
+  }
+}
+</style>
 </head>
+
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -44,7 +279,7 @@
 </div>
 </header>
 
-<main id="main">
+<main class="start-page" id="main">
 <section class="hero">
 <div class="container">
 <div class="hero-grid">
@@ -55,27 +290,74 @@
 <h1 data-lang="en">Cybersecurity in small steps for the whole family.</h1>
 <h1 data-lang="es">Ciberseguridad en pasos pequeños para toda la familia.</h1>
 
-<p data-lang="en">This page explains online safety for children, parents, and older adults using simple words, examples, and trusted videos. No tech background needed.</p>
-<p data-lang="es">Esta página explica la seguridad en línea para niños, padres y adultos mayores usando palabras simples, ejemplos y videos confiables. No necesitas experiencia técnica.</p>
+<p data-lang="en">This page is built for children, parents, grandparents, and anyone who wants online safety explained clearly. Learn the basics, watch short videos on the page, then use the Toolkit for printable help.</p>
+<p data-lang="es">Esta página está creada para niños, padres, abuelos y cualquier persona que quiera seguridad en línea explicada con claridad. Aprende lo básico, mira videos cortos en la página y luego usa el Toolkit para ayuda imprimible.</p>
 
 <div class="hero-actions">
 <a class="btn primary" href="#five-rules">
-<span data-lang="en">Start the 5 rules</span>
-<span data-lang="es">Empezar las 5 reglas</span>
+<span data-lang="en">Start with 5 rules</span>
+<span data-lang="es">Empezar con 5 reglas</span>
 </a>
 <a class="btn" href="#watch-learn">
-<span data-lang="en">Watch &amp; Learn</span>
-<span data-lang="es">Ver y aprender</span>
+<span data-lang="en">Watch videos here</span>
+<span data-lang="es">Ver videos aquí</span>
 </a>
-<a class="btn" href="../labs/">
-<span data-lang="en">View Case Studies</span>
-<span data-lang="es">Ver estudios de caso</span>
+<a class="btn" href="../toolkit/#start-title">
+<span data-lang="en">Go to Toolkit</span>
+<span data-lang="es">Ir al Toolkit</span>
 </a>
 </div>
 </div>
 
 <div class="hero-visual">
 <img alt="Cybersecurity learning illustration" src="../assets/images/hero-illustration.svg"/>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" aria-labelledby="path-title">
+<div class="container">
+<div class="easy-panel">
+<div class="section-header">
+<div>
+<h2 id="path-title" data-lang="en">The simple learning path</h2>
+<h2 id="path-title-es" data-lang="es">La ruta simple de aprendizaje</h2>
+<p data-lang="en">Use this page like a family lesson: learn, watch, practice, then open the Toolkit when you need a checklist.</p>
+<p data-lang="es">Usa esta página como una lección familiar: aprende, mira, practica y luego abre el Toolkit cuando necesites una lista.</p>
+</div>
+</div>
+
+<div class="quick-path-grid">
+<article class="card path-card">
+<div class="big-icon">👀</div>
+<span class="step-label" data-lang="en">Step 1</span>
+<span class="step-label" data-lang="es">Paso 1</span>
+<h3 data-lang="en">Notice danger signs</h3>
+<h3 data-lang="es">Reconoce señales de peligro</h3>
+<p data-lang="en">Look for pressure, fear, surprise prizes, strange links, and people asking for codes or money.</p>
+<p data-lang="es">Busca presión, miedo, premios sorpresa, enlaces extraños y personas pidiendo códigos o dinero.</p>
+</article>
+
+<article class="card path-card">
+<div class="big-icon">▶️</div>
+<span class="step-label" data-lang="en">Step 2</span>
+<span class="step-label" data-lang="es">Paso 2</span>
+<h3 data-lang="en">Watch together</h3>
+<h3 data-lang="es">Miren juntos</h3>
+<p data-lang="en">Use the videos below. Pause and ask: “What is the trick? What should we do next?”</p>
+<p data-lang="es">Usa los videos abajo. Pausa y pregunta: “¿Cuál es el truco? ¿Qué debemos hacer después?”</p>
+</article>
+
+<article class="card path-card">
+<div class="big-icon">🧰</div>
+<span class="step-label" data-lang="en">Step 3</span>
+<span class="step-label" data-lang="es">Paso 3</span>
+<h3 data-lang="en">Use the Toolkit</h3>
+<h3 data-lang="es">Usa el Toolkit</h3>
+<p data-lang="en">Go to the Toolkit section when you want printable checklists, family rules, and response steps.</p>
+<p data-lang="es">Ve a la sección Toolkit cuando quieras listas imprimibles, reglas familiares y pasos de respuesta.</p>
+</article>
 </div>
 </div>
 </div>
@@ -92,25 +374,25 @@
 </div>
 </div>
 
-<div class="grid-3">
-<article class="card">
-<div class="icon-badge">🏠</div>
+<div class="friendly-grid">
+<article class="card friendly-card">
+<div class="big-icon">🏠</div>
 <h3 data-lang="en">Think of your account like your house</h3>
 <h3 data-lang="es">Piensa en tu cuenta como tu casa</h3>
 <p data-lang="en">Your password is the key. Two-step verification is the second lock. Updates are repairs that keep the doors strong.</p>
 <p data-lang="es">Tu contraseña es la llave. La verificación en dos pasos es el segundo candado. Las actualizaciones son reparaciones que mantienen las puertas fuertes.</p>
 </article>
 
-<article class="card">
-<div class="icon-badge">🧒</div>
+<article class="card friendly-card">
+<div class="big-icon">🧒</div>
 <h3 data-lang="en">For children</h3>
 <h3 data-lang="es">Para niños</h3>
 <p data-lang="en">Do not share private details, passwords, school names, addresses, or photos without asking a trusted adult first.</p>
 <p data-lang="es">No compartas datos privados, contraseñas, nombre de escuela, dirección o fotos sin preguntar primero a un adulto de confianza.</p>
 </article>
 
-<article class="card">
-<div class="icon-badge">👵</div>
+<article class="card friendly-card">
+<div class="big-icon">👵</div>
 <h3 data-lang="en">For older adults</h3>
 <h3 data-lang="es">Para adultos mayores</h3>
 <p data-lang="en">If a message or caller scares you, asks for money, or wants control of your computer, stop and call someone you trust.</p>
@@ -126,59 +408,131 @@
 <div>
 <h2 data-lang="en">The 5 home rules</h2>
 <h2 data-lang="es">Las 5 reglas de casa</h2>
-<p data-lang="en">Start here before going deeper. These rules work for phones, computers, tablets, email, games, social media, and banking.</p>
-<p data-lang="es">Empieza aquí antes de ir más profundo. Estas reglas funcionan para teléfonos, computadoras, tabletas, correo, juegos, redes sociales y banca.</p>
+<p data-lang="en">These rules work for phones, computers, tablets, email, games, social media, and banking.</p>
+<p data-lang="es">Estas reglas funcionan para teléfonos, computadoras, tabletas, correo, juegos, redes sociales y banca.</p>
 </div>
 </div>
 
-<div class="grid-3">
-<article class="card">
-<div class="icon-badge">🔐</div>
-<h3 data-lang="en">1. Use strong passwords</h3>
-<h3 data-lang="es">1. Usa contraseñas fuertes</h3>
+<div class="friendly-grid">
+<article class="card friendly-card">
+<div class="big-icon">🔐</div>
+<h3 data-lang="en"><span class="big-rule-number">1</span>Use strong passwords</h3>
+<h3 data-lang="es"><span class="big-rule-number">1</span>Usa contraseñas fuertes</h3>
 <p data-lang="en">Use long, different passwords for important accounts. A password manager can help remember them.</p>
 <p data-lang="es">Usa contraseñas largas y diferentes para cuentas importantes. Un administrador de contraseñas puede ayudarte a recordarlas.</p>
 </article>
 
-<article class="card">
-<div class="icon-badge">✅</div>
-<h3 data-lang="en">2. Turn on two-step verification</h3>
-<h3 data-lang="es">2. Activa la verificación en dos pasos</h3>
+<article class="card friendly-card">
+<div class="big-icon">✅</div>
+<h3 data-lang="en"><span class="big-rule-number">2</span>Turn on two-step verification</h3>
+<h3 data-lang="es"><span class="big-rule-number">2</span>Activa la verificación en dos pasos</h3>
 <p data-lang="en">This adds a second check, like a code or app approval, before someone can enter your account.</p>
 <p data-lang="es">Esto añade una segunda revisión, como un código o aprobación en una app, antes de entrar a tu cuenta.</p>
 </article>
 
-<article class="card">
-<div class="icon-badge">🔄</div>
-<h3 data-lang="en">3. Update your devices</h3>
-<h3 data-lang="es">3. Actualiza tus dispositivos</h3>
+<article class="card friendly-card">
+<div class="big-icon">🔄</div>
+<h3 data-lang="en"><span class="big-rule-number">3</span>Update your devices</h3>
+<h3 data-lang="es"><span class="big-rule-number">3</span>Actualiza tus dispositivos</h3>
 <p data-lang="en">Updates fix security holes. Turn on automatic updates for phones, computers, browsers, and apps.</p>
 <p data-lang="es">Las actualizaciones arreglan fallas de seguridad. Activa actualizaciones automáticas en teléfonos, computadoras, navegadores y apps.</p>
 </article>
 
-<article class="card">
-<div class="icon-badge">🎣</div>
-<h3 data-lang="en">4. Do not take the bait</h3>
-<h3 data-lang="es">4. No muerdas el anzuelo</h3>
-<p data-lang="en">Scam links can arrive by email, text, social media, ads, or fake websites. Pause before clicking.</p>
-<p data-lang="es">Los enlaces falsos pueden llegar por correo, texto, redes sociales, anuncios o sitios falsos. Pausa antes de hacer clic.</p>
+<article class="card friendly-card">
+<div class="big-icon">🎣</div>
+<h3 data-lang="en"><span class="big-rule-number">4</span>Do not take the bait</h3>
+<h3 data-lang="es"><span class="big-rule-number">4</span>No muerdas el anzuelo</h3>
+<p data-lang="en">Scam links can arrive by email, text, social media, ads, games, or fake websites. Pause before clicking.</p>
+<p data-lang="es">Los enlaces falsos pueden llegar por correo, texto, redes sociales, anuncios, juegos o sitios falsos. Pausa antes de hacer clic.</p>
 </article>
 
-<article class="card">
-<div class="icon-badge">💬</div>
-<h3 data-lang="en">5. Ask before acting</h3>
-<h3 data-lang="es">5. Pregunta antes de actuar</h3>
-<p data-lang="en">Before sending money, gift cards, passwords, photos, or personal information, ask a trusted person.</p>
-<p data-lang="es">Antes de enviar dinero, tarjetas de regalo, contraseñas, fotos o información personal, pregunta a alguien de confianza.</p>
+<article class="card friendly-card">
+<div class="big-icon">💬</div>
+<h3 data-lang="en"><span class="big-rule-number">5</span>Ask before acting</h3>
+<h3 data-lang="es"><span class="big-rule-number">5</span>Pregunta antes de actuar</h3>
+<p data-lang="en">Before sending money, gift cards, passwords, photos, codes, or personal information, ask a trusted person.</p>
+<p data-lang="es">Antes de enviar dinero, tarjetas de regalo, contraseñas, fotos, códigos o información personal, pregunta a alguien de confianza.</p>
 </article>
 
-<article class="card">
-<div class="icon-badge">🧯</div>
+<article class="card friendly-card">
+<div class="big-icon">🧯</div>
 <h3 data-lang="en">Emergency rule</h3>
 <h3 data-lang="es">Regla de emergencia</h3>
 <p data-lang="en">If something feels wrong: stop, disconnect, take a screenshot, and ask for help. Fast panic is the scammer’s favorite snack.</p>
 <p data-lang="es">Si algo se siente raro: detente, desconéctate, toma captura y pide ayuda. El pánico rápido es el bocadillo favorito del estafador.</p>
 </article>
+</div>
+</div>
+</section>
+
+<section class="section" id="watch-learn">
+<div class="container">
+<div class="section-header">
+<div>
+<h2 data-lang="en">Watch &amp; Learn on this page</h2>
+<h2 data-lang="es">Ver y aprender en esta página</h2>
+<p data-lang="en">The videos are embedded so families can watch them without hunting for links. Watch together and pause for discussion.</p>
+<p data-lang="es">Los videos están integrados para que la familia pueda verlos sin buscar enlaces. Mírenlos juntos y pausen para conversar.</p>
+</div>
+</div>
+
+<div class="video-grid">
+<article class="card video-card">
+<div class="badges">
+<span class="badge">YouTube</span>
+<span class="badge" data-lang="en">Malware</span>
+<span class="badge" data-lang="es">Malware</span>
+</div>
+<h3 data-lang="en">What is Malware?</h3>
+<h3 data-lang="es">¿Qué es malware?</h3>
+<div class="video-frame">
+<iframe src="https://www.youtube-nocookie.com/embed/NMYbkzjI5EY?start=15" title="What is Malware video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+<p data-lang="en">Simple idea: malware is bad software. Teach everyone not to download unknown files, fake apps, or surprise attachments.</p>
+<p data-lang="es">Idea simple: malware es software malo. Enseña a todos a no descargar archivos desconocidos, apps falsas o adjuntos sorpresa.</p>
+<div class="center-actions">
+<a class="btn" href="https://www.youtube.com/watch?v=NMYbkzjI5EY&amp;t=15s" rel="noopener noreferrer" target="_blank">
+<span data-lang="en">Open on YouTube</span>
+<span data-lang="es">Abrir en YouTube</span>
+</a>
+</div>
+</article>
+
+<article class="card video-card">
+<div class="badges">
+<span class="badge">YouTube</span>
+<span class="badge" data-lang="en">Social engineering</span>
+<span class="badge" data-lang="es">Ingeniería social</span>
+</div>
+<h3 data-lang="en">What is Social Engineering?</h3>
+<h3 data-lang="es">¿Qué es ingeniería social?</h3>
+<div class="video-frame">
+<iframe src="https://www.youtube-nocookie.com/embed/v7VTJhkJUUY" title="What is Social Engineering video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+<p data-lang="en">Simple idea: attackers trick people by pretending to be helpful, urgent, scary, or trustworthy.</p>
+<p data-lang="es">Idea simple: los atacantes engañan fingiendo ayudar, tener urgencia, dar miedo o ser confiables.</p>
+<div class="center-actions">
+<a class="btn" href="https://www.youtube.com/watch?v=v7VTJhkJUUY" rel="noopener noreferrer" target="_blank">
+<span data-lang="en">Open on YouTube</span>
+<span data-lang="es">Abrir en YouTube</span>
+</a>
+</div>
+</article>
+</div>
+
+<div class="prose watch-tip">
+<strong data-lang="en">Family viewing tip</strong>
+<strong data-lang="es">Consejo para ver en familia</strong>
+<ul class="simple-list" data-lang="en">
+<li>Pause when someone says, “Click now,” “send money,” “enter your password,” or “keep this secret.”</li>
+<li>Ask children: “What would you tell a trusted adult?”</li>
+<li>Ask older adults: “Who could you call before responding?”</li>
+</ul>
+<ul class="simple-list" data-lang="es">
+<li>Pausa cuando alguien diga: “haz clic ahora,” “envía dinero,” “escribe tu contraseña” o “mantén esto secreto.”</li>
+<li>Pregunta a niños: “¿Qué le dirías a un adulto de confianza?”</li>
+<li>Pregunta a adultos mayores: “¿A quién podrías llamar antes de responder?”</li>
+</ul>
 </div>
 </div>
 </section>
@@ -189,183 +543,52 @@
 <div>
 <h2 data-lang="en">Big cyber words in plain language</h2>
 <h2 data-lang="es">Palabras grandes de ciberseguridad en lenguaje simple</h2>
-<p data-lang="en">Use this mini-dictionary when a video, case study, or warning message uses a technical word.</p>
-<p data-lang="es">Usa este mini diccionario cuando un video, estudio de caso o alerta use una palabra técnica.</p>
+<p data-lang="en">These cards explain the words people hear in videos, news, and warning messages.</p>
+<p data-lang="es">Estas tarjetas explican palabras que las personas escuchan en videos, noticias y alertas.</p>
 </div>
 </div>
 
-<div class="prose">
-<div class="table-wrap">
-<table>
-<thead>
-<tr>
-<th data-lang="en">Word</th>
-<th data-lang="es">Palabra</th>
-<th data-lang="en">Simple meaning</th>
-<th data-lang="es">Significado simple</th>
-<th data-lang="en">Example</th>
-<th data-lang="es">Ejemplo</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-lang="en">Malware</td>
-<td data-lang="es">Malware</td>
-<td data-lang="en">Bad software that can spy, steal, damage, or lock files.</td>
-<td data-lang="es">Programa malo que puede espiar, robar, dañar o bloquear archivos.</td>
-<td data-lang="en">A fake download that steals passwords.</td>
-<td data-lang="es">Una descarga falsa que roba contraseñas.</td>
-</tr>
-<tr>
-<td data-lang="en">Social engineering</td>
-<td data-lang="es">Ingeniería social</td>
-<td data-lang="en">A trick that uses fear, trust, or urgency to make people act.</td>
-<td data-lang="es">Un engaño que usa miedo, confianza o urgencia para que la persona actúe.</td>
-<td data-lang="en">“Grandma, I’m in trouble. Send money now.”</td>
-<td data-lang="es">“Abuela, estoy en problemas. Envía dinero ahora.”</td>
-</tr>
-<tr>
-<td data-lang="en">Phishing</td>
-<td data-lang="es">Phishing</td>
-<td data-lang="en">A fake message or website trying to steal information.</td>
-<td data-lang="es">Un mensaje o sitio falso que intenta robar información.</td>
-<td data-lang="en">“Your bank account is locked. Click here.”</td>
-<td data-lang="es">“Tu cuenta bancaria está bloqueada. Haz clic aquí.”</td>
-</tr>
-<tr>
-<td data-lang="en">Two-step verification</td>
-<td data-lang="es">Verificación en dos pasos</td>
-<td data-lang="en">A second proof that it is really you.</td>
-<td data-lang="es">Una segunda prueba de que realmente eres tú.</td>
-<td data-lang="en">A code from an app or text message.</td>
-<td data-lang="es">Un código de una app o mensaje de texto.</td>
-</tr>
-<tr>
-<td data-lang="en">Password manager</td>
-<td data-lang="es">Administrador de contraseñas</td>
-<td data-lang="en">A secure tool that creates and remembers strong passwords.</td>
-<td data-lang="es">Una herramienta segura que crea y recuerda contraseñas fuertes.</td>
-<td data-lang="en">One safe vault for many passwords.</td>
-<td data-lang="es">Una bóveda segura para muchas contraseñas.</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-
-<section class="section" id="watch-learn">
-<div class="container">
-<div class="section-header">
-<div>
-<h2 data-lang="en">Watch &amp; Learn</h2>
-<h2 data-lang="es">Ver y aprender</h2>
-<p data-lang="en">Short videos and beginner resources for learning together. Watch with a child, parent, grandparent, or friend and pause to discuss examples.</p>
-<p data-lang="es">Videos cortos y recursos para principiantes. Mira con un niño, padre, abuelo o amigo y pausa para hablar de los ejemplos.</p>
-</div>
-</div>
-
-<div class="grid-3">
-<article class="card">
-<div class="badges">
-<span class="badge">YouTube</span>
-<span class="badge" data-lang="en">Malware</span>
-<span class="badge" data-lang="es">Malware</span>
-</div>
-<h3 data-lang="en">What is Malware?</h3>
-<h3 data-lang="es">¿Qué es malware?</h3>
-<p data-lang="en">Use this video after reading the malware definition. Focus on the idea: do not download unknown files or apps.</p>
-<p data-lang="es">Usa este video después de leer la definición de malware. Enfócate en la idea: no descargues archivos o apps desconocidas.</p>
-<div class="hero-actions">
-<a class="btn primary" href="https://www.youtube.com/watch?v=NMYbkzjI5EY&amp;t=15s" rel="noopener noreferrer" target="_blank">
-<span data-lang="en">Watch video</span>
-<span data-lang="es">Ver video</span>
-</a>
+<div class="friendly-grid">
+<article class="card friendly-card">
+<div class="big-icon">🦠</div>
+<h3 data-lang="en">Malware</h3>
+<h3 data-lang="es">Malware</h3>
+<p data-lang="en">Bad software that can spy, steal, damage, or lock files.</p>
+<p data-lang="es">Programa malo que puede espiar, robar, dañar o bloquear archivos.</p>
+<div class="answer-box">
+<strong data-lang="en">Example</strong>
+<strong data-lang="es">Ejemplo</strong>
+<span data-lang="en">A fake game download that steals passwords.</span>
+<span data-lang="es">Una descarga falsa de un juego que roba contraseñas.</span>
 </div>
 </article>
 
-<article class="card">
-<div class="badges">
-<span class="badge">YouTube</span>
-<span class="badge" data-lang="en">Social engineering</span>
-<span class="badge" data-lang="es">Ingeniería social</span>
-</div>
-<h3 data-lang="en">What is Social Engineering?</h3>
-<h3 data-lang="es">¿Qué es ingeniería social?</h3>
-<p data-lang="en">Use this video to explain how attackers trick people by pretending to be helpful, urgent, or trustworthy.</p>
-<p data-lang="es">Usa este video para explicar cómo los atacantes engañan fingiendo ayudar, tener urgencia o ser confiables.</p>
-<div class="hero-actions">
-<a class="btn primary" href="https://www.youtube.com/watch?v=v7VTJhkJUUY" rel="noopener noreferrer" target="_blank">
-<span data-lang="en">Watch video</span>
-<span data-lang="es">Ver video</span>
-</a>
+<article class="card friendly-card">
+<div class="big-icon">🎭</div>
+<h3 data-lang="en">Social engineering</h3>
+<h3 data-lang="es">Ingeniería social</h3>
+<p data-lang="en">A trick that uses fear, trust, love, or urgency to make people act fast.</p>
+<p data-lang="es">Un engaño que usa miedo, confianza, amor o urgencia para que la persona actúe rápido.</p>
+<div class="answer-box">
+<strong data-lang="en">Example</strong>
+<strong data-lang="es">Ejemplo</strong>
+<span data-lang="en">“Grandma, I’m in trouble. Send money now.”</span>
+<span data-lang="es">“Abuela, estoy en problemas. Envía dinero ahora.”</span>
 </div>
 </article>
 
-<article class="card">
-<div class="badges">
-<span class="badge">CISA</span>
-<span class="badge" data-lang="en">Quick basics</span>
-<span class="badge" data-lang="es">Conceptos básicos</span>
+<article class="card friendly-card">
+<div class="big-icon">🎣</div>
+<h3 data-lang="en">Phishing</h3>
+<h3 data-lang="es">Phishing</h3>
+<p data-lang="en">A fake message or website trying to steal information.</p>
+<p data-lang="es">Un mensaje o sitio falso que intenta robar información.</p>
+<div class="answer-box">
+<strong data-lang="en">Example</strong>
+<strong data-lang="es">Ejemplo</strong>
+<span data-lang="en">“Your bank account is locked. Click here.”</span>
+<span data-lang="es">“Tu cuenta bancaria está bloqueada. Haz clic aquí.”</span>
 </div>
-<h3 data-lang="en">Secure Our World</h3>
-<h3 data-lang="es">Secure Our World</h3>
-<p data-lang="en">Use CISA’s beginner safety materials to reinforce passwords, updates, two-step verification, and phishing awareness.</p>
-<p data-lang="es">Usa los materiales básicos de CISA para reforzar contraseñas, actualizaciones, verificación en dos pasos y cuidado con phishing.</p>
-<div class="hero-actions">
-<a class="btn" href="https://www.cisa.gov/secure-our-world" rel="noopener noreferrer" target="_blank">
-<span data-lang="en">Open resource</span>
-<span data-lang="es">Abrir recurso</span>
-</a>
-</div>
-</article>
-</div>
-</div>
-</section>
-
-<section class="section" id="family-plan">
-<div class="container">
-<div class="section-header">
-<div>
-<h2 data-lang="en">Family plan by age group</h2>
-<h2 data-lang="es">Plan familiar por edad</h2>
-<p data-lang="en">Everyone has a role. Keep it simple and repeat it often.</p>
-<p data-lang="es">Todos tienen un rol. Mantenlo simple y repítelo a menudo.</p>
-</div>
-</div>
-
-<div class="grid-4">
-<article class="card feature-card">
-<div class="icon-badge">🧒</div>
-<h3 data-lang="en">Children</h3>
-<h3 data-lang="es">Niños</h3>
-<p data-lang="en">Ask before clicking, downloading, sharing photos, joining chats, or accepting friend requests.</p>
-<p data-lang="es">Pregunta antes de hacer clic, descargar, compartir fotos, entrar a chats o aceptar solicitudes.</p>
-</article>
-
-<article class="card feature-card">
-<div class="icon-badge">🎮</div>
-<h3 data-lang="en">Teens</h3>
-<h3 data-lang="es">Adolescentes</h3>
-<p data-lang="en">Protect gaming, school, email, and social accounts. Do not reuse passwords.</p>
-<p data-lang="es">Protege cuentas de juegos, escuela, correo y redes. No reutilices contraseñas.</p>
-</article>
-
-<article class="card feature-card">
-<div class="icon-badge">👨‍👩‍👧</div>
-<h3 data-lang="en">Parents and caregivers</h3>
-<h3 data-lang="es">Padres y cuidadores</h3>
-<p data-lang="en">Create a calm reporting rule: nobody gets in trouble for asking for help after a mistake.</p>
-<p data-lang="es">Crea una regla tranquila: nadie se mete en problemas por pedir ayuda después de un error.</p>
-</article>
-
-<article class="card feature-card">
-<div class="icon-badge">👵</div>
-<h3 data-lang="en">Older adults</h3>
-<h3 data-lang="es">Adultos mayores</h3>
-<p data-lang="en">Do not trust surprise calls about viruses, refunds, locked accounts, gift cards, or urgent family emergencies.</p>
-<p data-lang="es">No confíes en llamadas sorpresa sobre virus, reembolsos, cuentas bloqueadas, tarjetas de regalo o emergencias familiares urgentes.</p>
 </article>
 </div>
 </div>
@@ -382,34 +605,31 @@
 </div>
 </div>
 
-<div class="grid-3">
-<article class="card">
-<div class="badges">
-<span class="badge" data-lang="en">Step 1</span>
-<span class="badge" data-lang="es">Paso 1</span>
-</div>
+<div class="friendly-grid">
+<article class="card friendly-card">
+<div class="big-icon">✋</div>
+<span class="step-label" data-lang="en">Step 1</span>
+<span class="step-label" data-lang="es">Paso 1</span>
 <h3 data-lang="en">Stop</h3>
 <h3 data-lang="es">Detente</h3>
 <p data-lang="en">Do not click, pay, reply, download, or share information right away. A pause protects you.</p>
 <p data-lang="es">No hagas clic, pagues, respondas, descargues o compartas información de inmediato. Una pausa te protege.</p>
 </article>
 
-<article class="card">
-<div class="badges">
-<span class="badge" data-lang="en">Step 2</span>
-<span class="badge" data-lang="es">Paso 2</span>
-</div>
+<article class="card friendly-card">
+<div class="big-icon">🔎</div>
+<span class="step-label" data-lang="en">Step 2</span>
+<span class="step-label" data-lang="es">Paso 2</span>
 <h3 data-lang="en">Check</h3>
 <h3 data-lang="es">Revisa</h3>
 <p data-lang="en">Look for pressure, misspellings, unknown links, weird sender names, or requests for codes and passwords.</p>
 <p data-lang="es">Busca presión, errores, enlaces raros, remitentes extraños o pedidos de códigos y contraseñas.</p>
 </article>
 
-<article class="card">
-<div class="badges">
-<span class="badge" data-lang="en">Step 3</span>
-<span class="badge" data-lang="es">Paso 3</span>
-</div>
+<article class="card friendly-card">
+<div class="big-icon">☎️</div>
+<span class="step-label" data-lang="en">Step 3</span>
+<span class="step-label" data-lang="es">Paso 3</span>
 <h3 data-lang="en">Ask</h3>
 <h3 data-lang="es">Pregunta</h3>
 <p data-lang="en">Ask a trusted person. Use a phone number or website you already know is real, not the one in the message.</p>
@@ -425,68 +645,127 @@
 <div>
 <h2 data-lang="en">Common tricks and safe actions</h2>
 <h2 data-lang="es">Trucos comunes y acciones seguras</h2>
-<p data-lang="en">These examples are written for real family conversations at home.</p>
-<p data-lang="es">Estos ejemplos están escritos para conversaciones familiares reales en casa.</p>
+<p data-lang="en">Use these examples for real family conversations at home.</p>
+<p data-lang="es">Usa estos ejemplos para conversaciones familiares reales en casa.</p>
 </div>
 </div>
 
-<div class="prose">
-<div class="table-wrap">
-<table>
-<thead>
-<tr>
-<th data-lang="en">What you see or hear</th>
-<th data-lang="es">Lo que ves o escuchas</th>
-<th data-lang="en">What it may mean</th>
-<th data-lang="es">Lo que puede significar</th>
-<th data-lang="en">Safe action</th>
-<th data-lang="es">Acción segura</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-lang="en">“Your bank account is locked. Click here.”</td>
-<td data-lang="es">“Tu cuenta bancaria está bloqueada. Haz clic aquí.”</td>
-<td data-lang="en">A fake message trying to steal your login.</td>
-<td data-lang="es">Un mensaje falso tratando de robar tu acceso.</td>
-<td data-lang="en">Do not click. Go to the bank website yourself.</td>
-<td data-lang="es">No hagas clic. Entra al sitio del banco por tu cuenta.</td>
-</tr>
-<tr>
-<td data-lang="en">“Your computer has a virus. Call this number.”</td>
-<td data-lang="es">“Tu computadora tiene virus. Llama a este número.”</td>
-<td data-lang="en">A tech support scam.</td>
-<td data-lang="es">Una estafa de soporte técnico.</td>
-<td data-lang="en">Close the page. Do not call. Ask someone you trust.</td>
-<td data-lang="es">Cierra la página. No llames. Pregunta a alguien de confianza.</td>
-</tr>
-<tr>
-<td data-lang="en">“I am your grandchild. I need money now.”</td>
-<td data-lang="es">“Soy tu nieto. Necesito dinero ahora.”</td>
-<td data-lang="en">A family emergency scam.</td>
-<td data-lang="es">Una estafa de emergencia familiar.</td>
-<td data-lang="en">Hang up. Call the family member using a number you already know.</td>
-<td data-lang="es">Cuelga. Llama al familiar usando un número que ya conoces.</td>
-</tr>
-<tr>
-<td data-lang="en">A game or app asks for too much access.</td>
-<td data-lang="es">Un juego o app pide demasiado acceso.</td>
-<td data-lang="en">It may collect more information than it needs.</td>
-<td data-lang="es">Puede recopilar más información de la necesaria.</td>
-<td data-lang="en">Cancel and ask before installing.</td>
-<td data-lang="es">Cancela y pregunta antes de instalar.</td>
-</tr>
-<tr>
-<td data-lang="en">“Send me the code that just arrived.”</td>
-<td data-lang="es">“Envíame el código que acaba de llegar.”</td>
-<td data-lang="en">Someone may be trying to enter your account.</td>
-<td data-lang="es">Alguien puede estar intentando entrar a tu cuenta.</td>
-<td data-lang="en">Never share login codes. Change the password if worried.</td>
-<td data-lang="es">Nunca compartas códigos de acceso. Cambia la contraseña si te preocupa.</td>
-</tr>
-</tbody>
-</table>
+<div class="scenario-grid">
+<article class="card scenario-card">
+<div class="big-icon">🏦</div>
+<h3 data-lang="en">“Your bank account is locked. Click here.”</h3>
+<h3 data-lang="es">“Tu cuenta bancaria está bloqueada. Haz clic aquí.”</h3>
+<p data-lang="en">This may be a fake message trying to steal your login.</p>
+<p data-lang="es">Puede ser un mensaje falso tratando de robar tu acceso.</p>
+<div class="answer-box">
+<strong data-lang="en">Safe action</strong>
+<strong data-lang="es">Acción segura</strong>
+<span data-lang="en">Do not click. Go to the bank website yourself or call the number on your card.</span>
+<span data-lang="es">No hagas clic. Entra al sitio del banco por tu cuenta o llama al número de tu tarjeta.</span>
 </div>
+</article>
+
+<article class="card scenario-card">
+<div class="big-icon">🖥️</div>
+<h3 data-lang="en">“Your computer has a virus. Call this number.”</h3>
+<h3 data-lang="es">“Tu computadora tiene virus. Llama a este número.”</h3>
+<p data-lang="en">This may be a tech support scam.</p>
+<p data-lang="es">Puede ser una estafa de soporte técnico.</p>
+<div class="answer-box">
+<strong data-lang="en">Safe action</strong>
+<strong data-lang="es">Acción segura</strong>
+<span data-lang="en">Close the page. Do not call. Do not give remote access.</span>
+<span data-lang="es">Cierra la página. No llames. No des acceso remoto.</span>
+</div>
+</article>
+
+<article class="card scenario-card">
+<div class="big-icon">👪</div>
+<h3 data-lang="en">“I am your grandchild. I need money now.”</h3>
+<h3 data-lang="es">“Soy tu nieto. Necesito dinero ahora.”</h3>
+<p data-lang="en">This may be a family emergency scam.</p>
+<p data-lang="es">Puede ser una estafa de emergencia familiar.</p>
+<div class="answer-box">
+<strong data-lang="en">Safe action</strong>
+<strong data-lang="es">Acción segura</strong>
+<span data-lang="en">Hang up. Call your family member using a number you already know.</span>
+<span data-lang="es">Cuelga. Llama al familiar usando un número que ya conoces.</span>
+</div>
+</article>
+
+<article class="card scenario-card">
+<div class="big-icon">🔢</div>
+<h3 data-lang="en">“Send me the code that just arrived.”</h3>
+<h3 data-lang="es">“Envíame el código que acaba de llegar.”</h3>
+<p data-lang="en">Someone may be trying to enter your account.</p>
+<p data-lang="es">Alguien puede estar intentando entrar a tu cuenta.</p>
+<div class="answer-box">
+<strong data-lang="en">Safe action</strong>
+<strong data-lang="es">Acción segura</strong>
+<span data-lang="en">Never share login codes. Change the password if you are worried.</span>
+<span data-lang="es">Nunca compartas códigos de acceso. Cambia la contraseña si te preocupa.</span>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+<section class="section" id="toolkit-direction">
+<div class="container">
+<div class="toolkit-panel">
+<div class="section-header">
+<div>
+<h2 data-lang="en">Next step: use the Toolkit section</h2>
+<h2 data-lang="es">Próximo paso: usa la sección Toolkit</h2>
+<p data-lang="en">After learning the basics here, go to the existing Toolkit section on this site for checklists, family handouts, and printable guides.</p>
+<p data-lang="es">Después de aprender lo básico aquí, ve a la sección Toolkit existente en este sitio para listas, guías familiares y materiales imprimibles.</p>
+</div>
+</div>
+
+<div class="toolkit-path-grid">
+<a class="card toolkit-card-visual large-link-card" href="../toolkit/#start-title">
+<div class="big-icon">🚦</div>
+<h3 data-lang="en">Start by need</h3>
+<h3 data-lang="es">Empieza por necesidad</h3>
+<p data-lang="en">Open the Toolkit shortcuts for common household situations.</p>
+<p data-lang="es">Abre los accesos del Toolkit para situaciones comunes del hogar.</p>
+<span class="feature-link" data-lang="en">Go to Toolkit shortcuts →</span>
+<span class="feature-link" data-lang="es">Ir a accesos del Toolkit →</span>
+</a>
+
+<a class="card toolkit-card-visual large-link-card" href="../toolkit/">
+<div class="big-icon">🧰</div>
+<h3 data-lang="en">Full Toolkit page</h3>
+<h3 data-lang="es">Página completa del Toolkit</h3>
+<p data-lang="en">See all available guides for household cybersecurity, privacy, and fraud prevention.</p>
+<p data-lang="es">Mira todas las guías disponibles sobre ciberseguridad del hogar, privacidad y prevención de fraude.</p>
+<span class="feature-link" data-lang="en">Open Toolkit →</span>
+<span class="feature-link" data-lang="es">Abrir Toolkit →</span>
+</a>
+
+<a class="card toolkit-card-visual large-link-card" href="../labs/">
+<div class="big-icon">🧪</div>
+<h3 data-lang="en">Then view Case Studies</h3>
+<h3 data-lang="es">Luego mira estudios de caso</h3>
+<p data-lang="en">Use case studies to understand how phishing, malware, and location tricks work in controlled examples.</p>
+<p data-lang="es">Usa los estudios de caso para entender cómo funcionan phishing, malware y trucos de ubicación en ejemplos controlados.</p>
+<span class="feature-link" data-lang="en">View Case Studies →</span>
+<span class="feature-link" data-lang="es">Ver estudios de caso →</span>
+</a>
+</div>
+
+<div class="center-actions">
+<a class="btn primary" href="../toolkit/#start-title">
+<span data-lang="en">Open Toolkit section</span>
+<span data-lang="es">Abrir sección Toolkit</span>
+</a>
+<a class="btn" href="../toolkit/">
+<span data-lang="en">Open full Toolkit page</span>
+<span data-lang="es">Abrir página completa del Toolkit</span>
+</a>
+</div>
+<p class="print-note" data-lang="en">Tip: the Toolkit page includes resources that are easier to print and share with family members.</p>
+<p class="print-note" data-lang="es">Consejo: la página Toolkit incluye recursos más fáciles de imprimir y compartir con familiares.</p>
 </div>
 </div>
 </section>
@@ -502,8 +781,9 @@
 </div>
 </div>
 
-<div class="grid-3">
-<article class="card">
+<div class="friendly-grid">
+<article class="card friendly-card">
+<div class="big-icon">🛡️</div>
 <div class="badges">
 <span class="badge">CISA</span>
 <span class="badge" data-lang="en">Beginner safety</span>
@@ -519,7 +799,8 @@
 </a>
 </article>
 
-<article class="card">
+<article class="card friendly-card">
+<div class="big-icon">🎣</div>
 <div class="badges">
 <span class="badge">FTC</span>
 <span class="badge" data-lang="en">Phishing</span>
@@ -535,7 +816,8 @@
 </a>
 </article>
 
-<article class="card">
+<article class="card friendly-card">
+<div class="big-icon">👵</div>
 <div class="badges">
 <span class="badge">FTC</span>
 <span class="badge" data-lang="en">Older adults</span>
@@ -551,7 +833,8 @@
 </a>
 </article>
 
-<article class="card">
+<article class="card friendly-card">
+<div class="big-icon">🧒</div>
 <div class="badges">
 <span class="badge">Google</span>
 <span class="badge" data-lang="en">Families</span>
@@ -567,7 +850,8 @@
 </a>
 </article>
 
-<article class="card">
+<article class="card friendly-card">
+<div class="big-icon">🌐</div>
 <div class="badges">
 <span class="badge">NCMEC</span>
 <span class="badge" data-lang="en">Kids</span>
@@ -583,7 +867,8 @@
 </a>
 </article>
 
-<article class="card">
+<article class="card friendly-card">
+<div class="big-icon">🔒</div>
 <div class="badges">
 <span class="badge">FTC</span>
 <span class="badge" data-lang="en">Personal info</span>
@@ -614,22 +899,30 @@
 </div>
 
 <div class="prose">
-<ul data-lang="en">
+<ul class="simple-list" data-lang="en">
 <li>Pick one important account, like email or banking.</li>
 <li>Check whether the password is long and unique.</li>
 <li>Turn on two-step verification if available.</li>
 <li>Update one phone, browser, or app.</li>
 <li>Show one fake message example and ask: “What feels wrong here?”</li>
 <li>Create a family rule: ask before sending money, codes, passwords, or private photos.</li>
+<li>Open the Toolkit section for printable guides and household checklists.</li>
 </ul>
-<ul data-lang="es">
+<ul class="simple-list" data-lang="es">
 <li>Escoge una cuenta importante, como correo o banco.</li>
 <li>Revisa si la contraseña es larga y única.</li>
 <li>Activa verificación en dos pasos si está disponible.</li>
 <li>Actualiza un teléfono, navegador o app.</li>
 <li>Muestra un ejemplo de mensaje falso y pregunta: “¿Qué se ve raro aquí?”</li>
 <li>Crea una regla familiar: preguntar antes de enviar dinero, códigos, contraseñas o fotos privadas.</li>
+<li>Abre la sección Toolkit para guías imprimibles y listas del hogar.</li>
 </ul>
+<div class="center-actions">
+<a class="btn primary" href="../toolkit/#start-title">
+<span data-lang="en">Go to Toolkit</span>
+<span data-lang="es">Ir al Toolkit</span>
+</a>
+</div>
 </div>
 </div>
 </section>
@@ -638,19 +931,19 @@
 <div class="container">
 <div class="cta-inner">
 <div>
-<h3 data-lang="en">Ready for real examples?</h3>
-<h3 data-lang="es">¿Listo para ejemplos reales?</h3>
-<p data-lang="en">Now that the basics are clear, use the case studies to see how phishing, malicious apps, and location tricks work in a controlled lab.</p>
-<p data-lang="es">Ahora que lo básico está claro, usa los estudios de caso para ver cómo funcionan el phishing, apps maliciosas y trucos de ubicación en un laboratorio controlado.</p>
+<h3 data-lang="en">Ready for the next step?</h3>
+<h3 data-lang="es">¿Listo para el próximo paso?</h3>
+<p data-lang="en">Use the Toolkit for printable checklists, then visit the case studies to see real examples in a controlled lab.</p>
+<p data-lang="es">Usa el Toolkit para listas imprimibles y luego visita los estudios de caso para ver ejemplos reales en un laboratorio controlado.</p>
 </div>
 <div class="cta-actions">
-<a class="btn primary" href="../labs/">
+<a class="btn primary" href="../toolkit/#start-title">
+<span data-lang="en">Open Toolkit</span>
+<span data-lang="es">Abrir Toolkit</span>
+</a>
+<a class="btn" href="../labs/">
 <span data-lang="en">Go to Case Studies</span>
 <span data-lang="es">Ir a estudios de caso</span>
-</a>
-<a class="btn" href="../toolkit/">
-<span data-lang="en">Open Toolkit</span>
-<span data-lang="es">Abrir kit</span>
 </a>
 </div>
 </div>
