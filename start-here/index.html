@@ -11,43 +11,251 @@
 <script defer="" src="../assets/js/nav.js"></script>
 
 <style>
-/* Page-only visual upgrades. Uses existing ZeroDay Tech Labs theme variables. */
+/* Start Here page-only styles.
+   Uses your existing ZeroDay Tech Labs color scheme and keeps the rest of the site untouched. */
+
 .start-page{
-  --friendly-gap: 18px;
+  --start-brand: var(--brand, #f97316);
+  --start-text: var(--text, #111827);
+  --start-muted: var(--muted, #64748b);
+  --start-border: var(--border, #e5e7eb);
+  --start-card: var(--card, #ffffff);
+  --start-soft: rgba(249, 115, 22, 0.10);
+  --start-soft-strong: rgba(249, 115, 22, 0.18);
+  --start-shadow: var(--shadow-sm, 0 18px 45px rgba(15, 23, 42, 0.08));
 }
 
 .start-page p,
 .start-page li{
-  font-size: 16px;
-  line-height: 1.7;
+  font-size: 17px;
+  line-height: 1.75;
 }
 
-.start-page .hero p{
-  font-size: clamp(17px, 1.6vw, 19px);
+.start-page .start-hero{
+  padding: 64px 0 42px;
+  background:
+    radial-gradient(circle at top left, rgba(249,115,22,0.13), transparent 34%),
+    radial-gradient(circle at top right, rgba(15,23,42,0.08), transparent 30%),
+    linear-gradient(180deg, rgba(248,250,252,0.98), rgba(255,255,255,0.98));
+  border-bottom: 1px solid var(--start-border);
 }
 
-.start-page .easy-panel{
-  background: linear-gradient(135deg, rgba(240,122,47,0.12), rgba(255,255,255,0.92));
-  border: 1px solid rgba(240,122,47,0.18);
-  border-radius: 20px;
+.start-page .start-hero-grid{
+  display: grid;
+  grid-template-columns: minmax(0, 1.03fr) minmax(340px, 0.97fr);
+  gap: 34px;
+  align-items: center;
+}
+
+.start-page .start-kicker{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: rgba(249,115,22,0.11);
+  border: 1px solid rgba(249,115,22,0.25);
+  color: var(--start-text);
+  font-weight: 900;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.start-page .start-title{
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  margin: 0 0 20px;
+  color: var(--start-text);
+}
+
+.start-page .start-lead{
+  max-width: 680px;
+  font-size: clamp(18px, 1.7vw, 21px);
+  line-height: 1.75;
+  color: var(--start-muted);
+  margin: 0 0 24px;
+}
+
+.start-page .start-actions,
+.start-page .center-actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.start-page .start-actions .btn,
+.start-page .center-actions .btn{
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-page .family-board{
+  position: relative;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.95), rgba(248,250,252,0.96));
+  border: 1px solid var(--start-border);
+  border-radius: 30px;
+  padding: 22px;
+  box-shadow: var(--start-shadow);
+  overflow: hidden;
+}
+
+.start-page .family-board::before{
+  content: "";
+  position: absolute;
+  width: 210px;
+  height: 210px;
+  border-radius: 999px;
+  background: rgba(249,115,22,0.13);
+  right: -70px;
+  top: -80px;
+}
+
+.start-page .family-board::after{
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border-radius: 999px;
+  background: rgba(15,23,42,0.06);
+  left: -70px;
+  bottom: -80px;
+}
+
+.start-page .board-window{
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border: 1px solid var(--start-border);
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.start-page .board-top{
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--start-border);
+  background: rgba(248,250,252,0.9);
+}
+
+.start-page .dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #d1d5db;
+}
+
+.start-page .dot.orange{
+  background: var(--start-brand);
+}
+
+.start-page .board-content{
   padding: 20px;
-  box-shadow: var(--shadow-sm);
 }
 
-.start-page .quick-path-grid,
-.start-page .friendly-grid,
+.start-page .board-alert{
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(249,115,22,0.10);
+  border: 1px solid rgba(249,115,22,0.20);
+  margin-bottom: 16px;
+}
+
+.start-page .board-alert-icon{
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  background: var(--start-brand);
+  color: #fff;
+  font-size: 34px;
+}
+
+.start-page .board-alert strong{
+  display: block;
+  color: var(--start-text);
+  font-size: 18px;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.start-page .board-alert span{
+  display: block;
+  color: var(--start-muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.start-page .board-steps{
+  display: grid;
+  gap: 10px;
+}
+
+.start-page .board-step{
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 13px;
+  border: 1px solid var(--start-border);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.start-page .board-step-number{
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(249,115,22,0.12);
+  color: var(--start-brand);
+  font-weight: 950;
+  font-size: 18px;
+}
+
+.start-page .board-step strong{
+  display: block;
+  color: var(--start-text);
+  font-size: 17px;
+  margin-bottom: 2px;
+}
+
+.start-page .board-step span{
+  display: block;
+  color: var(--start-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.start-page .section-intro{
+  max-width: 780px;
+}
+
+.start-page .section-intro p{
+  color: var(--start-muted);
+}
+
+.start-page .visual-grid,
 .start-page .video-grid,
 .start-page .scenario-grid,
-.start-page .toolkit-path-grid{
+.start-page .toolkit-grid{
   display: grid;
-  gap: var(--friendly-gap);
+  gap: 18px;
 }
 
-.start-page .quick-path-grid{
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.start-page .friendly-grid{
+.start-page .visual-grid{
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -59,77 +267,88 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.start-page .toolkit-path-grid{
+.start-page .toolkit-grid{
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.start-page .friendly-card,
-.start-page .path-card,
+.start-page .visual-card,
 .start-page .scenario-card,
-.start-page .video-card,
-.start-page .toolkit-card-visual{
+.start-page .toolkit-card,
+.start-page .video-card{
   position: relative;
   overflow: hidden;
-  min-height: 100%;
 }
 
-.start-page .friendly-card::before,
-.start-page .path-card::before,
-.start-page .toolkit-card-visual::before{
+.start-page .visual-card::before,
+.start-page .toolkit-card::before{
   content: "";
   position: absolute;
   inset: 0 0 auto 0;
   height: 5px;
-  background: linear-gradient(90deg, var(--brand), rgba(240,122,47,0.18));
+  background: linear-gradient(90deg, var(--start-brand), rgba(249,115,22,0.18));
 }
 
 .start-page .big-icon{
-  width: 58px;
-  height: 58px;
-  border-radius: 18px;
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
   display: grid;
   place-items: center;
-  font-size: 30px;
-  background: rgba(240,122,47,0.12);
-  border: 1px solid rgba(240,122,47,0.18);
-  margin-bottom: 12px;
+  font-size: 32px;
+  background: rgba(249,115,22,0.12);
+  border: 1px solid rgba(249,115,22,0.20);
+  margin-bottom: 14px;
 }
 
-.start-page .step-label{
+.start-page .card h3{
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.start-page .step-pill{
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 10px;
-  padding: 7px 10px;
+  padding: 7px 11px;
   border-radius: 999px;
-  border: 1px solid rgba(240,122,47,0.18);
-  background: rgba(240,122,47,0.10);
+  background: rgba(249,115,22,0.10);
+  border: 1px solid rgba(249,115,22,0.20);
+  color: var(--start-text);
   font-size: 12px;
   font-weight: 900;
-  color: var(--text);
+  margin-bottom: 10px;
 }
 
-.start-page .big-rule-number{
+.start-page .rule-number{
   display: inline-grid;
   place-items: center;
   width: 34px;
   height: 34px;
   border-radius: 999px;
-  background: var(--brand);
+  background: var(--start-brand);
   color: #fff;
   font-weight: 950;
-  margin-right: 8px;
+  margin-right: 9px;
+}
+
+.start-page .family-lane{
+  background:
+    linear-gradient(135deg, rgba(249,115,22,0.13), rgba(255,255,255,0.95));
+  border: 1px solid rgba(249,115,22,0.22);
+  border-radius: 26px;
+  padding: 24px;
+  box-shadow: var(--start-shadow);
 }
 
 .start-page .video-frame{
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: 1px solid var(--start-border);
   background: #000;
-  box-shadow: var(--shadow-sm);
-  margin-bottom: 14px;
+  box-shadow: var(--start-shadow);
+  margin: 14px 0;
 }
 
 .start-page .video-frame iframe{
@@ -139,105 +358,118 @@
   display: block;
 }
 
-.start-page .watch-tip{
-  margin-top: 16px;
-}
-
-.start-page .watch-tip strong{
-  display: block;
-  margin-bottom: 6px;
-}
-
-.start-page .scenario-card{
-  border-left: 6px solid var(--brand);
-}
-
-.start-page .scenario-card h3,
-.start-page .toolkit-card-visual h3,
-.start-page .friendly-card h3,
-.start-page .path-card h3,
-.start-page .video-card h3{
-  font-size: 19px;
-  line-height: 1.25;
-}
-
-.start-page .scenario-card p,
-.start-page .friendly-card p,
-.start-page .path-card p,
-.start-page .video-card p,
-.start-page .toolkit-card-visual p{
-  font-size: 16px;
-}
-
-.start-page .answer-box{
-  margin-top: 12px;
-  padding: 12px 14px;
-  border-radius: 14px;
-  background: rgba(17,24,39,0.04);
-  border: 1px solid rgba(229,231,235,0.95);
-}
-
-.start-page .answer-box strong{
-  display: block;
-  margin-bottom: 3px;
-}
-
-.start-page .toolkit-panel{
-  background: linear-gradient(135deg, rgba(240,122,47,0.14), rgba(255,255,255,0.94));
-  border: 1px solid rgba(240,122,47,0.22);
-  border-radius: 22px;
-  padding: 22px;
-  box-shadow: var(--shadow-sm);
-}
-
-.start-page .large-link-card{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  color: inherit;
-}
-
-.start-page .large-link-card:hover{
-  color: inherit;
-}
-
-.start-page .large-link-card .feature-link{
-  margin-top: auto;
-  font-size: 15px;
+.start-page .watch-note{
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(15,23,42,0.04);
+  border: 1px solid var(--start-border);
+  margin-top: 18px;
 }
 
 .start-page .simple-list{
   margin: 0;
-  padding-left: 20px;
+  padding-left: 21px;
 }
 
 .start-page .simple-list li{
   margin: 8px 0;
 }
 
-.start-page .center-actions{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 16px;
+.start-page .scenario-card{
+  border-left: 6px solid var(--start-brand);
 }
 
-.start-page .print-note{
-  font-size: 14px;
-  color: var(--muted);
-  margin-top: 10px;
+.start-page .answer-box{
+  margin-top: 12px;
+  padding: 13px 14px;
+  border-radius: 15px;
+  background: rgba(249,115,22,0.08);
+  border: 1px solid rgba(249,115,22,0.18);
+}
+
+.start-page .answer-box strong{
+  display: block;
+  margin-bottom: 4px;
+  color: var(--start-text);
+}
+
+.start-page .toolkit-panel{
+  background:
+    radial-gradient(circle at right top, rgba(249,115,22,0.18), transparent 28%),
+    linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,250,252,0.98));
+  border: 1px solid rgba(249,115,22,0.23);
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: var(--start-shadow);
+}
+
+.start-page .toolkit-card{
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.start-page .toolkit-card:hover{
+  color: inherit;
+}
+
+.start-page .toolkit-card .feature-link{
+  margin-top: auto;
+}
+
+.start-page .mini-dictionary{
+  display: grid;
+  gap: 14px;
+}
+
+.start-page .word-row{
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--start-border);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.start-page .word-row strong{
+  display: block;
+  font-size: 19px;
+  color: var(--start-text);
+}
+
+.start-page .word-row p{
+  margin: 0;
+  color: var(--start-muted);
+}
+
+.start-page .print-tip{
+  margin-top: 12px;
+  color: var(--start-muted);
+  font-size: 15px;
 }
 
 @media (max-width: 980px){
-  .start-page .quick-path-grid,
-  .start-page .friendly-grid,
+  .start-page .start-hero-grid,
+  .start-page .visual-grid,
   .start-page .video-grid,
   .start-page .scenario-grid,
-  .start-page .toolkit-path-grid{
+  .start-page .toolkit-grid,
+  .start-page .word-row{
     grid-template-columns: 1fr;
   }
 
-  .start-page .hero-actions .btn,
+  .start-page .start-hero{
+    padding-top: 38px;
+  }
+
+  .start-page .family-board{
+    padding: 16px;
+  }
+
+  .start-page .start-actions .btn,
   .start-page .center-actions .btn{
     width: 100%;
   }
@@ -280,20 +512,26 @@
 </header>
 
 <main class="start-page" id="main">
-<section class="hero">
+
+<section class="start-hero">
 <div class="container">
-<div class="hero-grid">
+<div class="start-hero-grid">
+
 <div>
-<div class="kicker" data-lang="en">Start Here • Family Cyber Safety</div>
-<div class="kicker" data-lang="es">Comienza aquí • Seguridad familiar</div>
+<div class="start-kicker" data-lang="en">🧭 Start Here • Family Cyber Safety</div>
+<div class="start-kicker" data-lang="es">🧭 Comienza aquí • Seguridad familiar</div>
 
-<h1 data-lang="en">Cybersecurity in small steps for the whole family.</h1>
-<h1 data-lang="es">Ciberseguridad en pasos pequeños para toda la familia.</h1>
+<h1 class="start-title" data-lang="en">Online safety made simple for every age.</h1>
+<h1 class="start-title" data-lang="es">Seguridad en línea simple para todas las edades.</h1>
 
-<p data-lang="en">This page is built for children, parents, grandparents, and anyone who wants online safety explained clearly. Learn the basics, watch short videos on the page, then use the Toolkit for printable help.</p>
-<p data-lang="es">Esta página está creada para niños, padres, abuelos y cualquier persona que quiera seguridad en línea explicada con claridad. Aprende lo básico, mira videos cortos en la página y luego usa el Toolkit para ayuda imprimible.</p>
+<p class="start-lead" data-lang="en">
+A beginner-friendly guide for children, parents, grandparents, and anyone who wants cybersecurity explained with plain words, examples, and videos you can watch right here.
+</p>
+<p class="start-lead" data-lang="es">
+Una guía para principiantes, niños, padres, abuelos y cualquier persona que quiera ciberseguridad explicada con palabras simples, ejemplos y videos que puedes ver aquí mismo.
+</p>
 
-<div class="hero-actions">
+<div class="start-actions">
 <a class="btn primary" href="#five-rules">
 <span data-lang="en">Start with 5 rules</span>
 <span data-lang="es">Empezar con 5 reglas</span>
@@ -302,63 +540,67 @@
 <span data-lang="en">Watch videos here</span>
 <span data-lang="es">Ver videos aquí</span>
 </a>
-<a class="btn" href="../toolkit/#start-title">
+<a class="btn" href="../toolkit/">
 <span data-lang="en">Go to Toolkit</span>
 <span data-lang="es">Ir al Toolkit</span>
 </a>
 </div>
 </div>
 
-<div class="hero-visual">
-<img alt="Cybersecurity learning illustration" src="../assets/images/hero-illustration.svg"/>
+<div class="family-board" aria-label="Simple cybersecurity learning board">
+<div class="board-window">
+<div class="board-top">
+<span class="dot orange"></span>
+<span class="dot"></span>
+<span class="dot"></span>
 </div>
-</div>
-</div>
-</section>
 
-<section class="section" aria-labelledby="path-title">
-<div class="container">
-<div class="easy-panel">
-<div class="section-header">
+<div class="board-content">
+<div class="board-alert">
+<div class="board-alert-icon">🛡️</div>
 <div>
-<h2 id="path-title" data-lang="en">The simple learning path</h2>
-<h2 id="path-title-es" data-lang="es">La ruta simple de aprendizaje</h2>
-<p data-lang="en">Use this page like a family lesson: learn, watch, practice, then open the Toolkit when you need a checklist.</p>
-<p data-lang="es">Usa esta página como una lección familiar: aprende, mira, practica y luego abre el Toolkit cuando necesites una lista.</p>
+<strong data-lang="en">Today’s family safety rule</strong>
+<strong data-lang="es">Regla familiar de hoy</strong>
+<span data-lang="en">Slow down before you click, pay, download, or share personal information.</span>
+<span data-lang="es">Baja la velocidad antes de hacer clic, pagar, descargar o compartir información personal.</span>
 </div>
 </div>
 
-<div class="quick-path-grid">
-<article class="card path-card">
-<div class="big-icon">👀</div>
-<span class="step-label" data-lang="en">Step 1</span>
-<span class="step-label" data-lang="es">Paso 1</span>
-<h3 data-lang="en">Notice danger signs</h3>
-<h3 data-lang="es">Reconoce señales de peligro</h3>
-<p data-lang="en">Look for pressure, fear, surprise prizes, strange links, and people asking for codes or money.</p>
-<p data-lang="es">Busca presión, miedo, premios sorpresa, enlaces extraños y personas pidiendo códigos o dinero.</p>
-</article>
-
-<article class="card path-card">
-<div class="big-icon">▶️</div>
-<span class="step-label" data-lang="en">Step 2</span>
-<span class="step-label" data-lang="es">Paso 2</span>
-<h3 data-lang="en">Watch together</h3>
-<h3 data-lang="es">Miren juntos</h3>
-<p data-lang="en">Use the videos below. Pause and ask: “What is the trick? What should we do next?”</p>
-<p data-lang="es">Usa los videos abajo. Pausa y pregunta: “¿Cuál es el truco? ¿Qué debemos hacer después?”</p>
-</article>
-
-<article class="card path-card">
-<div class="big-icon">🧰</div>
-<span class="step-label" data-lang="en">Step 3</span>
-<span class="step-label" data-lang="es">Paso 3</span>
-<h3 data-lang="en">Use the Toolkit</h3>
-<h3 data-lang="es">Usa el Toolkit</h3>
-<p data-lang="en">Go to the Toolkit section when you want printable checklists, family rules, and response steps.</p>
-<p data-lang="es">Ve a la sección Toolkit cuando quieras listas imprimibles, reglas familiares y pasos de respuesta.</p>
-</article>
+<div class="board-steps">
+<div class="board-step">
+<div class="board-step-number">1</div>
+<div>
+<strong data-lang="en">Stop</strong>
+<strong data-lang="es">Detente</strong>
+<span data-lang="en">Do not react fast. Scammers love panic.</span>
+<span data-lang="es">No reacciones rápido. Los estafadores aman el pánico.</span>
 </div>
+</div>
+
+<div class="board-step">
+<div class="board-step-number">2</div>
+<div>
+<strong data-lang="en">Check</strong>
+<strong data-lang="es">Revisa</strong>
+<span data-lang="en">Look for strange links, pressure, spelling errors, or money requests.</span>
+<span data-lang="es">Busca enlaces raros, presión, errores o pedidos de dinero.</span>
+</div>
+</div>
+
+<div class="board-step">
+<div class="board-step-number">3</div>
+<div>
+<strong data-lang="en">Ask</strong>
+<strong data-lang="es">Pregunta</strong>
+<span data-lang="en">Ask a trusted person before taking action.</span>
+<span data-lang="es">Pregunta a una persona de confianza antes de actuar.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 </section>
@@ -366,7 +608,7 @@
 <section class="section" id="simple-meaning">
 <div class="container">
 <div class="section-header">
-<div>
+<div class="section-intro">
 <h2 data-lang="en">Cybersecurity, explained like everyday safety</h2>
 <h2 data-lang="es">Ciberseguridad explicada como seguridad diaria</h2>
 <p data-lang="en">Cybersecurity means protecting your devices, accounts, money, photos, and private information from people who try to steal, trick, or harm you online.</p>
@@ -374,29 +616,29 @@
 </div>
 </div>
 
-<div class="friendly-grid">
-<article class="card friendly-card">
+<div class="visual-grid">
+<article class="card visual-card">
 <div class="big-icon">🏠</div>
-<h3 data-lang="en">Think of your account like your house</h3>
-<h3 data-lang="es">Piensa en tu cuenta como tu casa</h3>
+<h3 data-lang="en">Your account is like your house</h3>
+<h3 data-lang="es">Tu cuenta es como tu casa</h3>
 <p data-lang="en">Your password is the key. Two-step verification is the second lock. Updates are repairs that keep the doors strong.</p>
 <p data-lang="es">Tu contraseña es la llave. La verificación en dos pasos es el segundo candado. Las actualizaciones son reparaciones que mantienen las puertas fuertes.</p>
 </article>
 
-<article class="card friendly-card">
+<article class="card visual-card">
 <div class="big-icon">🧒</div>
 <h3 data-lang="en">For children</h3>
 <h3 data-lang="es">Para niños</h3>
-<p data-lang="en">Do not share private details, passwords, school names, addresses, or photos without asking a trusted adult first.</p>
-<p data-lang="es">No compartas datos privados, contraseñas, nombre de escuela, dirección o fotos sin preguntar primero a un adulto de confianza.</p>
+<p data-lang="en">Ask before clicking, downloading, joining chats, accepting friend requests, or sharing photos.</p>
+<p data-lang="es">Pregunta antes de hacer clic, descargar, entrar a chats, aceptar solicitudes o compartir fotos.</p>
 </article>
 
-<article class="card friendly-card">
+<article class="card visual-card">
 <div class="big-icon">👵</div>
 <h3 data-lang="en">For older adults</h3>
 <h3 data-lang="es">Para adultos mayores</h3>
-<p data-lang="en">If a message or caller scares you, asks for money, or wants control of your computer, stop and call someone you trust.</p>
-<p data-lang="es">Si un mensaje o llamada te asusta, pide dinero o quiere controlar tu computadora, detente y llama a alguien de confianza.</p>
+<p data-lang="en">If a caller or message scares you, asks for money, or wants control of your computer, stop and call someone you trust.</p>
+<p data-lang="es">Si una llamada o mensaje te asusta, pide dinero o quiere controlar tu computadora, detente y llama a alguien de confianza.</p>
 </article>
 </div>
 </div>
@@ -405,7 +647,7 @@
 <section class="section" id="five-rules">
 <div class="container">
 <div class="section-header">
-<div>
+<div class="section-intro">
 <h2 data-lang="en">The 5 home rules</h2>
 <h2 data-lang="es">Las 5 reglas de casa</h2>
 <p data-lang="en">These rules work for phones, computers, tablets, email, games, social media, and banking.</p>
@@ -413,48 +655,48 @@
 </div>
 </div>
 
-<div class="friendly-grid">
-<article class="card friendly-card">
+<div class="visual-grid">
+<article class="card visual-card">
 <div class="big-icon">🔐</div>
-<h3 data-lang="en"><span class="big-rule-number">1</span>Use strong passwords</h3>
-<h3 data-lang="es"><span class="big-rule-number">1</span>Usa contraseñas fuertes</h3>
+<h3 data-lang="en"><span class="rule-number">1</span>Use strong passwords</h3>
+<h3 data-lang="es"><span class="rule-number">1</span>Usa contraseñas fuertes</h3>
 <p data-lang="en">Use long, different passwords for important accounts. A password manager can help remember them.</p>
 <p data-lang="es">Usa contraseñas largas y diferentes para cuentas importantes. Un administrador de contraseñas puede ayudarte a recordarlas.</p>
 </article>
 
-<article class="card friendly-card">
+<article class="card visual-card">
 <div class="big-icon">✅</div>
-<h3 data-lang="en"><span class="big-rule-number">2</span>Turn on two-step verification</h3>
-<h3 data-lang="es"><span class="big-rule-number">2</span>Activa la verificación en dos pasos</h3>
+<h3 data-lang="en"><span class="rule-number">2</span>Use two-step verification</h3>
+<h3 data-lang="es"><span class="rule-number">2</span>Usa verificación en dos pasos</h3>
 <p data-lang="en">This adds a second check, like a code or app approval, before someone can enter your account.</p>
 <p data-lang="es">Esto añade una segunda revisión, como un código o aprobación en una app, antes de entrar a tu cuenta.</p>
 </article>
 
-<article class="card friendly-card">
+<article class="card visual-card">
 <div class="big-icon">🔄</div>
-<h3 data-lang="en"><span class="big-rule-number">3</span>Update your devices</h3>
-<h3 data-lang="es"><span class="big-rule-number">3</span>Actualiza tus dispositivos</h3>
+<h3 data-lang="en"><span class="rule-number">3</span>Update devices</h3>
+<h3 data-lang="es"><span class="rule-number">3</span>Actualiza dispositivos</h3>
 <p data-lang="en">Updates fix security holes. Turn on automatic updates for phones, computers, browsers, and apps.</p>
 <p data-lang="es">Las actualizaciones arreglan fallas de seguridad. Activa actualizaciones automáticas en teléfonos, computadoras, navegadores y apps.</p>
 </article>
 
-<article class="card friendly-card">
+<article class="card visual-card">
 <div class="big-icon">🎣</div>
-<h3 data-lang="en"><span class="big-rule-number">4</span>Do not take the bait</h3>
-<h3 data-lang="es"><span class="big-rule-number">4</span>No muerdas el anzuelo</h3>
+<h3 data-lang="en"><span class="rule-number">4</span>Do not take the bait</h3>
+<h3 data-lang="es"><span class="rule-number">4</span>No muerdas el anzuelo</h3>
 <p data-lang="en">Scam links can arrive by email, text, social media, ads, games, or fake websites. Pause before clicking.</p>
 <p data-lang="es">Los enlaces falsos pueden llegar por correo, texto, redes sociales, anuncios, juegos o sitios falsos. Pausa antes de hacer clic.</p>
 </article>
 
-<article class="card friendly-card">
+<article class="card visual-card">
 <div class="big-icon">💬</div>
-<h3 data-lang="en"><span class="big-rule-number">5</span>Ask before acting</h3>
-<h3 data-lang="es"><span class="big-rule-number">5</span>Pregunta antes de actuar</h3>
+<h3 data-lang="en"><span class="rule-number">5</span>Ask before acting</h3>
+<h3 data-lang="es"><span class="rule-number">5</span>Pregunta antes de actuar</h3>
 <p data-lang="en">Before sending money, gift cards, passwords, photos, codes, or personal information, ask a trusted person.</p>
 <p data-lang="es">Antes de enviar dinero, tarjetas de regalo, contraseñas, fotos, códigos o información personal, pregunta a alguien de confianza.</p>
 </article>
 
-<article class="card friendly-card">
+<article class="card visual-card">
 <div class="big-icon">🧯</div>
 <h3 data-lang="en">Emergency rule</h3>
 <h3 data-lang="es">Regla de emergencia</h3>
@@ -468,11 +710,11 @@
 <section class="section" id="watch-learn">
 <div class="container">
 <div class="section-header">
-<div>
+<div class="section-intro">
 <h2 data-lang="en">Watch &amp; Learn on this page</h2>
 <h2 data-lang="es">Ver y aprender en esta página</h2>
-<p data-lang="en">The videos are embedded so families can watch them without hunting for links. Watch together and pause for discussion.</p>
-<p data-lang="es">Los videos están integrados para que la familia pueda verlos sin buscar enlaces. Mírenlos juntos y pausen para conversar.</p>
+<p data-lang="en">These videos are embedded so families can watch together without hunting for links. Pause and talk about what happened.</p>
+<p data-lang="es">Estos videos están integrados para que la familia pueda verlos juntos sin buscar enlaces. Pausen y hablen sobre lo que ocurrió.</p>
 </div>
 </div>
 
@@ -485,11 +727,14 @@
 </div>
 <h3 data-lang="en">What is Malware?</h3>
 <h3 data-lang="es">¿Qué es malware?</h3>
+
 <div class="video-frame">
 <iframe src="https://www.youtube-nocookie.com/embed/NMYbkzjI5EY?start=15" title="What is Malware video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
+
 <p data-lang="en">Simple idea: malware is bad software. Teach everyone not to download unknown files, fake apps, or surprise attachments.</p>
 <p data-lang="es">Idea simple: malware es software malo. Enseña a todos a no descargar archivos desconocidos, apps falsas o adjuntos sorpresa.</p>
+
 <div class="center-actions">
 <a class="btn" href="https://www.youtube.com/watch?v=NMYbkzjI5EY&amp;t=15s" rel="noopener noreferrer" target="_blank">
 <span data-lang="en">Open on YouTube</span>
@@ -506,11 +751,14 @@
 </div>
 <h3 data-lang="en">What is Social Engineering?</h3>
 <h3 data-lang="es">¿Qué es ingeniería social?</h3>
+
 <div class="video-frame">
 <iframe src="https://www.youtube-nocookie.com/embed/v7VTJhkJUUY" title="What is Social Engineering video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
+
 <p data-lang="en">Simple idea: attackers trick people by pretending to be helpful, urgent, scary, or trustworthy.</p>
 <p data-lang="es">Idea simple: los atacantes engañan fingiendo ayudar, tener urgencia, dar miedo o ser confiables.</p>
+
 <div class="center-actions">
 <a class="btn" href="https://www.youtube.com/watch?v=v7VTJhkJUUY" rel="noopener noreferrer" target="_blank">
 <span data-lang="en">Open on YouTube</span>
@@ -520,11 +768,11 @@
 </article>
 </div>
 
-<div class="prose watch-tip">
+<div class="watch-note">
 <strong data-lang="en">Family viewing tip</strong>
 <strong data-lang="es">Consejo para ver en familia</strong>
 <ul class="simple-list" data-lang="en">
-<li>Pause when someone says, “Click now,” “send money,” “enter your password,” or “keep this secret.”</li>
+<li>Pause when someone says: “click now,” “send money,” “enter your password,” or “keep this secret.”</li>
 <li>Ask children: “What would you tell a trusted adult?”</li>
 <li>Ask older adults: “Who could you call before responding?”</li>
 </ul>
@@ -540,56 +788,115 @@
 <section class="section" id="plain-words">
 <div class="container">
 <div class="section-header">
-<div>
+<div class="section-intro">
 <h2 data-lang="en">Big cyber words in plain language</h2>
 <h2 data-lang="es">Palabras grandes de ciberseguridad en lenguaje simple</h2>
-<p data-lang="en">These cards explain the words people hear in videos, news, and warning messages.</p>
-<p data-lang="es">Estas tarjetas explican palabras que las personas escuchan en videos, noticias y alertas.</p>
+<p data-lang="en">Use this mini-dictionary when a video, case study, or warning message uses a technical word.</p>
+<p data-lang="es">Usa este mini diccionario cuando un video, estudio de caso o alerta use una palabra técnica.</p>
 </div>
 </div>
 
-<div class="friendly-grid">
-<article class="card friendly-card">
-<div class="big-icon">🦠</div>
-<h3 data-lang="en">Malware</h3>
-<h3 data-lang="es">Malware</h3>
-<p data-lang="en">Bad software that can spy, steal, damage, or lock files.</p>
-<p data-lang="es">Programa malo que puede espiar, robar, dañar o bloquear archivos.</p>
-<div class="answer-box">
-<strong data-lang="en">Example</strong>
-<strong data-lang="es">Ejemplo</strong>
-<span data-lang="en">A fake game download that steals passwords.</span>
-<span data-lang="es">Una descarga falsa de un juego que roba contraseñas.</span>
+<div class="mini-dictionary">
+<div class="word-row">
+<div>
+<strong data-lang="en">Malware</strong>
+<strong data-lang="es">Malware</strong>
 </div>
+<p data-lang="en">Bad software that can spy, steal, damage, or lock files. Example: a fake download that steals passwords.</p>
+<p data-lang="es">Programa malo que puede espiar, robar, dañar o bloquear archivos. Ejemplo: una descarga falsa que roba contraseñas.</p>
+</div>
+
+<div class="word-row">
+<div>
+<strong data-lang="en">Social engineering</strong>
+<strong data-lang="es">Ingeniería social</strong>
+</div>
+<p data-lang="en">A trick that uses fear, trust, love, or urgency to make people act fast. Example: “Grandma, I’m in trouble. Send money now.”</p>
+<p data-lang="es">Un engaño que usa miedo, confianza, amor o urgencia para que la persona actúe rápido. Ejemplo: “Abuela, estoy en problemas. Envía dinero ahora.”</p>
+</div>
+
+<div class="word-row">
+<div>
+<strong data-lang="en">Phishing</strong>
+<strong data-lang="es">Phishing</strong>
+</div>
+<p data-lang="en">A fake message or website trying to steal information. Example: “Your bank account is locked. Click here.”</p>
+<p data-lang="es">Un mensaje o sitio falso que intenta robar información. Ejemplo: “Tu cuenta bancaria está bloqueada. Haz clic aquí.”</p>
+</div>
+
+<div class="word-row">
+<div>
+<strong data-lang="en">Two-step verification</strong>
+<strong data-lang="es">Verificación en dos pasos</strong>
+</div>
+<p data-lang="en">A second proof that it is really you, like a code, app approval, or security key.</p>
+<p data-lang="es">Una segunda prueba de que realmente eres tú, como un código, aprobación en una app o llave de seguridad.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="family-plan">
+<div class="container">
+<div class="family-lane">
+<div class="section-header">
+<div class="section-intro">
+<h2 data-lang="en">Family plan by age group</h2>
+<h2 data-lang="es">Plan familiar por edad</h2>
+<p data-lang="en">Everyone has a role. Keep it simple, repeat it often, and make asking for help normal.</p>
+<p data-lang="es">Todos tienen un rol. Mantenlo simple, repítelo a menudo y haz normal pedir ayuda.</p>
+</div>
+</div>
+
+<div class="visual-grid">
+<article class="card visual-card">
+<div class="big-icon">🧒</div>
+<h3 data-lang="en">Children</h3>
+<h3 data-lang="es">Niños</h3>
+<p data-lang="en">Ask before clicking, downloading, sharing photos, joining chats, or accepting friend requests.</p>
+<p data-lang="es">Pregunta antes de hacer clic, descargar, compartir fotos, entrar a chats o aceptar solicitudes.</p>
 </article>
 
-<article class="card friendly-card">
-<div class="big-icon">🎭</div>
-<h3 data-lang="en">Social engineering</h3>
-<h3 data-lang="es">Ingeniería social</h3>
-<p data-lang="en">A trick that uses fear, trust, love, or urgency to make people act fast.</p>
-<p data-lang="es">Un engaño que usa miedo, confianza, amor o urgencia para que la persona actúe rápido.</p>
-<div class="answer-box">
-<strong data-lang="en">Example</strong>
-<strong data-lang="es">Ejemplo</strong>
-<span data-lang="en">“Grandma, I’m in trouble. Send money now.”</span>
-<span data-lang="es">“Abuela, estoy en problemas. Envía dinero ahora.”</span>
-</div>
+<article class="card visual-card">
+<div class="big-icon">🎮</div>
+<h3 data-lang="en">Teens</h3>
+<h3 data-lang="es">Adolescentes</h3>
+<p data-lang="en">Protect gaming, school, email, and social accounts. Do not reuse passwords.</p>
+<p data-lang="es">Protege cuentas de juegos, escuela, correo y redes. No reutilices contraseñas.</p>
 </article>
 
-<article class="card friendly-card">
-<div class="big-icon">🎣</div>
-<h3 data-lang="en">Phishing</h3>
-<h3 data-lang="es">Phishing</h3>
-<p data-lang="en">A fake message or website trying to steal information.</p>
-<p data-lang="es">Un mensaje o sitio falso que intenta robar información.</p>
-<div class="answer-box">
-<strong data-lang="en">Example</strong>
-<strong data-lang="es">Ejemplo</strong>
-<span data-lang="en">“Your bank account is locked. Click here.”</span>
-<span data-lang="es">“Tu cuenta bancaria está bloqueada. Haz clic aquí.”</span>
-</div>
+<article class="card visual-card">
+<div class="big-icon">👨‍👩‍👧</div>
+<h3 data-lang="en">Parents and caregivers</h3>
+<h3 data-lang="es">Padres y cuidadores</h3>
+<p data-lang="en">Create a calm rule: nobody gets in trouble for asking for help after a mistake.</p>
+<p data-lang="es">Crea una regla tranquila: nadie se mete en problemas por pedir ayuda después de un error.</p>
 </article>
+
+<article class="card visual-card">
+<div class="big-icon">👵</div>
+<h3 data-lang="en">Older adults</h3>
+<h3 data-lang="es">Adultos mayores</h3>
+<p data-lang="en">Do not trust surprise calls about viruses, refunds, locked accounts, gift cards, or urgent family emergencies.</p>
+<p data-lang="es">No confíes en llamadas sorpresa sobre virus, reembolsos, cuentas bloqueadas, tarjetas de regalo o emergencias familiares urgentes.</p>
+</article>
+
+<article class="card visual-card">
+<div class="big-icon">🏫</div>
+<h3 data-lang="en">Teachers and workshops</h3>
+<h3 data-lang="es">Maestros y talleres</h3>
+<p data-lang="en">Use the examples, videos, and Toolkit as a short beginner lesson for groups.</p>
+<p data-lang="es">Usa los ejemplos, videos y Toolkit como una lección corta para principiantes.</p>
+</article>
+
+<article class="card visual-card">
+<div class="big-icon">🤝</div>
+<h3 data-lang="en">Trusted helpers</h3>
+<h3 data-lang="es">Ayudantes de confianza</h3>
+<p data-lang="en">Choose one or two people the family can call before sending money, codes, or passwords.</p>
+<p data-lang="es">Elige una o dos personas que la familia pueda llamar antes de enviar dinero, códigos o contraseñas.</p>
+</article>
+</div>
 </div>
 </div>
 </section>
@@ -597,7 +904,7 @@
 <section class="section" id="stop-check-ask">
 <div class="container">
 <div class="section-header">
-<div>
+<div class="section-intro">
 <h2 data-lang="en">The Stop, Check, Ask method</h2>
 <h2 data-lang="es">El método Detente, Revisa, Pregunta</h2>
 <p data-lang="en">Use this when a message, call, app, website, or person online feels strange.</p>
@@ -605,31 +912,31 @@
 </div>
 </div>
 
-<div class="friendly-grid">
-<article class="card friendly-card">
+<div class="visual-grid">
+<article class="card visual-card">
 <div class="big-icon">✋</div>
-<span class="step-label" data-lang="en">Step 1</span>
-<span class="step-label" data-lang="es">Paso 1</span>
+<span class="step-pill" data-lang="en">Step 1</span>
+<span class="step-pill" data-lang="es">Paso 1</span>
 <h3 data-lang="en">Stop</h3>
 <h3 data-lang="es">Detente</h3>
 <p data-lang="en">Do not click, pay, reply, download, or share information right away. A pause protects you.</p>
 <p data-lang="es">No hagas clic, pagues, respondas, descargues o compartas información de inmediato. Una pausa te protege.</p>
 </article>
 
-<article class="card friendly-card">
+<article class="card visual-card">
 <div class="big-icon">🔎</div>
-<span class="step-label" data-lang="en">Step 2</span>
-<span class="step-label" data-lang="es">Paso 2</span>
+<span class="step-pill" data-lang="en">Step 2</span>
+<span class="step-pill" data-lang="es">Paso 2</span>
 <h3 data-lang="en">Check</h3>
 <h3 data-lang="es">Revisa</h3>
 <p data-lang="en">Look for pressure, misspellings, unknown links, weird sender names, or requests for codes and passwords.</p>
 <p data-lang="es">Busca presión, errores, enlaces raros, remitentes extraños o pedidos de códigos y contraseñas.</p>
 </article>
 
-<article class="card friendly-card">
+<article class="card visual-card">
 <div class="big-icon">☎️</div>
-<span class="step-label" data-lang="en">Step 3</span>
-<span class="step-label" data-lang="es">Paso 3</span>
+<span class="step-pill" data-lang="en">Step 3</span>
+<span class="step-pill" data-lang="es">Paso 3</span>
 <h3 data-lang="en">Ask</h3>
 <h3 data-lang="es">Pregunta</h3>
 <p data-lang="en">Ask a trusted person. Use a phone number or website you already know is real, not the one in the message.</p>
@@ -642,7 +949,7 @@
 <section class="section" id="common-tricks">
 <div class="container">
 <div class="section-header">
-<div>
+<div class="section-intro">
 <h2 data-lang="en">Common tricks and safe actions</h2>
 <h2 data-lang="es">Trucos comunes y acciones seguras</h2>
 <p data-lang="en">Use these examples for real family conversations at home.</p>
@@ -714,58 +1021,59 @@
 <div class="container">
 <div class="toolkit-panel">
 <div class="section-header">
-<div>
-<h2 data-lang="en">Next step: use the Toolkit section</h2>
-<h2 data-lang="es">Próximo paso: usa la sección Toolkit</h2>
-<p data-lang="en">After learning the basics here, go to the existing Toolkit section on this site for checklists, family handouts, and printable guides.</p>
-<p data-lang="es">Después de aprender lo básico aquí, ve a la sección Toolkit existente en este sitio para listas, guías familiares y materiales imprimibles.</p>
+<div class="section-intro">
+<h2 data-lang="en">Next step: use the Toolkit</h2>
+<h2 data-lang="es">Próximo paso: usa el Toolkit</h2>
+<p data-lang="en">After learning the basics here, go to your existing Toolkit section for checklists, family handouts, and practical security tools.</p>
+<p data-lang="es">Después de aprender lo básico aquí, ve a tu sección Toolkit existente para listas, guías familiares y herramientas prácticas de seguridad.</p>
 </div>
 </div>
 
-<div class="toolkit-path-grid">
-<a class="card toolkit-card-visual large-link-card" href="../toolkit/#start-title">
-<div class="big-icon">🚦</div>
-<h3 data-lang="en">Start by need</h3>
-<h3 data-lang="es">Empieza por necesidad</h3>
-<p data-lang="en">Open the Toolkit shortcuts for common household situations.</p>
-<p data-lang="es">Abre los accesos del Toolkit para situaciones comunes del hogar.</p>
-<span class="feature-link" data-lang="en">Go to Toolkit shortcuts →</span>
-<span class="feature-link" data-lang="es">Ir a accesos del Toolkit →</span>
-</a>
-
-<a class="card toolkit-card-visual large-link-card" href="../toolkit/">
+<div class="toolkit-grid">
+<a class="card toolkit-card" href="../toolkit/">
 <div class="big-icon">🧰</div>
-<h3 data-lang="en">Full Toolkit page</h3>
-<h3 data-lang="es">Página completa del Toolkit</h3>
-<p data-lang="en">See all available guides for household cybersecurity, privacy, and fraud prevention.</p>
-<p data-lang="es">Mira todas las guías disponibles sobre ciberseguridad del hogar, privacidad y prevención de fraude.</p>
-<span class="feature-link" data-lang="en">Open Toolkit →</span>
-<span class="feature-link" data-lang="es">Abrir Toolkit →</span>
+<h3 data-lang="en">Open the Toolkit</h3>
+<h3 data-lang="es">Abrir el Toolkit</h3>
+<p data-lang="en">Use checklists and tools to practice what you learned on this page.</p>
+<p data-lang="es">Usa listas y herramientas para practicar lo que aprendiste en esta página.</p>
+<span class="feature-link" data-lang="en">Go to Toolkit →</span>
+<span class="feature-link" data-lang="es">Ir al Toolkit →</span>
 </a>
 
-<a class="card toolkit-card-visual large-link-card" href="../labs/">
+<a class="card toolkit-card" href="../labs/">
 <div class="big-icon">🧪</div>
-<h3 data-lang="en">Then view Case Studies</h3>
-<h3 data-lang="es">Luego mira estudios de caso</h3>
-<p data-lang="en">Use case studies to understand how phishing, malware, and location tricks work in controlled examples.</p>
-<p data-lang="es">Usa los estudios de caso para entender cómo funcionan phishing, malware y trucos de ubicación en ejemplos controlados.</p>
-<span class="feature-link" data-lang="en">View Case Studies →</span>
-<span class="feature-link" data-lang="es">Ver estudios de caso →</span>
+<h3 data-lang="en">View Case Studies</h3>
+<h3 data-lang="es">Ver estudios de caso</h3>
+<p data-lang="en">See real examples of phishing, malware, and location tricks in a controlled lab.</p>
+<p data-lang="es">Mira ejemplos reales de phishing, malware y trucos de ubicación en un laboratorio controlado.</p>
+<span class="feature-link" data-lang="en">Go to Case Studies →</span>
+<span class="feature-link" data-lang="es">Ir a estudios de caso →</span>
+</a>
+
+<a class="card toolkit-card" href="../resources/">
+<div class="big-icon">📚</div>
+<h3 data-lang="en">Browse Resources</h3>
+<h3 data-lang="es">Ver recursos</h3>
+<p data-lang="en">Find trusted beginner learning links for families, children, and older adults.</p>
+<p data-lang="es">Encuentra enlaces confiables para familias, niños y adultos mayores.</p>
+<span class="feature-link" data-lang="en">Go to Resources →</span>
+<span class="feature-link" data-lang="es">Ir a recursos →</span>
 </a>
 </div>
 
 <div class="center-actions">
-<a class="btn primary" href="../toolkit/#start-title">
-<span data-lang="en">Open Toolkit section</span>
-<span data-lang="es">Abrir sección Toolkit</span>
+<a class="btn primary" href="../toolkit/">
+<span data-lang="en">Open Toolkit</span>
+<span data-lang="es">Abrir Toolkit</span>
 </a>
-<a class="btn" href="../toolkit/">
-<span data-lang="en">Open full Toolkit page</span>
-<span data-lang="es">Abrir página completa del Toolkit</span>
+<a class="btn" href="../labs/">
+<span data-lang="en">Open Case Studies</span>
+<span data-lang="es">Abrir estudios de caso</span>
 </a>
 </div>
-<p class="print-note" data-lang="en">Tip: the Toolkit page includes resources that are easier to print and share with family members.</p>
-<p class="print-note" data-lang="es">Consejo: la página Toolkit incluye recursos más fáciles de imprimir y compartir con familiares.</p>
+
+<p class="print-tip" data-lang="en">Tip: the Toolkit is the best next stop for printable help and household security steps.</p>
+<p class="print-tip" data-lang="es">Consejo: el Toolkit es el mejor próximo paso para ayuda imprimible y pasos de seguridad para el hogar.</p>
 </div>
 </div>
 </section>
@@ -773,7 +1081,7 @@
 <section class="section" id="trusted-resources">
 <div class="container">
 <div class="section-header">
-<div>
+<div class="section-intro">
 <h2 data-lang="en">Trusted beginner resources</h2>
 <h2 data-lang="es">Recursos confiables para principiantes</h2>
 <p data-lang="en">Use these for family learning, child-friendly activities, scam awareness, and older-adult protection.</p>
@@ -781,8 +1089,8 @@
 </div>
 </div>
 
-<div class="friendly-grid">
-<article class="card friendly-card">
+<div class="visual-grid">
+<article class="card visual-card">
 <div class="big-icon">🛡️</div>
 <div class="badges">
 <span class="badge">CISA</span>
@@ -799,7 +1107,7 @@
 </a>
 </article>
 
-<article class="card friendly-card">
+<article class="card visual-card">
 <div class="big-icon">🎣</div>
 <div class="badges">
 <span class="badge">FTC</span>
@@ -816,7 +1124,7 @@
 </a>
 </article>
 
-<article class="card friendly-card">
+<article class="card visual-card">
 <div class="big-icon">👵</div>
 <div class="badges">
 <span class="badge">FTC</span>
@@ -833,7 +1141,7 @@
 </a>
 </article>
 
-<article class="card friendly-card">
+<article class="card visual-card">
 <div class="big-icon">🧒</div>
 <div class="badges">
 <span class="badge">Google</span>
@@ -850,7 +1158,7 @@
 </a>
 </article>
 
-<article class="card friendly-card">
+<article class="card visual-card">
 <div class="big-icon">🌐</div>
 <div class="badges">
 <span class="badge">NCMEC</span>
@@ -867,7 +1175,7 @@
 </a>
 </article>
 
-<article class="card friendly-card">
+<article class="card visual-card">
 <div class="big-icon">🔒</div>
 <div class="badges">
 <span class="badge">FTC</span>
@@ -890,7 +1198,7 @@
 <section class="section" id="home-practice">
 <div class="container">
 <div class="section-header">
-<div>
+<div class="section-intro">
 <h2 data-lang="en">Practice together in 10 minutes</h2>
 <h2 data-lang="es">Practiquen juntos en 10 minutos</h2>
 <p data-lang="en">Use this as a quick family activity after dinner, before homework, or during a community workshop.</p>
@@ -898,7 +1206,7 @@
 </div>
 </div>
 
-<div class="prose">
+<div class="card">
 <ul class="simple-list" data-lang="en">
 <li>Pick one important account, like email or banking.</li>
 <li>Check whether the password is long and unique.</li>
@@ -906,7 +1214,7 @@
 <li>Update one phone, browser, or app.</li>
 <li>Show one fake message example and ask: “What feels wrong here?”</li>
 <li>Create a family rule: ask before sending money, codes, passwords, or private photos.</li>
-<li>Open the Toolkit section for printable guides and household checklists.</li>
+<li>Open the Toolkit for checklists and practical next steps.</li>
 </ul>
 <ul class="simple-list" data-lang="es">
 <li>Escoge una cuenta importante, como correo o banco.</li>
@@ -915,10 +1223,11 @@
 <li>Actualiza un teléfono, navegador o app.</li>
 <li>Muestra un ejemplo de mensaje falso y pregunta: “¿Qué se ve raro aquí?”</li>
 <li>Crea una regla familiar: preguntar antes de enviar dinero, códigos, contraseñas o fotos privadas.</li>
-<li>Abre la sección Toolkit para guías imprimibles y listas del hogar.</li>
+<li>Abre el Toolkit para listas y próximos pasos prácticos.</li>
 </ul>
+
 <div class="center-actions">
-<a class="btn primary" href="../toolkit/#start-title">
+<a class="btn primary" href="../toolkit/">
 <span data-lang="en">Go to Toolkit</span>
 <span data-lang="es">Ir al Toolkit</span>
 </a>
@@ -933,11 +1242,11 @@
 <div>
 <h3 data-lang="en">Ready for the next step?</h3>
 <h3 data-lang="es">¿Listo para el próximo paso?</h3>
-<p data-lang="en">Use the Toolkit for printable checklists, then visit the case studies to see real examples in a controlled lab.</p>
-<p data-lang="es">Usa el Toolkit para listas imprimibles y luego visita los estudios de caso para ver ejemplos reales en un laboratorio controlado.</p>
+<p data-lang="en">Use the Toolkit for practical checklists, then visit the case studies to see real examples in a controlled lab.</p>
+<p data-lang="es">Usa el Toolkit para listas prácticas y luego visita los estudios de caso para ver ejemplos reales en un laboratorio controlado.</p>
 </div>
 <div class="cta-actions">
-<a class="btn primary" href="../toolkit/#start-title">
+<a class="btn primary" href="../toolkit/">
 <span data-lang="en">Open Toolkit</span>
 <span data-lang="es">Abrir Toolkit</span>
 </a>
@@ -949,6 +1258,7 @@
 </div>
 </div>
 </section>
+
 </main>
 
 <footer class="footer">
