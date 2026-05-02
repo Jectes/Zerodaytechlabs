@@ -1,7 +1,13 @@
+
 <h1 align="center">ZeroDay Tech Labs</h1>
 
 <p align="center">
   <strong>Cybersecurity Education • Case Studies • Practical Defense</strong>
+</p>
+
+<p align="center">
+  <a href="https://zerodaytechlabs.com/"><strong>🌐 Live Website</strong></a> •
+  <a href="https://github.com/Jectes/Zerodaytechlabs"><strong>📁 Repository</strong></a>
 </p>
 
 <p align="center">
@@ -30,7 +36,7 @@ Make cybersecurity usable, actionable, and relevant to everyday users.
 
 Research-based simulations reflecting real-world attack behavior in a controlled and ethical environment.
 
-Topics include:
+**Current topics include:**
 
 - Credential exposure at point of entry  
 - Malicious mobile application installation  
@@ -38,7 +44,7 @@ Topics include:
 - Phishing awareness and response  
 - Home network and device exposure  
 
-Each case study outlines:
+**Each case study outlines:**
 
 - Attack vector and method  
 - Observable indicators  
@@ -51,10 +57,10 @@ Each case study outlines:
 
 Practical, user-friendly guides designed for immediate implementation.
 
-Includes:
+**Includes:**
 
 - Home network security  
-- Account protection and MFA  
+- Account protection and multi-factor authentication (MFA)  
 - Phishing detection and response  
 - Backup and recovery practices  
 - Family cybersecurity habits  
@@ -67,14 +73,16 @@ Includes:
 
 Curated references from trusted cybersecurity organizations to support actionable decision-making without unnecessary complexity.
 
+Designed to move users from awareness to action.
+
 ---
 
 ### Survey
 
 Structured evaluation component supporting both user feedback and academic analysis.
 
-- **Pre-survey:** Baseline knowledge  
-- **Post-survey:** Measured improvement  
+- **Pre-survey:** Baseline knowledge and awareness  
+- **Post-survey:** Measured improvement after platform use  
 
 ---
 
