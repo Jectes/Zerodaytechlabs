@@ -9,6 +9,7 @@
 <link href="../assets/css/styles.css" rel="stylesheet"/>
 <script defer="" src="../assets/js/i18n.js"></script>
 <script defer="" src="../assets/js/nav.js"></script>
+
 <style>
 .case-studies-page{
   --case-brand: var(--brand, #f97316);
@@ -19,11 +20,13 @@
   --case-soft-strong: rgba(249,115,22,0.22);
   --case-shadow: var(--shadow-sm, 0 18px 45px rgba(15,23,42,0.08));
 }
+
 .case-studies-page p,
 .case-studies-page li{
   font-size: 16.5px;
   line-height: 1.7;
 }
+
 .case-studies-page .case-hero-panel{
   position: relative;
   overflow: hidden;
@@ -37,12 +40,14 @@
     linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,250,252,0.98));
   box-shadow: var(--case-shadow);
 }
+
 .case-studies-page .case-hero-grid{
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(310px, .9fr);
   gap: 24px;
   align-items: center;
 }
+
 .case-studies-page .case-title{
   margin: 12px 0 12px;
   font-size: clamp(36px, 4.4vw, 60px);
@@ -50,11 +55,13 @@
   letter-spacing: -0.045em;
   color: var(--case-text);
 }
+
 .case-studies-page .case-lead{
   max-width: 76ch;
   color: var(--case-muted);
   font-size: clamp(18px, 1.6vw, 21px);
 }
+
 .case-studies-page .case-actions,
 .case-studies-page .case-hero-actions,
 .case-studies-page .center-actions{
@@ -63,6 +70,7 @@
   gap: 12px;
   margin-top: 18px;
 }
+
 .case-studies-page .case-hero-actions .btn,
 .case-studies-page .center-actions .btn,
 .case-studies-page .case-actions .btn{
@@ -71,6 +79,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .case-studies-page .case-board{
   border: 1px solid var(--case-border);
   border-radius: 24px;
@@ -78,6 +87,7 @@
   background: #fff;
   box-shadow: var(--case-shadow);
 }
+
 .case-studies-page .case-board-top{
   display: flex;
   align-items: center;
@@ -86,14 +96,22 @@
   border-bottom: 1px solid var(--case-border);
   background: rgba(248,250,252,0.95);
 }
+
 .case-studies-page .board-dot{
   width: 10px;
   height: 10px;
   border-radius: 999px;
   background: #d1d5db;
 }
-.case-studies-page .board-dot:first-child{ background: var(--case-brand); }
-.case-studies-page .case-board-body{ padding: 18px; }
+
+.case-studies-page .board-dot:first-child{
+  background: var(--case-brand);
+}
+
+.case-studies-page .case-board-body{
+  padding: 18px;
+}
+
 .case-studies-page .case-board-main{
   display: grid;
   grid-template-columns: 62px 1fr;
@@ -105,6 +123,7 @@
   border: 1px solid var(--case-soft-strong);
   margin-bottom: 14px;
 }
+
 .case-studies-page .board-icon,
 .case-studies-page .big-icon{
   display: grid;
@@ -116,27 +135,32 @@
   background: var(--case-soft);
   border: 1px solid var(--case-soft-strong);
 }
+
 .case-studies-page .board-icon{
   background: var(--case-brand);
   color: #fff;
   border: 0;
 }
+
 .case-studies-page .case-board-main strong{
   display: block;
   font-size: 18px;
   color: var(--case-text);
   margin-bottom: 4px;
 }
+
 .case-studies-page .case-board-main span,
 .case-studies-page .board-step span{
   color: var(--case-muted);
   font-size: 14px;
   line-height: 1.45;
 }
+
 .case-studies-page .board-steps{
   display: grid;
   gap: 10px;
 }
+
 .case-studies-page .board-step{
   display: grid;
   grid-template-columns: 42px 1fr;
@@ -146,6 +170,7 @@
   border: 1px solid var(--case-border);
   background: #fff;
 }
+
 .case-studies-page .board-number{
   display: grid;
   place-items: center;
@@ -156,7 +181,12 @@
   color: var(--case-brand);
   font-weight: 950;
 }
-.case-studies-page .board-step strong{ display:block; color: var(--case-text); }
+
+.case-studies-page .board-step strong{
+  display: block;
+  color: var(--case-text);
+}
+
 .case-studies-page .case-disclaimer{
   display: grid;
   grid-template-columns: 54px 1fr;
@@ -164,6 +194,7 @@
   border-left: 6px solid var(--case-brand);
   margin: 22px 0;
 }
+
 .case-studies-page .case-disclaimer-mark{
   width: 54px;
   height: 54px;
@@ -174,60 +205,70 @@
   color: var(--case-brand);
   font-size: 27px;
 }
-.case-studies-page .case-disclaimer-mark::before{ content: "🛡️"; }
-.case-studies-page .section-intro{ max-width: 820px; }
-.case-studies-page .section-intro p{ color: var(--case-muted); }
+
+.case-studies-page .case-disclaimer-mark::before{
+  content: "🛡️";
+}
+
+.case-studies-page .section-intro{
+  max-width: 820px;
+}
+
+.case-studies-page .section-intro p{
+  color: var(--case-muted);
+}
+
 .case-studies-page .path-grid,
-.case-studies-page .case-grid,
-.case-studies-page .pdf-grid{
+.case-studies-page .case-grid{
   display: grid;
   gap: 18px;
 }
+
 .case-studies-page .path-grid{
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
+
 .case-studies-page .case-grid{
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
-.case-studies-page .pdf-grid{
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
+
 .case-studies-page .path-card,
-.case-studies-page .study-card,
-.case-studies-page .pdf-card{
+.case-studies-page .study-card{
   position: relative;
   overflow: hidden;
   min-height: 100%;
 }
+
 .case-studies-page .path-card::before,
-.case-studies-page .study-card::before,
-.case-studies-page .pdf-card::before{
+.case-studies-page .study-card::before{
   content: "";
   position: absolute;
   inset: 0 0 auto 0;
   height: 5px;
   background: linear-gradient(90deg, var(--case-brand), rgba(249,115,22,0.18));
 }
+
 .case-studies-page .path-card h3,
-.case-studies-page .study-card h3,
-.case-studies-page .pdf-card h3{
+.case-studies-page .study-card h3{
   margin-top: 0;
   font-size: 20px;
   line-height: 1.25;
 }
+
 .case-studies-page .path-card p,
 .case-studies-page .study-card p,
-.case-studies-page .pdf-card p,
 .case-studies-page .case-list,
 .case-studies-page .case-meta-item span{
   color: var(--case-muted);
 }
+
 .case-studies-page .filter-panel{
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin: 18px 0;
 }
+
 .case-studies-page .filter-btn{
   border: 1px solid var(--case-border);
   background: #fff;
@@ -237,11 +278,13 @@
   font-weight: 800;
   cursor: pointer;
 }
+
 .case-studies-page .filter-btn.is-active{
   background: var(--case-brand);
   border-color: var(--case-brand);
   color: #fff;
 }
+
 .case-studies-page .study-card .case-media{
   margin: -24px -24px 18px;
   min-height: 190px;
@@ -251,67 +294,64 @@
     radial-gradient(circle at center, rgba(249,115,22,0.20), transparent 36%),
     linear-gradient(135deg, rgba(248,250,252,0.96), rgba(255,255,255,0.96));
 }
+
 .case-studies-page .case-media img{
   display: block;
   width: 100%;
   max-height: 210px;
   object-fit: cover;
 }
+
 .case-studies-page .case-list{
   padding-left: 20px;
 }
-.case-studies-page .case-list li{ margin: 6px 0; }
+
+.case-studies-page .case-list li{
+  margin: 6px 0;
+}
+
 .case-studies-page .case-meta-list{
   display: grid;
   gap: 10px;
   margin-top: 12px;
 }
+
 .case-studies-page .case-meta-item{
   padding: 11px 12px;
   border-radius: 14px;
   border: 1px solid var(--case-border);
   background: rgba(248,250,252,0.82);
 }
+
 .case-studies-page .case-meta-item strong{
   display: block;
   margin-bottom: 3px;
   color: var(--case-text);
 }
-.case-studies-page .pdf-card{
-  display: flex;
-  flex-direction: column;
-}
-.case-studies-page .pdf-card .case-actions{
-  margin-top: auto;
-}
-.case-studies-page .download-note{
-  display: inline-flex;
-  gap: 8px;
-  align-items: center;
-  padding: 7px 10px;
-  border-radius: 999px;
-  background: var(--case-soft);
-  border: 1px solid var(--case-soft-strong);
-  font-size: 12px;
-  font-weight: 900;
-  margin-bottom: 10px;
-}
+
 @media (max-width: 1040px){
   .case-studies-page .case-hero-grid,
   .case-studies-page .path-grid,
-  .case-studies-page .case-grid,
-  .case-studies-page .pdf-grid{
+  .case-studies-page .case-grid{
     grid-template-columns: 1fr;
   }
-  .case-studies-page .case-hero-panel{ padding: 20px; }
+
+  .case-studies-page .case-hero-panel{
+    padding: 20px;
+  }
+
   .case-studies-page .case-hero-actions .btn,
   .case-studies-page .center-actions .btn,
-  .case-studies-page .case-actions .btn{ width: 100%; }
+  .case-studies-page .case-actions .btn{
+    width: 100%;
+  }
 }
 </style>
 </head>
+
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
+
 <header class="site-header">
 <div class="container header-inner">
 <a class="brand" href="../">
@@ -321,6 +361,7 @@
 <span data-i18n="brand.tagline">Cybersecurity education • Case Studies • Tools</span>
 </div>
 </a>
+
 <nav aria-label="Primary" class="nav nav-static">
 <a data-i18n="nav.home" href="../">Home</a>
 <a data-i18n="nav.startHere" href="../start-here/">Start Here</a>
@@ -332,6 +373,7 @@
 <a data-i18n="nav.about" href="../about/">About</a>
 <a data-i18n="nav.contact" href="../contact/">Contact</a>
 </nav>
+
 <div class="header-controls">
 <div aria-label="Language" class="lang-toggle">
 <button aria-label="English" data-lang-btn="en" type="button">EN</button>
@@ -349,18 +391,40 @@
 <div>
 <div class="kicker" data-lang="en">Case Studies • English and Spanish PDFs</div>
 <div class="kicker" data-lang="es">Estudios de caso • PDFs en inglés y español</div>
+
 <h1 class="case-title" id="case-title" data-lang="en">Learn from safe, controlled cybersecurity examples.</h1>
 <h1 class="case-title" id="case-title-es" data-lang="es">Aprende con ejemplos de ciberseguridad seguros y controlados.</h1>
-<p class="case-lead" data-lang="en">These case studies turn technical evidence into family friendly lessons. Each case explains what happened, why it matters at home, and what safer action to take next.</p>
-<p class="case-lead" data-lang="es">Estos estudios convierten evidencia técnica en lecciones útiles para familias. Cada caso explica qué ocurrió, por qué importa en el hogar y qué acción más segura tomar después.</p>
+
+<p class="case-lead" data-lang="en">
+These case studies turn technical evidence into family friendly lessons. Each case explains what happened, why it matters at home, and what safer action to take next.
+</p>
+<p class="case-lead" data-lang="es">
+Estos estudios convierten evidencia técnica en lecciones útiles para familias. Cada caso explica qué ocurrió, por qué importa en el hogar y qué acción más segura tomar después.
+</p>
+
 <div class="case-hero-actions">
-<a class="btn primary" href="#case-library"><span data-lang="en">View case studies</span><span data-lang="es">Ver estudios de caso</span></a>
-<a class="btn" href="../start-here/"><span data-lang="en">New? Start Here first</span><span data-lang="es">¿Nuevo? Comienza aquí</span></a>
-<a class="btn" href="../toolkit/"><span data-lang="en">Use Toolkit after reading</span><span data-lang="es">Usar Toolkit después</span></a>
+<a class="btn primary" href="#case-library">
+<span data-lang="en">View case studies</span>
+<span data-lang="es">Ver estudios de caso</span>
+</a>
+<a class="btn" href="../start-here/">
+<span data-lang="en">New? Start Here first</span>
+<span data-lang="es">¿Nuevo? Comienza aquí</span>
+</a>
+<a class="btn" href="../toolkit/">
+<span data-lang="en">Use Toolkit after reading</span>
+<span data-lang="es">Usar Toolkit después</span>
+</a>
 </div>
 </div>
+
 <div class="case-board" aria-label="Case study learning board">
-<div class="case-board-top"><span class="board-dot"></span><span class="board-dot"></span><span class="board-dot"></span></div>
+<div class="case-board-top">
+<span class="board-dot"></span>
+<span class="board-dot"></span>
+<span class="board-dot"></span>
+</div>
+
 <div class="case-board-body">
 <div class="case-board-main">
 <div class="board-icon">🧪</div>
@@ -371,10 +435,37 @@
 <span data-lang="es">Sistemas controlados, evidencia redactada y lecciones defensivas solamente.</span>
 </div>
 </div>
+
 <div class="board-steps">
-<div class="board-step"><div class="board-number">1</div><div><strong data-lang="en">Read the scenario</strong><strong data-lang="es">Lee el escenario</strong><span data-lang="en">Understand the household decision point.</span><span data-lang="es">Entiende el punto de decisión del hogar.</span></div></div>
-<div class="board-step"><div class="board-number">2</div><div><strong data-lang="en">Review the lesson</strong><strong data-lang="es">Revisa la lección</strong><span data-lang="en">Focus on what the user can do safely.</span><span data-lang="es">Enfócate en lo que el usuario puede hacer de forma segura.</span></div></div>
-<div class="board-step"><div class="board-number">3</div><div><strong data-lang="en">Open the Toolkit</strong><strong data-lang="es">Abre el Toolkit</strong><span data-lang="en">Turn the lesson into a checklist.</span><span data-lang="es">Convierte la lección en una lista práctica.</span></div></div>
+<div class="board-step">
+<div class="board-number">1</div>
+<div>
+<strong data-lang="en">Read the scenario</strong>
+<strong data-lang="es">Lee el escenario</strong>
+<span data-lang="en">Understand the household decision point.</span>
+<span data-lang="es">Entiende el punto de decisión del hogar.</span>
+</div>
+</div>
+
+<div class="board-step">
+<div class="board-number">2</div>
+<div>
+<strong data-lang="en">Review the lesson</strong>
+<strong data-lang="es">Revisa la lección</strong>
+<span data-lang="en">Focus on what the user can do safely.</span>
+<span data-lang="es">Enfócate en lo que el usuario puede hacer de forma segura.</span>
+</div>
+</div>
+
+<div class="board-step">
+<div class="board-number">3</div>
+<div>
+<strong data-lang="en">Open the Toolkit</strong>
+<strong data-lang="es">Abre el Toolkit</strong>
+<span data-lang="en">Turn the lesson into a checklist.</span>
+<span data-lang="es">Convierte la lección en una lista práctica.</span>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -386,93 +477,244 @@
 <div>
 <strong data-lang="en">Educational and defensive use only</strong>
 <strong data-lang="es">Uso educativo y defensivo solamente</strong>
-<p class="note" data-lang="en">These studies document controlled simulations with researcher owned systems, self generated test data, and redacted evidence. Do not use them to access, test, monitor, or exploit any system, account, device, network, or person without explicit written permission.</p>
-<p class="note" data-lang="es">Estos estudios documentan simulaciones controladas con sistemas del investigador, datos de prueba propios y evidencia redactada. No deben usarse para acceder, probar, monitorear ni explotar sistemas, cuentas, dispositivos, redes o personas sin permiso explícito por escrito.</p>
+
+<p class="note" data-lang="en">
+These studies document controlled simulations with researcher owned systems, self generated test data, and redacted evidence. Do not use them to access, test, monitor, or exploit any system, account, device, network, or person without explicit written permission.
+</p>
+<p class="note" data-lang="es">
+Estos estudios documentan simulaciones controladas con sistemas del investigador, datos de prueba propios y evidencia redactada. No deben usarse para acceder, probar, monitorear ni explotar sistemas, cuentas, dispositivos, redes o personas sin permiso explícito por escrito.
+</p>
 </div>
 </div>
 
 <section class="section" aria-labelledby="path-title">
-<div class="section-header"><div class="section-intro">
+<div class="section-header">
+<div class="section-intro">
 <h2 id="path-title" data-lang="en">How families can use these cases</h2>
 <h2 id="path-title-es" data-lang="es">Cómo las familias pueden usar estos casos</h2>
 <p data-lang="en">The goal is not to copy lab steps. The goal is to recognize risky moments and choose safer behavior.</p>
 <p data-lang="es">La meta no es copiar pasos de laboratorio. La meta es reconocer momentos de riesgo y elegir una conducta más segura.</p>
-</div></div>
+</div>
+</div>
+
 <div class="path-grid">
-<article class="card path-card"><div class="big-icon">🧭</div><h3 data-lang="en">Start simple</h3><h3 data-lang="es">Empieza simple</h3><p data-lang="en">Use Start Here for children, older adults, and first time learners.</p><p data-lang="es">Usa Comienza aquí para niños, adultos mayores y principiantes.</p></article>
-<article class="card path-card"><div class="big-icon">👀</div><h3 data-lang="en">Spot the decision point</h3><h3 data-lang="es">Identifica la decisión</h3><p data-lang="en">Each case shows a moment where a user clicks, installs, logs in, or approves.</p><p data-lang="es">Cada caso muestra un momento donde alguien hace clic, instala, inicia sesión o aprueba.</p></article>
-<article class="card path-card"><div class="big-icon">🛡️</div><h3 data-lang="en">Learn the safer action</h3><h3 data-lang="es">Aprende la acción segura</h3><p data-lang="en">The defensive lesson is written for real household behavior.</p><p data-lang="es">La lección defensiva está escrita para acciones reales en el hogar.</p></article>
-<article class="card path-card"><div class="big-icon">🧰</div><h3 data-lang="en">Use the Toolkit</h3><h3 data-lang="es">Usa el Toolkit</h3><p data-lang="en">Open a checklist after each case to practice prevention and recovery.</p><p data-lang="es">Abre una lista después de cada caso para practicar prevención y recuperación.</p></article>
+<article class="card path-card">
+<div class="big-icon">🧭</div>
+<h3 data-lang="en">Start simple</h3>
+<h3 data-lang="es">Empieza simple</h3>
+<p data-lang="en">Use Start Here for children, older adults, and first time learners.</p>
+<p data-lang="es">Usa Comienza aquí para niños, adultos mayores y principiantes.</p>
+</article>
+
+<article class="card path-card">
+<div class="big-icon">👀</div>
+<h3 data-lang="en">Spot the decision point</h3>
+<h3 data-lang="es">Identifica la decisión</h3>
+<p data-lang="en">Each case shows a moment where a user clicks, installs, logs in, or approves.</p>
+<p data-lang="es">Cada caso muestra un momento donde alguien hace clic, instala, inicia sesión o aprueba.</p>
+</article>
+
+<article class="card path-card">
+<div class="big-icon">🛡️</div>
+<h3 data-lang="en">Learn the safer action</h3>
+<h3 data-lang="es">Aprende la acción segura</h3>
+<p data-lang="en">The defensive lesson is written for real household behavior.</p>
+<p data-lang="es">La lección defensiva está escrita para acciones reales en el hogar.</p>
+</article>
+
+<article class="card path-card">
+<div class="big-icon">🧰</div>
+<h3 data-lang="en">Use the Toolkit</h3>
+<h3 data-lang="es">Usa el Toolkit</h3>
+<p data-lang="en">Open a checklist after each case to practice prevention and recovery.</p>
+<p data-lang="es">Abre una lista después de cada caso para practicar prevención y recuperación.</p>
+</article>
 </div>
 </section>
 
 <section class="section" id="case-library" aria-labelledby="case-library-title">
-<div class="section-header"><div class="section-intro">
+<div class="section-header">
+<div class="section-intro">
 <h2 id="case-library-title" data-lang="en">Case study library</h2>
 <h2 id="case-library-title-es" data-lang="es">Biblioteca de estudios de caso</h2>
 <p data-lang="en">Filter the cards or open the English and Spanish PDFs directly.</p>
 <p data-lang="es">Filtra las tarjetas o abre los PDFs en inglés y español directamente.</p>
-</div></div>
+</div>
+</div>
+
 <div class="filter-panel" aria-label="Case study filters">
-<button class="filter-btn is-active" data-filter="all" type="button"><span data-lang="en">All</span><span data-lang="es">Todos</span></button>
-<button class="filter-btn" data-filter="credential" type="button"><span data-lang="en">Credential theft</span><span data-lang="es">Robo de credenciales</span></button>
-<button class="filter-btn" data-filter="mobile" type="button"><span data-lang="en">Mobile app risk</span><span data-lang="es">Riesgo de app móvil</span></button>
-<button class="filter-btn" data-filter="location" type="button"><span data-lang="en">Location privacy</span><span data-lang="es">Privacidad de ubicación</span></button>
+<button class="filter-btn is-active" data-filter="all" type="button">
+<span data-lang="en">All</span>
+<span data-lang="es">Todos</span>
+</button>
+<button class="filter-btn" data-filter="credential" type="button">
+<span data-lang="en">Credential theft</span>
+<span data-lang="es">Robo de credenciales</span>
+</button>
+<button class="filter-btn" data-filter="mobile" type="button">
+<span data-lang="en">Mobile app risk</span>
+<span data-lang="es">Riesgo de app móvil</span>
+</button>
+<button class="filter-btn" data-filter="location" type="button">
+<span data-lang="en">Location privacy</span>
+<span data-lang="es">Privacidad de ubicación</span>
+</button>
 </div>
 
 <div class="case-grid">
+
 <article class="card study-card" data-case-type="credential" id="credential-exposure-case-study">
-<div class="case-media"><img alt="Phishing case illustration" loading="lazy" src="../assets/images/case-study-phishing-cover.png"/></div>
-<div class="badges"><span class="badge" data-lang="en">Case Study 1</span><span class="badge" data-lang="es">Caso 1</span><span class="badge">Phishing</span></div>
+<div class="case-media">
+<img alt="Phishing case illustration" loading="lazy" src="../assets/images/case-study-phishing-cover.png"/>
+</div>
+
+<div class="badges">
+<span class="badge" data-lang="en">Case Study 1</span>
+<span class="badge" data-lang="es">Caso 1</span>
+<span class="badge">Phishing</span>
+</div>
+
 <h3 data-lang="en">Credential Exposure at the Point of Entry</h3>
 <h3 data-lang="es">Exposición de credenciales en el punto de entrada</h3>
+
 <p data-lang="en">A localhost simulation showing how a familiar sign in page can capture test credentials at submission time.</p>
 <p data-lang="es">Una simulación localhost que muestra cómo una página familiar puede capturar credenciales de prueba al enviarlas.</p>
-<ul class="case-list" data-lang="en"><li>Focuses on sign in trust and credential exposure.</li><li>Connects directly to family password habits.</li><li>Reinforces password managers, passkeys, and sign in alerts.</li></ul>
-<ul class="case-list" data-lang="es"><li>Se enfoca en confianza visual y exposición de credenciales.</li><li>Conecta con hábitos familiares de contraseñas.</li><li>Refuerza gestores de contraseñas, passkeys y alertas de acceso.</li></ul>
-<div class="case-meta-list"><div class="case-meta-item"><strong data-lang="en">Household lesson</strong><strong data-lang="es">Lección para el hogar</strong><span data-lang="en">A page can look normal and still be unsafe.</span><span data-lang="es">Una página puede verse normal y aun así no ser segura.</span></div></div>
-<div class="case-actions"><a class="btn primary" href="files/case-study-1-credential-exposure.pdf" target="_blank" rel="noopener"><span data-lang="en">Open English PDF</span><span data-lang="es">Abrir PDF en inglés</span></a><a class="btn" href="files/case-study-1-credential-exposure-es.pdf" target="_blank" rel="noopener"><span data-lang="en">Open Spanish PDF</span><span data-lang="es">Abrir PDF en español</span></a></div>
+
+<ul class="case-list" data-lang="en">
+<li>Focuses on sign in trust and credential exposure.</li>
+<li>Connects directly to family password habits.</li>
+<li>Reinforces password managers, passkeys, and sign in alerts.</li>
+</ul>
+
+<ul class="case-list" data-lang="es">
+<li>Se enfoca en confianza visual y exposición de credenciales.</li>
+<li>Conecta con hábitos familiares de contraseñas.</li>
+<li>Refuerza gestores de contraseñas, passkeys y alertas de acceso.</li>
+</ul>
+
+<div class="case-meta-list">
+<div class="case-meta-item">
+<strong data-lang="en">Household lesson</strong>
+<strong data-lang="es">Lección para el hogar</strong>
+<span data-lang="en">A page can look normal and still be unsafe.</span>
+<span data-lang="es">Una página puede verse normal y aun así no ser segura.</span>
+</div>
+</div>
+
+<div class="case-actions">
+<a class="btn primary" href="files/case-study-1-credential-exposure.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/case-study-1-credential-exposure-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
 </article>
 
 <article class="card study-card" data-case-type="mobile" id="malicious-app-case-study">
-<div class="case-media"><img alt="Mobile app case illustration" loading="lazy" src="../assets/images/case-study-mobile-app-cover.png"/></div>
-<div class="badges"><span class="badge" data-lang="en">Case Study 2</span><span class="badge" data-lang="es">Caso 2</span><span class="badge" data-lang="en">Mobile</span><span class="badge" data-lang="es">Móvil</span></div>
+<div class="case-media">
+<img alt="Mobile app case illustration" loading="lazy" src="../assets/images/case-study-mobile-app-cover.png"/>
+</div>
+
+<div class="badges">
+<span class="badge" data-lang="en">Case Study 2</span>
+<span class="badge" data-lang="es">Caso 2</span>
+<span class="badge" data-lang="en">Mobile</span>
+<span class="badge" data-lang="es">Móvil</span>
+</div>
+
 <h3 data-lang="en">Malicious App Entry to a Mobile Device</h3>
 <h3 data-lang="es">Entrada de una app maliciosa a un dispositivo móvil</h3>
+
 <p data-lang="en">A controlled Android APK sideloading simulation showing how an untrusted app can move from download to execution.</p>
 <p data-lang="es">Una simulación controlada de APK en Android que muestra cómo una app no confiable puede pasar de descarga a ejecución.</p>
-<ul class="case-list" data-lang="en"><li>Focuses on app downloads and installation approval.</li><li>Useful for parents, teens, and phone users.</li><li>Reinforces official stores, updates, and permission review.</li></ul>
-<ul class="case-list" data-lang="es"><li>Se enfoca en descargas y aprobación de instalación.</li><li>Útil para padres, adolescentes y usuarios de teléfonos.</li><li>Refuerza tiendas oficiales, actualizaciones y revisión de permisos.</li></ul>
-<div class="case-meta-list"><div class="case-meta-item"><strong data-lang="en">Household lesson</strong><strong data-lang="es">Lección para el hogar</strong><span data-lang="en">An unexpected app install is a high risk decision.</span><span data-lang="es">Una instalación inesperada es una decisión de alto riesgo.</span></div></div>
-<div class="case-actions"><a class="btn primary" href="files/case-study-2-malicious-app-remote-access.pdf" target="_blank" rel="noopener"><span data-lang="en">Open English PDF</span><span data-lang="es">Abrir PDF en inglés</span></a><a class="btn" href="files/case-study-2-malicious-app-remote-access-es.pdf" target="_blank" rel="noopener"><span data-lang="en">Open Spanish PDF</span><span data-lang="es">Abrir PDF en español</span></a></div>
+
+<ul class="case-list" data-lang="en">
+<li>Focuses on app downloads and installation approval.</li>
+<li>Useful for parents, teens, and phone users.</li>
+<li>Reinforces official stores, updates, and permission review.</li>
+</ul>
+
+<ul class="case-list" data-lang="es">
+<li>Se enfoca en descargas y aprobación de instalación.</li>
+<li>Útil para padres, adolescentes y usuarios de teléfonos.</li>
+<li>Refuerza tiendas oficiales, actualizaciones y revisión de permisos.</li>
+</ul>
+
+<div class="case-meta-list">
+<div class="case-meta-item">
+<strong data-lang="en">Household lesson</strong>
+<strong data-lang="es">Lección para el hogar</strong>
+<span data-lang="en">An unexpected app install is a high risk decision.</span>
+<span data-lang="es">Una instalación inesperada es una decisión de alto riesgo.</span>
+</div>
+</div>
+
+<div class="case-actions">
+<a class="btn primary" href="files/case-study-2-malicious-app-remote-access.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/case-study-2-malicious-app-remote-access-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
 </article>
 
 <article class="card study-card" data-case-type="location" id="location-disclosure-case-study">
-<div class="case-media"><img alt="Location privacy case illustration" loading="lazy" src="../assets/images/case-study-location-cover.png"/></div>
-<div class="badges"><span class="badge" data-lang="en">Case Study 3</span><span class="badge" data-lang="es">Caso 3</span><span class="badge" data-lang="en">Location privacy</span><span class="badge" data-lang="es">Privacidad de ubicación</span></div>
+<div class="case-media">
+<img alt="Location privacy case illustration" loading="lazy" src="../assets/images/case-study-location-cover.png"/>
+</div>
+
+<div class="badges">
+<span class="badge" data-lang="en">Case Study 3</span>
+<span class="badge" data-lang="es">Caso 3</span>
+<span class="badge" data-lang="en">Location privacy</span>
+<span class="badge" data-lang="es">Privacidad de ubicación</span>
+</div>
+
 <h3 data-lang="en">Browser Based Location Disclosure</h3>
 <h3 data-lang="es">Divulgación de ubicación basada en navegador</h3>
+
 <p data-lang="en">A controlled Seeker link simulation showing how a believable page and browser prompt can expose location context.</p>
 <p data-lang="es">Una simulación controlada con Seeker que muestra cómo una página creíble y un permiso del navegador pueden exponer ubicación.</p>
-<ul class="case-list" data-lang="en"><li>Focuses on browser permission decisions.</li><li>Shows why location prompts are not harmless.</li><li>Reinforces origin checking and permission review.</li></ul>
-<ul class="case-list" data-lang="es"><li>Se enfoca en decisiones de permisos del navegador.</li><li>Muestra por qué los permisos de ubicación no son inofensivos.</li><li>Refuerza verificar origen y revisar permisos.</li></ul>
-<div class="case-meta-list"><div class="case-meta-item"><strong data-lang="en">Household lesson</strong><strong data-lang="es">Lección para el hogar</strong><span data-lang="en">A permission prompt is a trust decision.</span><span data-lang="es">Un permiso del navegador es una decisión de confianza.</span></div></div>
-<div class="case-actions"><a class="btn primary" href="files/case-study-3-seeker-location-disclosure.pdf" target="_blank" rel="noopener"><span data-lang="en">Open English PDF</span><span data-lang="es">Abrir PDF en inglés</span></a><a class="btn" href="files/case-study-3-seeker-location-disclosure-es.pdf" target="_blank" rel="noopener"><span data-lang="en">Open Spanish PDF</span><span data-lang="es">Abrir PDF en español</span></a></div>
-</article>
-</div>
-</section>
 
-<section class="section" id="pdf-downloads" aria-labelledby="pdf-downloads-title">
-<div class="section-header"><div class="section-intro">
-<h2 id="pdf-downloads-title" data-lang="en">PDF download center</h2>
-<h2 id="pdf-downloads-title-es" data-lang="es">Centro de descargas PDF</h2>
-<p data-lang="en">Each case has an English PDF and a Spanish PDF. Use the Spanish versions for family conversations, community workshops, or older adults who prefer Spanish.</p>
-<p data-lang="es">Cada caso tiene un PDF en inglés y un PDF en español. Usa las versiones en español para conversaciones familiares, talleres comunitarios o adultos mayores que prefieren español.</p>
-</div></div>
-<div class="pdf-grid">
-<article class="card pdf-card"><span class="download-note">PDF • EN / ES</span><h3 data-lang="en">Case Study 1</h3><h3 data-lang="es">Caso 1</h3><p data-lang="en">Credential exposure and safer sign in habits.</p><p data-lang="es">Exposición de credenciales y hábitos de inicio de sesión más seguros.</p><div class="case-actions"><a class="btn primary" download href="files/case-study-1-credential-exposure.pdf">EN PDF</a><a class="btn" download href="files/case-study-1-credential-exposure-es.pdf">ES PDF</a></div></article>
-<article class="card pdf-card"><span class="download-note">PDF • EN / ES</span><h3 data-lang="en">Case Study 2</h3><h3 data-lang="es">Caso 2</h3><p data-lang="en">Malicious app entry and mobile safety.</p><p data-lang="es">Entrada de app maliciosa y seguridad móvil.</p><div class="case-actions"><a class="btn primary" download href="files/case-study-2-malicious-app-remote-access.pdf">EN PDF</a><a class="btn" download href="files/case-study-2-malicious-app-remote-access-es.pdf">ES PDF</a></div></article>
-<article class="card pdf-card"><span class="download-note">PDF • EN / ES</span><h3 data-lang="en">Case Study 3</h3><h3 data-lang="es">Caso 3</h3><p data-lang="en">Location disclosure and browser permissions.</p><p data-lang="es">Divulgación de ubicación y permisos del navegador.</p><div class="case-actions"><a class="btn primary" download href="files/case-study-3-seeker-location-disclosure.pdf">EN PDF</a><a class="btn" download href="files/case-study-3-seeker-location-disclosure-es.pdf">ES PDF</a></div></article>
+<ul class="case-list" data-lang="en">
+<li>Focuses on browser permission decisions.</li>
+<li>Shows why location prompts are not harmless.</li>
+<li>Reinforces origin checking and permission review.</li>
+</ul>
+
+<ul class="case-list" data-lang="es">
+<li>Se enfoca en decisiones de permisos del navegador.</li>
+<li>Muestra por qué los permisos de ubicación no son inofensivos.</li>
+<li>Refuerza verificar origen y revisar permisos.</li>
+</ul>
+
+<div class="case-meta-list">
+<div class="case-meta-item">
+<strong data-lang="en">Household lesson</strong>
+<strong data-lang="es">Lección para el hogar</strong>
+<span data-lang="en">A permission prompt is a trust decision.</span>
+<span data-lang="es">Un permiso del navegador es una decisión de confianza.</span>
+</div>
+</div>
+
+<div class="case-actions">
+<a class="btn primary" href="files/case-study-3-seeker-location-disclosure.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/case-study-3-seeker-location-disclosure-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+
 </div>
 </section>
 
@@ -484,9 +726,16 @@
 <p data-lang="en">After reading a case study, open the Toolkit for home checklists, family cards, and recovery steps.</p>
 <p data-lang="es">Después de leer un estudio de caso, abre el Toolkit para listas del hogar, tarjetas familiares y pasos de recuperación.</p>
 </div>
+
 <div class="cta-actions">
-<a class="btn primary" href="../toolkit/"><span data-lang="en">Open Toolkit</span><span data-lang="es">Abrir Toolkit</span></a>
-<a class="btn" href="../start-here/"><span data-lang="en">Go to Start Here</span><span data-lang="es">Ir a Comienza aquí</span></a>
+<a class="btn primary" href="../toolkit/">
+<span data-lang="en">Open Toolkit</span>
+<span data-lang="es">Abrir Toolkit</span>
+</a>
+<a class="btn" href="../start-here/">
+<span data-lang="en">Go to Start Here</span>
+<span data-lang="es">Ir a Comienza aquí</span>
+</a>
 </div>
 </div>
 </section>
@@ -501,23 +750,27 @@
 <h4>ZeroDay Tech Labs</h4>
 <p class="note" data-i18n="footer.blurb">ZeroDay Tech Labs is a bilingual cybersecurity learning site focused on practical outcomes.</p>
 </div>
+
 <div>
 <h4 data-i18n="footer.solutions">Solutions</h4>
 <a data-i18n="nav.labs" href="../labs/">Case Studies</a>
 <a data-i18n="nav.survey" href="../survey/">Survey</a>
 <a data-i18n="nav.toolkit" href="../toolkit/">Toolkit</a>
 </div>
+
 <div>
 <h4 data-i18n="footer.learn">Learn</h4>
 <a data-i18n="nav.startHere" href="../start-here/">Start Here</a>
 <a data-i18n="nav.blog" href="../blog/">Blog</a>
 <a data-i18n="nav.resources" href="../resources/">Resources</a>
 </div>
+
 <div>
 <h4 data-i18n="footer.legal">Legal</h4>
 <a data-i18n="footer.privacy" href="../legal/privacy.html">Privacy Policy</a>
 <a data-i18n="footer.terms" href="../legal/terms.html">Terms of Use</a>
 </div>
+
 <div>
 <h4 data-lang="en">Company</h4>
 <h4 data-lang="es">Organización</h4>
@@ -525,25 +778,34 @@
 <a data-i18n="nav.contact" href="../contact/">Contact</a>
 </div>
 </div>
-<div class="footer-bottom"><small data-i18n="footer.copy">© ZeroDay Tech Labs</small></div>
+
+<div class="footer-bottom">
+<small data-i18n="footer.copy">© ZeroDay Tech Labs</small>
+</div>
 </div>
 </footer>
+
 <script src="../assets/js/analytics.js"></script>
 <script src="../assets/js/chat-config.js"></script>
 <script src="../assets/js/chat-widget.js"></script>
+
 <script>
 (function(){
   function showType(type){
     document.querySelectorAll('[data-case-type]').forEach(function(card){
       card.hidden = type !== 'all' && card.getAttribute('data-case-type') !== type;
     });
+
     document.querySelectorAll('[data-filter]').forEach(function(btn){
       btn.classList.toggle('is-active', btn.getAttribute('data-filter') === type);
     });
   }
+
   document.addEventListener('DOMContentLoaded', function(){
     document.querySelectorAll('[data-filter]').forEach(function(btn){
-      btn.addEventListener('click', function(){ showType(btn.getAttribute('data-filter')); });
+      btn.addEventListener('click', function(){
+        showType(btn.getAttribute('data-filter'));
+      });
     });
   });
 })();
