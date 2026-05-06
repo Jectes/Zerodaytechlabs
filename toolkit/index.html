@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>ZeroDay Tech Labs — Toolkit</title>
+<meta content="Household friendly cybersecurity toolkit with separate English and Spanish PDF guides for families, older adults, children, and caregivers." name="description"/>
+<link href="../assets/images/logo-mark.png" rel="icon"/>
+<link href="../assets/css/styles.css" rel="stylesheet"/>
+<script defer src="../assets/js/i18n.js"></script>
+<script defer src="../assets/js/nav.js"></script>
+
+<style>
+.family-toolkit-page{
+  --toolkit-brand: var(--brand, #f97316);
+  --toolkit-text: var(--text, #111827);
+  --toolkit-muted: var(--muted, #64748b);
+  --toolkit-border: var(--border, #e5e7eb);
+  --toolkit-soft: rgba(249, 115, 22, 0.10);
+  --toolkit-soft-strong: rgba(249, 115, 22, 0.22);
+  --toolkit-shadow: var(--shadow-sm, 0 18px 45px rgba(15, 23, 42, 0.08));
+}
+.family-toolkit-page p,
+.family-toolkit-page li{
+  font-size: 16.5px;
+  line-height: 1.7;
+}
+.family-toolkit-page .toolkit-hero-panel{
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 22px;
+  border-radius: 28px;
+  padding: 28px;
+  border: 1px solid var(--toolkit-border);
+  background:
+    radial-gradient(circle at right top, rgba(249,115,22,0.16), transparent 30%),
+    radial-gradient(circle at left bottom, rgba(15,23,42,0.06), transparent 28%),
+    linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,250,252,0.98));
+  box-shadow: var(--toolkit-shadow);
+}
+.family-toolkit-page .toolkit-hero-grid{
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(330px, 0.92fr);
+  gap: 24px;
+  align-items: center;
+}
+.family-toolkit-page .toolkit-title{
+  margin: 12px 0 12px;
+  font-size: clamp(36px, 4vw, 58px);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  color: var(--toolkit-text);
+}
+.family-toolkit-page .toolkit-lead{
+  max-width: 74ch;
+  color: var(--toolkit-muted);
+  font-size: clamp(18px, 1.6vw, 21px);
+}
+.family-toolkit-page .toolkit-actions,
+.family-toolkit-page .guide-actions,
+.family-toolkit-page .center-actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+.family-toolkit-page .toolkit-actions .btn,
+.family-toolkit-page .guide-actions .btn,
+.family-toolkit-page .center-actions .btn{
+  min-height: 45px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.family-toolkit-page .safety-board{
+  border: 1px solid var(--toolkit-border);
+  border-radius: 24px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: var(--toolkit-shadow);
+}
+.family-toolkit-page .safety-board-top{
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--toolkit-border);
+  background: rgba(248,250,252,0.95);
+}
+.family-toolkit-page .board-dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #d1d5db;
+}
+.family-toolkit-page .board-dot:first-child{
+  background: var(--toolkit-brand);
+}
+.family-toolkit-page .safety-board-body{
+  padding: 18px;
+}
+.family-toolkit-page .board-main-rule{
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 18px;
+  background: var(--toolkit-soft);
+  border: 1px solid var(--toolkit-soft-strong);
+  margin-bottom: 14px;
+}
+.family-toolkit-page .board-icon,
+.family-toolkit-page .guide-symbol,
+.family-toolkit-page .big-icon{
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 20px;
+  font-size: 31px;
+  background: var(--toolkit-soft);
+  border: 1px solid var(--toolkit-soft-strong);
+}
+.family-toolkit-page .board-icon{
+  background: var(--toolkit-brand);
+  color: #fff;
+  border: 0;
+}
+.family-toolkit-page .board-main-rule strong,
+.family-toolkit-page .board-mini-step strong{
+  display: block;
+  color: var(--toolkit-text);
+}
+.family-toolkit-page .board-main-rule span,
+.family-toolkit-page .board-mini-step span{
+  color: var(--toolkit-muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+.family-toolkit-page .board-mini-grid{
+  display: grid;
+  gap: 10px;
+}
+.family-toolkit-page .board-mini-step{
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--toolkit-border);
+  background: #fff;
+}
+.family-toolkit-page .board-number{
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: var(--toolkit-soft);
+  color: var(--toolkit-brand);
+  font-weight: 950;
+}
+.family-toolkit-page .section-intro{
+  max-width: 840px;
+}
+.family-toolkit-page .section-intro p{
+  color: var(--toolkit-muted);
+}
+.family-toolkit-page .path-grid,
+.family-toolkit-page .guide-grid{
+  display: grid;
+  gap: 18px;
+}
+.family-toolkit-page .path-grid{
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.family-toolkit-page .guide-grid{
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.family-toolkit-page .path-card,
+.family-toolkit-page .guide-card{
+  position: relative;
+  overflow: hidden;
+  min-height: 100%;
+}
+.family-toolkit-page .path-card::before,
+.family-toolkit-page .guide-card::before{
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--toolkit-brand), rgba(249,115,22,0.18));
+}
+.family-toolkit-page .guide-media{
+  margin: -24px -24px 18px;
+  min-height: 150px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at center, rgba(249,115,22,0.20), transparent 36%),
+    linear-gradient(135deg, rgba(248,250,252,0.96), rgba(255,255,255,0.96));
+}
+.family-toolkit-page .guide-symbol{
+  width: 80px;
+  height: 80px;
+  font-size: 39px;
+  background: #fff;
+  box-shadow: 0 18px 38px rgba(15,23,42,0.10);
+}
+.family-toolkit-page .guide-card h3,
+.family-toolkit-page .path-card h3{
+  margin-top: 0;
+  font-size: 20px;
+  line-height: 1.25;
+}
+.family-toolkit-page .guide-card p,
+.family-toolkit-page .path-card p{
+  color: var(--toolkit-muted);
+}
+.family-toolkit-page .guide-lesson{
+  padding: 13px 14px;
+  border: 1px solid var(--toolkit-border);
+  background: rgba(248,250,252,0.84);
+  border-radius: 16px;
+  margin: 14px 0;
+}
+.family-toolkit-page .guide-lesson strong{
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  color: var(--toolkit-text);
+}
+.family-toolkit-page .guide-lesson span{
+  color: var(--toolkit-muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.family-toolkit-page .filter-panel{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0 20px;
+}
+.family-toolkit-page .filter-btn{
+  border: 1px solid var(--toolkit-border);
+  background: #fff;
+  color: var(--toolkit-text);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.family-toolkit-page .filter-btn.is-active{
+  background: var(--toolkit-brand);
+  border-color: var(--toolkit-brand);
+  color: #fff;
+}
+.family-toolkit-page .download-note{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  color: var(--toolkit-muted);
+}
+
+.family-toolkit-page .zdtl-svg-icon svg{
+  width: 32px;
+  height: 32px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.family-toolkit-page .guide-symbol.zdtl-svg-icon svg{
+  width: 39px;
+  height: 39px;
+}
+@media (max-width: 1040px){
+  .family-toolkit-page .toolkit-hero-grid,
+  .family-toolkit-page .path-grid,
+  .family-toolkit-page .guide-grid{
+    grid-template-columns: 1fr;
+  }
+  .family-toolkit-page .toolkit-hero-panel{
+    padding: 20px;
+  }
+  .family-toolkit-page .toolkit-actions .btn,
+  .family-toolkit-page .guide-actions .btn,
+  .family-toolkit-page .center-actions .btn{
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="container header-inner">
+<a class="brand" href="../">
+<img alt="ZeroDay Tech Labs logo" src="../assets/images/logo.png"/>
+<div class="title">
+<strong>ZERODAY TECH LABS</strong>
+<span data-i18n="brand.tagline">Cybersecurity education • Case Studies • Tools</span>
+</div>
+</a>
+<nav aria-label="Primary" class="nav nav-static">
+<a data-i18n="nav.home" href="../">Home</a>
+<a data-i18n="nav.startHere" href="../start-here/">Start Here</a>
+<a data-i18n="nav.labs" href="../labs/">Case Studies</a>
+<a data-i18n="nav.survey" href="../survey/">Survey</a>
+<a data-i18n="nav.toolkit" href="../toolkit/">Toolkit</a>
+<a data-i18n="nav.blog" href="../blog/">Blog</a>
+<a data-i18n="nav.resources" href="../resources/">Resources</a>
+<a data-i18n="nav.about" href="../about/">About</a>
+<a data-i18n="nav.contact" href="../contact/">Contact</a>
+</nav>
+<div class="header-controls">
+<div aria-label="Language" class="lang-toggle">
+<button aria-label="English" data-lang-btn="en" type="button">EN</button>
+<button aria-label="Español" data-lang-btn="es" type="button">ES</button>
+</div>
+</div>
+</div>
+</header>
+
+<main class="section family-toolkit-page" id="main">
+<div class="container">
+
+<section class="toolkit-hero-panel" aria-labelledby="toolkit-title">
+<div class="toolkit-hero-grid">
+<div>
+<div class="kicker" data-lang="en">Toolkit • Separate English and Spanish PDFs</div>
+<div class="kicker" data-lang="es">Toolkit • PDFs separados en inglés y español</div>
+<h1 class="toolkit-title" id="toolkit-title" data-lang="en">Practical guides families can actually use.</h1>
+<h1 class="toolkit-title" id="toolkit-title-es" data-lang="es">Guías prácticas que las familias sí pueden usar.</h1>
+<p class="toolkit-lead" data-lang="en">Each guide now has a complete English PDF and a complete Spanish PDF. No mixed language pages, no confusing split sections, just clear help for the household.</p>
+<p class="toolkit-lead" data-lang="es">Cada guía ahora tiene un PDF completo en inglés y un PDF completo en español. Sin páginas mezcladas, sin secciones confusas, solo ayuda clara para el hogar.</p>
+<div class="toolkit-actions">
+<a class="btn primary" href="#household-guides"><span data-lang="en">Open household guides</span><span data-lang="es">Ver guías del hogar</span></a>
+<a class="btn" href="#privacy-guides"><span data-lang="en">Open privacy guides</span><span data-lang="es">Ver guías de privacidad</span></a>
+<a class="btn" href="../start-here/"><span data-lang="en">New? Start Here first</span><span data-lang="es">¿Nuevo? Comienza aquí</span></a>
+<a class="btn" href="../start-here/#attack-types"><span data-lang="en">Review attack types</span><span data-lang="es">Revisar tipos de ataques</span></a>
+</div>
+</div>
+<div class="safety-board" aria-label="Toolkit learning board">
+<div class="safety-board-top"><span class="board-dot"></span><span class="board-dot"></span><span class="board-dot"></span></div>
+<div class="safety-board-body">
+<div class="board-main-rule">
+<div class="board-icon zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 7V5h6v2"/><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 12h18"/><path d="M10 12v2h4v-2"/></svg></div>
+<div>
+<strong data-lang="en">Pick the guide that matches the moment</strong>
+<strong data-lang="es">Escoge la guía que corresponde al momento</strong>
+<span data-lang="en">Scam message, phone problem, family rule, privacy concern, or recovery step.</span>
+<span data-lang="es">Mensaje de estafa, problema de teléfono, regla familiar, privacidad o recuperación.</span>
+</div>
+</div>
+<div class="board-mini-grid">
+<div class="board-mini-step"><div class="board-number">1</div><div><strong data-lang="en">Choose</strong><strong data-lang="es">Escoge</strong><span data-lang="en">Use the filter or the section headings.</span><span data-lang="es">Usa el filtro o los títulos de sección.</span></div></div>
+<div class="board-mini-step"><div class="board-number">2</div><div><strong data-lang="en">Open</strong><strong data-lang="es">Abre</strong><span data-lang="en">Select English PDF or Spanish PDF.</span><span data-lang="es">Selecciona PDF en inglés o PDF en español.</span></div></div>
+<div class="board-mini-step"><div class="board-number">3</div><div><strong data-lang="en">Use</strong><strong data-lang="es">Usa</strong><span data-lang="en">Print it, share it, or follow it during a family conversation.</span><span data-lang="es">Imprímelo, compártelo o úsalo durante una conversación familiar.</span></div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" aria-labelledby="path-title">
+<div class="section-header"><div class="section-intro">
+<h2 id="path-title" data-lang="en">Choose by situation</h2>
+<h2 id="path-title-es" data-lang="es">Escoge por situación</h2>
+<p data-lang="en">These cards help visitors find the right guide without reading the whole page first.</p>
+<p data-lang="es">Estas tarjetas ayudan al visitante a encontrar la guía correcta sin leer toda la página primero.</p>
+</div></div>
+<div class="path-grid">
+<article class="card path-card"><div class="big-icon zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 12V6.5a1.5 1.5 0 0 1 3 0V12"/><path d="M11 11V5.5a1.5 1.5 0 0 1 3 0V12"/><path d="M14 11V7a1.5 1.5 0 0 1 3 0v7"/><path d="M8 12l-1.5-1.5A1.7 1.7 0 0 0 4 12.8l4.2 5.4A6 6 0 0 0 13 20h1a5 5 0 0 0 5-5v-2"/></svg></div><h3 data-lang="en">Suspicious message</h3><h3 data-lang="es">Mensaje sospechoso</h3><p data-lang="en">Use Stop Verify Report before clicking or replying.</p><p data-lang="es">Usa Detener verificar reportar antes de hacer clic o responder.</p></article>
+<article class="card path-card"><div class="big-icon zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="7" y="2.8" width="10" height="18.4" rx="2"/><path d="M10 18h4"/><path d="M11 5h2"/></svg></div><h3 data-lang="en">Phone or number risk</h3><h3 data-lang="es">Riesgo del teléfono</h3><p data-lang="en">Use the mobile phone protection guide.</p><p data-lang="es">Usa la guía de protección móvil.</p></article>
+<article class="card path-card"><div class="big-icon zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="7" r="3"/><path d="M5 21a7 7 0 0 1 14 0"/><path d="M16.5 13.5l3.5 3.5"/><path d="M20 17v4"/></svg></div><h3 data-lang="en">Older adult support</h3><h3 data-lang="es">Apoyo a adultos mayores</h3><p data-lang="en">Use the older adults card and fraud guides.</p><p data-lang="es">Usa la tarjeta de adultos mayores y guías de fraude.</p></article>
+<article class="card path-card"><div class="big-icon zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="2.5"/><circle cx="16" cy="8" r="2.5"/><circle cx="12" cy="13" r="2.2"/><path d="M3.5 20a4.5 4.5 0 0 1 9 0"/><path d="M11.5 20a4.5 4.5 0 0 1 9 0"/><path d="M8 20a4 4 0 0 1 8 0"/></svg></div><h3 data-lang="en">Family rules</h3><h3 data-lang="es">Reglas familiares</h3><p data-lang="en">Use the family online safety plan and age cards.</p><p data-lang="es">Usa el plan familiar y las tarjetas por edad.</p></article>
+</div>
+</section>
+
+<section class="section" aria-labelledby="download-title">
+<div class="section-header"><div class="section-intro">
+<h2 id="download-title" data-lang="en">Guide library</h2>
+<h2 id="download-title-es" data-lang="es">Biblioteca de guías</h2>
+<p data-lang="en">Every guide has two complete versions: one in English and one in Spanish.</p>
+<p data-lang="es">Cada guía tiene dos versiones completas: una en inglés y otra en español.</p>
+</div></div>
+<div class="filter-panel" aria-label="Toolkit guide filters">
+<button class="filter-btn is-active" data-filter="all" type="button"><span data-lang="en">All</span><span data-lang="es">Todas</span></button>
+<button class="filter-btn" data-filter="household" type="button"><span data-lang="en">Household safety</span><span data-lang="es">Seguridad del hogar</span></button>
+<button class="filter-btn" data-filter="privacy" type="button"><span data-lang="en">Privacy and fraud</span><span data-lang="es">Privacidad y fraude</span></button>
+<button class="filter-btn" data-filter="age" type="button"><span data-lang="en">Age cards</span><span data-lang="es">Tarjetas por edad</span></button>
+</div>
+</section>
+
+<section class="section" id="household-guides" aria-labelledby="household-title">
+<div class="section-header"><div class="section-intro">
+<h2 id="household-title" data-lang="en">Household Cyber Safety</h2>
+<h2 id="household-title-es" data-lang="es">Seguridad cibernética del hogar</h2>
+<p data-lang="en">Use these for home networks, suspicious messages, recovery, and practical family protection.</p>
+<p data-lang="es">Usa estas guías para redes del hogar, mensajes sospechosos, recuperación y protección familiar práctica.</p>
+</div></div>
+<div class="guide-grid">
+
+<article class="card guide-card" id="quick-start" data-guide-type="household">
+<div class="guide-media"><div class="guide-symbol zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="8" y="2.5" width="8" height="19" rx="3"/><circle cx="12" cy="7" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="17" r="1.5"/></svg></div></div>
+<div class="badges">
+<span class="badge" data-lang="en">Beginner</span>
+<span class="badge" data-lang="es">Principiante</span>
+<span class="badge">PDF</span>
+</div>
+<h3 data-lang="en">Quick Start</h3>
+<h3 data-lang="es">Inicio rápido</h3>
+<p data-lang="en">Start here when a family asks where to begin. It gives the first safety actions without overwhelming the reader.</p>
+<p data-lang="es">Empieza aquí cuando una familia pregunta por dónde comenzar. Presenta las primeras acciones sin abrumar al lector.</p>
+<div class="guide-lesson">
+<strong data-lang="en">Use this when</strong>
+<strong data-lang="es">Úsalo cuando</strong>
+<span data-lang="en">You want a clear action sheet that can be printed, shared, or used during a family conversation.</span>
+<span data-lang="es">Quieres una hoja clara de acción que se pueda imprimir, compartir o usar en una conversación familiar.</span>
+</div>
+<div class="guide-actions">
+<a class="btn primary" href="files/household-cyber-safety/zdtl-household-cyber-safety-quick-start-en.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/household-cyber-safety/zdtl-household-cyber-safety-quick-start-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+<article class="card guide-card" id="baseline-checklist" data-guide-type="household">
+<div class="guide-media"><div class="guide-symbol zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div></div>
+<div class="badges">
+<span class="badge" data-lang="en">Home safety</span>
+<span class="badge" data-lang="es">Seguridad del hogar</span>
+<span class="badge">PDF</span>
+</div>
+<h3 data-lang="en">Home Baseline Checklist</h3>
+<h3 data-lang="es">Lista básica del hogar</h3>
+<p data-lang="en">A practical checklist for router, Wi Fi, account, device, and backup safety.</p>
+<p data-lang="es">Una lista práctica para seguridad del router, Wi Fi, cuentas, dispositivos y respaldos.</p>
+<div class="guide-lesson">
+<strong data-lang="en">Use this when</strong>
+<strong data-lang="es">Úsalo cuando</strong>
+<span data-lang="en">You want a clear action sheet that can be printed, shared, or used during a family conversation.</span>
+<span data-lang="es">Quieres una hoja clara de acción que se pueda imprimir, compartir o usar en una conversación familiar.</span>
+</div>
+<div class="guide-actions">
+<a class="btn primary" href="files/household-cyber-safety/zdtl-household-cyber-safety-baseline-checklist-en.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/household-cyber-safety/zdtl-household-cyber-safety-baseline-checklist-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+<article class="card guide-card" id="thirty-day-plan" data-guide-type="household">
+<div class="guide-media"><div class="guide-symbol zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M4 10h16"/><path d="M8 14h3"/><path d="M13 14h3"/><path d="M8 17h3"/></svg></div></div>
+<div class="badges">
+<span class="badge" data-lang="en">Practice plan</span>
+<span class="badge" data-lang="es">Plan práctico</span>
+<span class="badge">PDF</span>
+</div>
+<h3 data-lang="en">30 Day Home Plan</h3>
+<h3 data-lang="es">Plan de 30 días</h3>
+<p data-lang="en">A calm monthly plan that breaks security work into small sessions.</p>
+<p data-lang="es">Un plan mensual tranquilo que divide el trabajo de seguridad en sesiones pequeñas.</p>
+<div class="guide-lesson">
+<strong data-lang="en">Use this when</strong>
+<strong data-lang="es">Úsalo cuando</strong>
+<span data-lang="en">You want a clear action sheet that can be printed, shared, or used during a family conversation.</span>
+<span data-lang="es">Quieres una hoja clara de acción que se pueda imprimir, compartir o usar en una conversación familiar.</span>
+</div>
+<div class="guide-actions">
+<a class="btn primary" href="files/household-cyber-safety/zdtl-household-cyber-safety-30-day-plan-en.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/household-cyber-safety/zdtl-household-cyber-safety-30-day-plan-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+<article class="card guide-card" id="stop-verify-report" data-guide-type="household">
+<div class="guide-media"><div class="guide-symbol zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 12V6.5a1.5 1.5 0 0 1 3 0V12"/><path d="M11 11V5.5a1.5 1.5 0 0 1 3 0V12"/><path d="M14 11V7a1.5 1.5 0 0 1 3 0v7"/><path d="M8 12l-1.5-1.5A1.7 1.7 0 0 0 4 12.8l4.2 5.4A6 6 0 0 0 13 20h1a5 5 0 0 0 5-5v-2"/></svg></div></div>
+<div class="badges">
+<span class="badge" data-lang="en">Scams</span>
+<span class="badge" data-lang="es">Estafas</span>
+<span class="badge">PDF</span>
+</div>
+<h3 data-lang="en">Stop Verify Report</h3>
+<h3 data-lang="es">Detener verificar reportar</h3>
+<p data-lang="en">A simple playbook for scam texts, suspicious calls, phishing messages, and surprise links.</p>
+<p data-lang="es">Una guía simple para textos de estafa, llamadas sospechosas, phishing y enlaces sorpresa.</p>
+<div class="guide-lesson">
+<strong data-lang="en">Use this when</strong>
+<strong data-lang="es">Úsalo cuando</strong>
+<span data-lang="en">You want a clear action sheet that can be printed, shared, or used during a family conversation.</span>
+<span data-lang="es">Quieres una hoja clara de acción que se pueda imprimir, compartir o usar en una conversación familiar.</span>
+</div>
+<div class="guide-actions">
+<a class="btn primary" href="files/household-cyber-safety/zdtl-household-cyber-safety-stop-verify-report-en.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/household-cyber-safety/zdtl-household-cyber-safety-stop-verify-report-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+<article class="card guide-card" id="incident-response" data-guide-type="household">
+<div class="guide-media"><div class="guide-symbol zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l10 18H2L12 3z"/><path d="M12 9v5"/><path d="M12 18h.01"/></svg></div></div>
+<div class="badges">
+<span class="badge" data-lang="en">Recovery</span>
+<span class="badge" data-lang="es">Recuperación</span>
+<span class="badge">PDF</span>
+</div>
+<h3 data-lang="en">Incident Response and Recovery</h3>
+<h3 data-lang="es">Respuesta y recuperación</h3>
+<p data-lang="en">What to do first after suspected malware, account exposure, or a scam.</p>
+<p data-lang="es">Qué hacer primero después de posible malware, exposición de cuenta o una estafa.</p>
+<div class="guide-lesson">
+<strong data-lang="en">Use this when</strong>
+<strong data-lang="es">Úsalo cuando</strong>
+<span data-lang="en">You want a clear action sheet that can be printed, shared, or used during a family conversation.</span>
+<span data-lang="es">Quieres una hoja clara de acción que se pueda imprimir, compartir o usar en una conversación familiar.</span>
+</div>
+<div class="guide-actions">
+<a class="btn primary" href="files/household-cyber-safety/zdtl-household-cyber-safety-incident-response-recovery-en.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/household-cyber-safety/zdtl-household-cyber-safety-incident-response-recovery-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+<article class="card guide-card" id="full-toolkit" data-guide-type="household">
+<div class="guide-media"><div class="guide-symbol zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 7V5h6v2"/><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 12h18"/><path d="M10 12v2h4v-2"/></svg></div></div>
+<div class="badges">
+<span class="badge" data-lang="en">Full guide</span>
+<span class="badge" data-lang="es">Guía completa</span>
+<span class="badge">PDF</span>
+</div>
+<h3 data-lang="en">Complete Household Toolkit</h3>
+<h3 data-lang="es">Toolkit completo del hogar</h3>
+<p data-lang="en">A complete English or Spanish household guide that combines the main safety steps.</p>
+<p data-lang="es">Una guía completa en inglés o español que reúne los pasos principales de seguridad.</p>
+<div class="guide-lesson">
+<strong data-lang="en">Use this when</strong>
+<strong data-lang="es">Úsalo cuando</strong>
+<span data-lang="en">You want a clear action sheet that can be printed, shared, or used during a family conversation.</span>
+<span data-lang="es">Quieres una hoja clara de acción que se pueda imprimir, compartir o usar en una conversación familiar.</span>
+</div>
+<div class="guide-actions">
+<a class="btn primary" href="files/household-cyber-safety/zdtl-household-cyber-safety-toolkit-full-en.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/household-cyber-safety/zdtl-household-cyber-safety-toolkit-full-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+</div>
+</section>
+
+<section class="section" id="privacy-guides" aria-labelledby="privacy-title">
+<div class="section-header"><div class="section-intro">
+<h2 id="privacy-title" data-lang="en">Digital Privacy and Fraud Prevention</h2>
+<h2 id="privacy-title-es" data-lang="es">Privacidad digital y prevención de fraude</h2>
+<p data-lang="en">Use these for phone number protection, online shopping, privacy, family rules, and safe device handoff.</p>
+<p data-lang="es">Usa estas guías para proteger el número telefónico, compras, privacidad, reglas familiares y entrega segura de dispositivos.</p>
+</div></div>
+<div class="guide-grid">
+
+<article class="card guide-card" id="privacy-quick-start" data-guide-type="privacy">
+<div class="guide-media"><div class="guide-symbol zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14v2"/></svg></div></div>
+<div class="badges">
+<span class="badge" data-lang="en">Privacy</span>
+<span class="badge" data-lang="es">Privacidad</span>
+<span class="badge">PDF</span>
+</div>
+<h3 data-lang="en">Privacy and Fraud Quick Start</h3>
+<h3 data-lang="es">Inicio rápido de privacidad y fraude</h3>
+<p data-lang="en">Quick actions to reduce exposure, scams, and account takeover risk.</p>
+<p data-lang="es">Acciones rápidas para reducir exposición, estafas y riesgo de toma de cuentas.</p>
+<div class="guide-lesson">
+<strong data-lang="en">Use this when</strong>
+<strong data-lang="es">Úsalo cuando</strong>
+<span data-lang="en">You want a clear action sheet that can be printed, shared, or used during a family conversation.</span>
+<span data-lang="es">Quieres una hoja clara de acción que se pueda imprimir, compartir o usar en una conversación familiar.</span>
+</div>
+<div class="guide-actions">
+<a class="btn primary" href="files/digital-privacy-fraud-prevention/zdtl-digital-privacy-fraud-prevention-quick-start-en.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/digital-privacy-fraud-prevention/zdtl-digital-privacy-fraud-prevention-quick-start-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+<article class="card guide-card" id="mobile-phone-protection" data-guide-type="privacy">
+<div class="guide-media"><div class="guide-symbol zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="7" y="2.8" width="10" height="18.4" rx="2"/><path d="M10 18h4"/><path d="M11 5h2"/></svg></div></div>
+<div class="badges">
+<span class="badge" data-lang="en">Mobile</span>
+<span class="badge" data-lang="es">Móvil</span>
+<span class="badge">PDF</span>
+</div>
+<h3 data-lang="en">Mobile and Phone Number Protection</h3>
+<h3 data-lang="es">Protección móvil y del número</h3>
+<p data-lang="en">Protect the phone number that many accounts use for recovery and alerts.</p>
+<p data-lang="es">Protege el número telefónico que muchas cuentas usan para recuperación y alertas.</p>
+<div class="guide-lesson">
+<strong data-lang="en">Use this when</strong>
+<strong data-lang="es">Úsalo cuando</strong>
+<span data-lang="en">You want a clear action sheet that can be printed, shared, or used during a family conversation.</span>
+<span data-lang="es">Quieres una hoja clara de acción que se pueda imprimir, compartir o usar en una conversación familiar.</span>
+</div>
+<div class="guide-actions">
+<a class="btn primary" href="files/digital-privacy-fraud-prevention/zdtl-digital-privacy-mobile-phone-protection-en.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/digital-privacy-fraud-prevention/zdtl-digital-privacy-mobile-phone-protection-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+<article class="card guide-card" id="shopping-payments" data-guide-type="privacy">
+<div class="guide-media"><div class="guide-symbol zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/><path d="M15 15h2"/></svg></div></div>
+<div class="badges">
+<span class="badge" data-lang="en">Money safety</span>
+<span class="badge" data-lang="es">Seguridad de dinero</span>
+<span class="badge">PDF</span>
+</div>
+<h3 data-lang="en">Safer Shopping and Payments</h3>
+<h3 data-lang="es">Compras y pagos más seguros</h3>
+<p data-lang="en">Protect money during shopping, banking, delivery messages, and online payments.</p>
+<p data-lang="es">Protege el dinero durante compras, banca, mensajes de entrega y pagos en línea.</p>
+<div class="guide-lesson">
+<strong data-lang="en">Use this when</strong>
+<strong data-lang="es">Úsalo cuando</strong>
+<span data-lang="en">You want a clear action sheet that can be printed, shared, or used during a family conversation.</span>
+<span data-lang="es">Quieres una hoja clara de acción que se pueda imprimir, compartir o usar en una conversación familiar.</span>
+</div>
+<div class="guide-actions">
+<a class="btn primary" href="files/digital-privacy-fraud-prevention/zdtl-digital-privacy-safer-shopping-payments-en.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/digital-privacy-fraud-prevention/zdtl-digital-privacy-safer-shopping-payments-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+<article class="card guide-card" id="privacy-online-presence" data-guide-type="privacy">
+<div class="guide-media"><div class="guide-symbol zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg></div></div>
+<div class="badges">
+<span class="badge" data-lang="en">Online privacy</span>
+<span class="badge" data-lang="es">Privacidad en línea</span>
+<span class="badge">PDF</span>
+</div>
+<h3 data-lang="en">Privacy and Online Presence</h3>
+<h3 data-lang="es">Privacidad y presencia en línea</h3>
+<p data-lang="en">Share less, control more, and reduce information that scammers can use.</p>
+<p data-lang="es">Comparte menos, controla más y reduce información que los estafadores pueden usar.</p>
+<div class="guide-lesson">
+<strong data-lang="en">Use this when</strong>
+<strong data-lang="es">Úsalo cuando</strong>
+<span data-lang="en">You want a clear action sheet that can be printed, shared, or used during a family conversation.</span>
+<span data-lang="es">Quieres una hoja clara de acción que se pueda imprimir, compartir o usar en una conversación familiar.</span>
+</div>
+<div class="guide-actions">
+<a class="btn primary" href="files/digital-privacy-fraud-prevention/zdtl-digital-privacy-online-presence-en.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/digital-privacy-fraud-prevention/zdtl-digital-privacy-online-presence-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+<article class="card guide-card" id="family-online-safety" data-guide-type="privacy">
+<div class="guide-media"><div class="guide-symbol zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="2.5"/><circle cx="16" cy="8" r="2.5"/><circle cx="12" cy="13" r="2.2"/><path d="M3.5 20a4.5 4.5 0 0 1 9 0"/><path d="M11.5 20a4.5 4.5 0 0 1 9 0"/><path d="M8 20a4 4 0 0 1 8 0"/></svg></div></div>
+<div class="badges">
+<span class="badge" data-lang="en">Family plan</span>
+<span class="badge" data-lang="es">Plan familiar</span>
+<span class="badge">PDF</span>
+</div>
+<h3 data-lang="en">Family Online Safety Plan</h3>
+<h3 data-lang="es">Plan familiar de seguridad en línea</h3>
+<p data-lang="en">Clear rules, calm conversations, and settings that fit the family.</p>
+<p data-lang="es">Reglas claras, conversaciones tranquilas y ajustes que se adaptan a la familia.</p>
+<div class="guide-lesson">
+<strong data-lang="en">Use this when</strong>
+<strong data-lang="es">Úsalo cuando</strong>
+<span data-lang="en">You want a clear action sheet that can be printed, shared, or used during a family conversation.</span>
+<span data-lang="es">Quieres una hoja clara de acción que se pueda imprimir, compartir o usar en una conversación familiar.</span>
+</div>
+<div class="guide-actions">
+<a class="btn primary" href="files/digital-privacy-fraud-prevention/zdtl-digital-privacy-family-online-safety-plan-en.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/digital-privacy-fraud-prevention/zdtl-digital-privacy-family-online-safety-plan-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+<article class="card guide-card" id="device-handoff-disposal" data-guide-type="privacy">
+<div class="guide-media"><div class="guide-symbol zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 7v5h-5"/><path d="M4 17v-5h5"/><path d="M18.5 9A7 7 0 0 0 6 7"/><path d="M5.5 15A7 7 0 0 0 18 17"/></svg></div></div>
+<div class="badges">
+<span class="badge" data-lang="en">Device privacy</span>
+<span class="badge" data-lang="es">Privacidad de equipo</span>
+<span class="badge">PDF</span>
+</div>
+<h3 data-lang="en">Safe Device Handoff and Disposal</h3>
+<h3 data-lang="es">Entrega y disposición segura</h3>
+<p data-lang="en">Prepare a phone, tablet, computer, or drive before selling, donating, recycling, or giving it away.</p>
+<p data-lang="es">Prepara un teléfono, tableta, computadora o unidad antes de vender, donar, reciclar o regalar.</p>
+<div class="guide-lesson">
+<strong data-lang="en">Use this when</strong>
+<strong data-lang="es">Úsalo cuando</strong>
+<span data-lang="en">You want a clear action sheet that can be printed, shared, or used during a family conversation.</span>
+<span data-lang="es">Quieres una hoja clara de acción que se pueda imprimir, compartir o usar en una conversación familiar.</span>
+</div>
+<div class="guide-actions">
+<a class="btn primary" href="files/digital-privacy-fraud-prevention/zdtl-digital-privacy-device-handoff-disposal-en.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/digital-privacy-fraud-prevention/zdtl-digital-privacy-device-handoff-disposal-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+</div>
+</section>
+
+<section class="section" id="age-cards" aria-labelledby="age-title">
+<div class="section-header"><div class="section-intro">
+<h2 id="age-title" data-lang="en">Age cards</h2>
+<h2 id="age-title-es" data-lang="es">Tarjetas por edad</h2>
+<p data-lang="en">Short cards for children, teens, adults, and older adults.</p>
+<p data-lang="es">Tarjetas cortas para niños, adolescentes, adultos y adultos mayores.</p>
+</div></div>
+<div class="guide-grid">
+
+<article class="card guide-card" id="age-cards-guide" data-guide-type="age">
+<div class="guide-media"><div class="guide-symbol zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="2.5"/><circle cx="16" cy="8" r="2.5"/><circle cx="12" cy="13" r="2.2"/><path d="M3.5 20a4.5 4.5 0 0 1 9 0"/><path d="M11.5 20a4.5 4.5 0 0 1 9 0"/><path d="M8 20a4 4 0 0 1 8 0"/></svg></div></div>
+<div class="badges">
+<span class="badge" data-lang="en">All ages</span>
+<span class="badge" data-lang="es">Todas las edades</span>
+<span class="badge">PDF</span>
+</div>
+<h3 data-lang="en">Age Cards All in One</h3>
+<h3 data-lang="es">Tarjetas por edad completas</h3>
+<p data-lang="en">Short safety cards for children, teens, adults, and older adults.</p>
+<p data-lang="es">Tarjetas cortas para niños, adolescentes, adultos y adultos mayores.</p>
+<div class="guide-lesson">
+<strong data-lang="en">Use this when</strong>
+<strong data-lang="es">Úsalo cuando</strong>
+<span data-lang="en">You want a clear action sheet that can be printed, shared, or used during a family conversation.</span>
+<span data-lang="es">Quieres una hoja clara de acción que se pueda imprimir, compartir o usar en una conversación familiar.</span>
+</div>
+<div class="guide-actions">
+<a class="btn primary" href="files/household-cyber-safety/zdtl-household-cyber-safety-age-cards-all-en.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/household-cyber-safety/zdtl-household-cyber-safety-age-cards-all-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+<article class="card guide-card" id="card-kids" data-guide-type="age">
+<div class="guide-media"><div class="guide-symbol zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="7" r="3"/><path d="M6 21a6 6 0 0 1 12 0"/><path d="M9 5l-2-2"/><path d="M15 5l2-2"/></svg></div></div>
+<div class="badges">
+<span class="badge" data-lang="en">Kids</span>
+<span class="badge" data-lang="es">Niños</span>
+<span class="badge">PDF</span>
+</div>
+<h3 data-lang="en">Kids Safety Card</h3>
+<h3 data-lang="es">Tarjeta para niños</h3>
+<p data-lang="en">A short card with simple safety reminders for children.</p>
+<p data-lang="es">Una tarjeta corta con recordatorios simples para niños.</p>
+<div class="guide-lesson">
+<strong data-lang="en">Use this when</strong>
+<strong data-lang="es">Úsalo cuando</strong>
+<span data-lang="en">You want a clear action sheet that can be printed, shared, or used during a family conversation.</span>
+<span data-lang="es">Quieres una hoja clara de acción que se pueda imprimir, compartir o usar en una conversación familiar.</span>
+</div>
+<div class="guide-actions">
+<a class="btn primary" href="files/household-cyber-safety/zdtl-household-cyber-safety-card-kids-en.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/household-cyber-safety/zdtl-household-cyber-safety-card-kids-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+<article class="card guide-card" id="card-teens" data-guide-type="age">
+<div class="guide-media"><div class="guide-symbol zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="9" width="18" height="9" rx="4"/><path d="M8 13v3"/><path d="M6.5 14.5h3"/><path d="M16 14h.01"/><path d="M18.5 15.5h.01"/><path d="M9 9l1-3h4l1 3"/></svg></div></div>
+<div class="badges">
+<span class="badge" data-lang="en">Teens</span>
+<span class="badge" data-lang="es">Adolescentes</span>
+<span class="badge">PDF</span>
+</div>
+<h3 data-lang="en">Teens Safety Card</h3>
+<h3 data-lang="es">Tarjeta para adolescentes</h3>
+<p data-lang="en">A short card for social media, school, gaming, and privacy decisions.</p>
+<p data-lang="es">Una tarjeta corta para redes sociales, escuela, juegos y decisiones de privacidad.</p>
+<div class="guide-lesson">
+<strong data-lang="en">Use this when</strong>
+<strong data-lang="es">Úsalo cuando</strong>
+<span data-lang="en">You want a clear action sheet that can be printed, shared, or used during a family conversation.</span>
+<span data-lang="es">Quieres una hoja clara de acción que se pueda imprimir, compartir o usar en una conversación familiar.</span>
+</div>
+<div class="guide-actions">
+<a class="btn primary" href="files/household-cyber-safety/zdtl-household-cyber-safety-card-teens-en.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/household-cyber-safety/zdtl-household-cyber-safety-card-teens-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+<article class="card guide-card" id="card-adults" data-guide-type="age">
+<div class="guide-media"><div class="guide-symbol zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="7" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/></svg></div></div>
+<div class="badges">
+<span class="badge" data-lang="en">Adults</span>
+<span class="badge" data-lang="es">Adultos</span>
+<span class="badge">PDF</span>
+</div>
+<h3 data-lang="en">Adults Safety Card</h3>
+<h3 data-lang="es">Tarjeta para adultos</h3>
+<p data-lang="en">A short card for email, banking, devices, and backup habits.</p>
+<p data-lang="es">Una tarjeta corta para correo, banca, dispositivos y respaldos.</p>
+<div class="guide-lesson">
+<strong data-lang="en">Use this when</strong>
+<strong data-lang="es">Úsalo cuando</strong>
+<span data-lang="en">You want a clear action sheet that can be printed, shared, or used during a family conversation.</span>
+<span data-lang="es">Quieres una hoja clara de acción que se pueda imprimir, compartir o usar en una conversación familiar.</span>
+</div>
+<div class="guide-actions">
+<a class="btn primary" href="files/household-cyber-safety/zdtl-household-cyber-safety-card-adults-en.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/household-cyber-safety/zdtl-household-cyber-safety-card-adults-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+<article class="card guide-card" id="card-older-adults" data-guide-type="age">
+<div class="guide-media"><div class="guide-symbol zdtl-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="7" r="3"/><path d="M5 21a7 7 0 0 1 14 0"/><path d="M16.5 13.5l3.5 3.5"/><path d="M20 17v4"/></svg></div></div>
+<div class="badges">
+<span class="badge" data-lang="en">Older adults</span>
+<span class="badge" data-lang="es">Adultos mayores</span>
+<span class="badge">PDF</span>
+</div>
+<h3 data-lang="en">Older Adults Safety Card</h3>
+<h3 data-lang="es">Tarjeta para adultos mayores</h3>
+<p data-lang="en">A short card for urgent calls, tech support scams, gift cards, and trusted verification.</p>
+<p data-lang="es">Una tarjeta corta para llamadas urgentes, estafas de soporte, tarjetas de regalo y verificación confiable.</p>
+<div class="guide-lesson">
+<strong data-lang="en">Use this when</strong>
+<strong data-lang="es">Úsalo cuando</strong>
+<span data-lang="en">You want a clear action sheet that can be printed, shared, or used during a family conversation.</span>
+<span data-lang="es">Quieres una hoja clara de acción que se pueda imprimir, compartir o usar en una conversación familiar.</span>
+</div>
+<div class="guide-actions">
+<a class="btn primary" href="files/household-cyber-safety/zdtl-household-cyber-safety-card-older-adults-en.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open English PDF</span>
+<span data-lang="es">Abrir PDF en inglés</span>
+</a>
+<a class="btn" href="files/household-cyber-safety/zdtl-household-cyber-safety-card-older-adults-es.pdf" target="_blank" rel="noopener">
+<span data-lang="en">Open Spanish PDF</span>
+<span data-lang="es">Abrir PDF en español</span>
+</a>
+</div>
+</article>
+</div>
+</section>
+
+<section class="cta-band">
+<div class="cta-inner">
+<div>
+<h3 data-lang="en">Need the basics first?</h3>
+<h3 data-lang="es">¿Necesitas lo básico primero?</h3>
+<p data-lang="en">Start Here explains cybersecurity in small steps before visitors use the Toolkit or Case Studies.</p>
+<p data-lang="es">Comienza aquí explica ciberseguridad en pasos pequeños antes de usar el Toolkit o los estudios de caso.</p>
+</div>
+<div class="cta-actions">
+<a class="btn primary" href="../start-here/"><span data-lang="en">Go to Start Here</span><span data-lang="es">Ir a Comienza aquí</span></a>
+<a class="btn" href="../labs/"><span data-lang="en">View Case Studies</span><span data-lang="es">Ver estudios de caso</span></a>
+</div>
+</div>
+</section>
+</div>
+</main>
+
+<footer class="footer">
+<div class="container"><div class="footer-top">
+<div><h4>ZeroDay Tech Labs</h4><p class="note" data-i18n="footer.blurb">ZeroDay Tech Labs is a bilingual cybersecurity learning site focused on practical outcomes.</p></div>
+<div><h4 data-i18n="footer.solutions">Solutions</h4><a data-i18n="nav.labs" href="../labs/">Case Studies</a><a data-i18n="nav.survey" href="../survey/">Survey</a><a data-i18n="nav.toolkit" href="../toolkit/">Toolkit</a></div>
+<div><h4 data-i18n="footer.learn">Learn</h4><a data-i18n="nav.startHere" href="../start-here/">Start Here</a><a data-i18n="nav.blog" href="../blog/">Blog</a><a data-i18n="nav.resources" href="../resources/">Resources</a></div>
+<div><h4 data-i18n="footer.legal">Legal</h4><a data-i18n="footer.privacy" href="../legal/privacy.html">Privacy Policy</a><a data-i18n="footer.terms" href="../legal/terms.html">Terms of Use</a></div>
+<div><h4 data-lang="en">Company</h4><h4 data-lang="es">Organización</h4><a data-i18n="nav.about" href="../about/">About</a><a data-i18n="nav.contact" href="../contact/">Contact</a></div>
+</div><div class="footer-bottom"><small data-i18n="footer.copy">© ZeroDay Tech Labs</small></div></div>
+</footer>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/chat-config.js"></script>
+<script src="../assets/js/chat-widget.js"></script>
+<script>
+(function(){
+  function showType(type){
+    document.querySelectorAll('[data-guide-type]').forEach(function(card){
+      card.hidden = type !== 'all' && card.getAttribute('data-guide-type') !== type;
+    });
+    document.querySelectorAll('[data-filter]').forEach(function(btn){
+      btn.classList.toggle('is-active', btn.getAttribute('data-filter') === type);
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('[data-filter]').forEach(function(btn){
+      btn.addEventListener('click', function(){ showType(btn.getAttribute('data-filter')); });
+    });
+  });
+})();
+</script>
+</body>
+</html>
