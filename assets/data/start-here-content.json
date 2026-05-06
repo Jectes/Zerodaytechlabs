@@ -1,0 +1,120 @@
+{
+  "name": "Start Here interactive home safety flow",
+  "version": "2026-05-06",
+  "purpose": "Reusable content map for the Start Here page. Use icon names with the inline SVG icon system, not emoji.",
+  "homeRules": [
+    {
+      "id": "password",
+      "icon": "lock",
+      "anchor": "#rule-password-panel",
+      "title": {
+        "en": "Use strong passwords",
+        "es": "Usa contraseñas fuertes"
+      },
+      "summary": {
+        "en": "Long, unique, and not reused.",
+        "es": "Largas, únicas y sin repetir."
+      },
+      "relatedAttacks": [
+        "credential-stuffing",
+        "phishing",
+        "smart-home-wifi"
+      ]
+    },
+    {
+      "id": "two-step",
+      "icon": "check",
+      "anchor": "#rule-mfa-panel",
+      "title": {
+        "en": "Use two step verification",
+        "es": "Usa verificación en dos pasos"
+      },
+      "summary": {
+        "en": "Add a second proof before account access.",
+        "es": "Añade una segunda prueba antes de entrar."
+      },
+      "relatedAttacks": [
+        "smishing-vishing",
+        "pretexting",
+        "phishing"
+      ]
+    },
+    {
+      "id": "updates",
+      "icon": "refresh",
+      "anchor": "#rule-updates-panel",
+      "title": {
+        "en": "Update devices",
+        "es": "Actualiza dispositivos"
+      },
+      "summary": {
+        "en": "Fix known security holes early.",
+        "es": "Arregla fallas conocidas a tiempo."
+      },
+      "relatedAttacks": [
+        "malware-fake-apps",
+        "ransomware-scareware",
+        "smart-home-wifi"
+      ]
+    },
+    {
+      "id": "bait",
+      "icon": "link",
+      "anchor": "#rule-bait-panel",
+      "title": {
+        "en": "Do not take the bait",
+        "es": "No caigas en la carnada"
+      },
+      "summary": {
+        "en": "Pause before links, downloads, QR codes, or surprise offers.",
+        "es": "Pausa antes de enlaces, descargas, códigos QR u ofertas sorpresa."
+      },
+      "relatedAttacks": [
+        "baiting",
+        "qr-code-scams",
+        "delivery-shopping-scams"
+      ]
+    },
+    {
+      "id": "ask",
+      "icon": "message",
+      "anchor": "#rule-ask-panel",
+      "title": {
+        "en": "Ask before acting",
+        "es": "Pregunta antes de actuar"
+      },
+      "summary": {
+        "en": "Get a trusted second opinion before money, codes, photos, or access.",
+        "es": "Busca una segunda opinión antes de dinero, códigos, fotos o acceso."
+      },
+      "relatedAttacks": [
+        "tech-support-scams",
+        "romance-family-emergency",
+        "pretexting"
+      ]
+    }
+  ],
+  "emergency": {
+    "id": "emergency",
+    "icon": "alert",
+    "anchor": "#emergency-help",
+    "title": {
+      "en": "Emergency rule",
+      "es": "Regla de emergencia"
+    },
+    "steps": {
+      "en": [
+        "Stop clicking or replying.",
+        "Capture what happened.",
+        "Disconnect if malware or remote access may be involved.",
+        "Contact a trusted person, bank, school, or provider through a known number."
+      ],
+      "es": [
+        "Deja de hacer clic o responder.",
+        "Guarda evidencia de lo ocurrido.",
+        "Desconecta si puede haber malware o acceso remoto.",
+        "Contacta a una persona de confianza, banco, escuela o proveedor usando un número conocido."
+      ]
+    }
+  }
+}

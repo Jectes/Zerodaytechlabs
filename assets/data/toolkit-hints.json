@@ -1,0 +1,62 @@
+{
+  "name": "Toolkit hint plug ins",
+  "version": "2026-05-06",
+  "purpose": "Use these short hints on Toolkit cards so tools connect back to the Start Here rules and attack section.",
+  "items": [
+    {
+      "toolId": "baseline-checklist",
+      "icon": "shield",
+      "hint": {
+        "en": "Start with rules 1, 2, and 3 before exploring attack examples.",
+        "es": "Empieza con reglas 1, 2 y 3 antes de explorar ejemplos de ataques."
+      },
+      "rules": [
+        "password",
+        "two-step",
+        "updates"
+      ],
+      "attackLink": "../start-here/#attack-types"
+    },
+    {
+      "toolId": "stop-verify-report",
+      "icon": "alert",
+      "hint": {
+        "en": "Use this when a message, call, QR code, or pop up feels wrong.",
+        "es": "Usa esto cuando un mensaje, llamada, código QR o ventana emergente se sienta raro."
+      },
+      "rules": [
+        "bait",
+        "ask",
+        "emergency"
+      ],
+      "attackLink": "../start-here/#attack-types"
+    },
+    {
+      "toolId": "mobile-phone-protection",
+      "icon": "phone",
+      "hint": {
+        "en": "Pair phone updates with two step verification and code privacy.",
+        "es": "Combina actualizaciones del teléfono con verificación en dos pasos y privacidad de códigos."
+      },
+      "rules": [
+        "two-step",
+        "updates",
+        "ask"
+      ],
+      "attackLink": "../start-here/#attack-smishing-panel"
+    },
+    {
+      "toolId": "family-online-safety-plan",
+      "icon": "home",
+      "hint": {
+        "en": "Use the family plan after reviewing romance, family emergency, and tech support scams.",
+        "es": "Usa el plan familiar después de repasar romance, emergencia familiar y soporte falso."
+      },
+      "rules": [
+        "ask",
+        "emergency"
+      ],
+      "attackLink": "../start-here/#attack-types"
+    }
+  ]
+}

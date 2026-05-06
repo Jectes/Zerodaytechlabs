@@ -1,0 +1,219 @@
+{
+  "name": "Home attack types",
+  "version": "2026-05-06",
+  "sourceNotes": [
+    "CrowdStrike social engineering attack types were adapted into home friendly examples.",
+    "CISA and FTC guidance were used for safe action language."
+  ],
+  "items": [
+    {
+      "id": "phishing",
+      "icon": "message",
+      "title": {
+        "en": "Phishing",
+        "es": "Phishing"
+      },
+      "definition": {
+        "en": "A fake message or page trying to steal information, money, or account access.",
+        "es": "Un mensaje o página falsa que intenta robar información, dinero o acceso a cuentas."
+      },
+      "homeSigns": {
+        "en": [
+          "Bank or streaming alerts with links",
+          "School or delivery messages that create urgency",
+          "Fake sign in pages"
+        ],
+        "es": [
+          "Alertas de banco o streaming con enlaces",
+          "Mensajes escolares o de entrega con urgencia",
+          "Páginas falsas de acceso"
+        ]
+      },
+      "safeAction": {
+        "en": "Open the real app or type the known website yourself.",
+        "es": "Abre la app real o escribe el sitio conocido tú mismo."
+      },
+      "rules": [
+        "password",
+        "bait",
+        "ask"
+      ]
+    },
+    {
+      "id": "smishing-vishing",
+      "icon": "phone",
+      "title": {
+        "en": "Smishing and vishing",
+        "es": "Smishing y vishing"
+      },
+      "definition": {
+        "en": "Text messages or phone calls that push you to click, pay, or share codes.",
+        "es": "Textos o llamadas que presionan para hacer clic, pagar o compartir códigos."
+      },
+      "rules": [
+        "two-step",
+        "ask"
+      ]
+    },
+    {
+      "id": "baiting",
+      "icon": "link",
+      "title": {
+        "en": "Baiting",
+        "es": "Baiting"
+      },
+      "definition": {
+        "en": "A tempting offer or object used to make someone reveal information or install malware.",
+        "es": "Una oferta u objeto tentador usado para que alguien revele información o instale malware."
+      },
+      "rules": [
+        "bait",
+        "updates"
+      ]
+    },
+    {
+      "id": "pretexting",
+      "icon": "clipboard",
+      "title": {
+        "en": "Pretexting",
+        "es": "Pretexting"
+      },
+      "definition": {
+        "en": "A believable invented story used to gain trust and collect information.",
+        "es": "Una historia inventada y creíble usada para ganar confianza y obtener información."
+      },
+      "rules": [
+        "two-step",
+        "ask"
+      ]
+    },
+    {
+      "id": "tech-support-scams",
+      "icon": "tools",
+      "title": {
+        "en": "Tech support scams",
+        "es": "Estafas de soporte técnico"
+      },
+      "definition": {
+        "en": "Fake support warnings or calls that ask for payment or remote access.",
+        "es": "Alertas o llamadas falsas de soporte que piden pago o acceso remoto."
+      },
+      "rules": [
+        "ask",
+        "emergency"
+      ]
+    },
+    {
+      "id": "qr-code-scams",
+      "icon": "qr",
+      "title": {
+        "en": "QR code scams",
+        "es": "Estafas con códigos QR"
+      },
+      "definition": {
+        "en": "A QR code that sends someone to a fake payment, sign in, or download page.",
+        "es": "Un código QR que lleva a una página falsa de pago, acceso o descarga."
+      },
+      "rules": [
+        "bait",
+        "ask"
+      ]
+    },
+    {
+      "id": "credential-stuffing",
+      "icon": "key",
+      "title": {
+        "en": "Credential stuffing",
+        "es": "Ataques por contraseñas repetidas"
+      },
+      "definition": {
+        "en": "Leaked passwords from one site tried on other accounts.",
+        "es": "Contraseñas filtradas de un sitio probadas en otras cuentas."
+      },
+      "rules": [
+        "password",
+        "two-step"
+      ]
+    },
+    {
+      "id": "malware-fake-apps",
+      "icon": "bug",
+      "title": {
+        "en": "Malware and fake apps",
+        "es": "Malware y apps falsas"
+      },
+      "definition": {
+        "en": "Bad software hiding as something useful.",
+        "es": "Software malo disfrazado de algo útil."
+      },
+      "rules": [
+        "updates",
+        "bait"
+      ]
+    },
+    {
+      "id": "ransomware-scareware",
+      "icon": "lock",
+      "title": {
+        "en": "Ransomware and scareware",
+        "es": "Ransomware y scareware"
+      },
+      "definition": {
+        "en": "Locked files or fake fear screens used to demand action or payment.",
+        "es": "Archivos bloqueados o pantallas falsas de miedo usadas para exigir acción o pago."
+      },
+      "rules": [
+        "updates",
+        "emergency"
+      ]
+    },
+    {
+      "id": "romance-family-emergency",
+      "icon": "people",
+      "title": {
+        "en": "Romance and family emergency scams",
+        "es": "Estafas de romance y emergencia familiar"
+      },
+      "definition": {
+        "en": "Trust, love, or fear used to make someone send money or personal information.",
+        "es": "Confianza, amor o miedo usados para que alguien envíe dinero o información personal."
+      },
+      "rules": [
+        "ask",
+        "emergency"
+      ]
+    },
+    {
+      "id": "delivery-shopping-scams",
+      "icon": "package",
+      "title": {
+        "en": "Delivery and shopping scams",
+        "es": "Estafas de entrega y compras"
+      },
+      "definition": {
+        "en": "Fake packages, sellers, invoices, or payment requests.",
+        "es": "Paquetes, vendedores, facturas o pedidos de pago falsos."
+      },
+      "rules": [
+        "bait",
+        "ask"
+      ]
+    },
+    {
+      "id": "smart-home-wifi",
+      "icon": "wifi",
+      "title": {
+        "en": "Smart home and Wi Fi attacks",
+        "es": "Ataques a casa inteligente y Wi Fi"
+      },
+      "definition": {
+        "en": "Routers, cameras, TVs, and smart devices becoming weak spots.",
+        "es": "Routers, cámaras, televisores y dispositivos inteligentes convertidos en puntos débiles."
+      },
+      "rules": [
+        "password",
+        "updates"
+      ]
+    }
+  ]
+}

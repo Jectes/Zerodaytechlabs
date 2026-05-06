@@ -1,0 +1,61 @@
+{
+  "name": "Case study plug in map",
+  "version": "2026-05-06",
+  "purpose": "Use this to add Start Here rule chips and attack chips to Case Studies cards.",
+  "items": [
+    {
+      "caseId": "credential-exposure",
+      "title": {
+        "en": "Credential exposure",
+        "es": "Exposición de credenciales"
+      },
+      "suggestedRules": [
+        "password",
+        "two-step",
+        "ask"
+      ],
+      "suggestedAttacks": [
+        "phishing",
+        "credential-stuffing",
+        "pretexting"
+      ],
+      "startHereLink": "../start-here/#attack-types"
+    },
+    {
+      "caseId": "malicious-app-remote-access",
+      "title": {
+        "en": "Malicious app and remote access",
+        "es": "App maliciosa y acceso remoto"
+      },
+      "suggestedRules": [
+        "updates",
+        "bait",
+        "emergency"
+      ],
+      "suggestedAttacks": [
+        "malware-fake-apps",
+        "tech-support-scams",
+        "ransomware-scareware"
+      ],
+      "startHereLink": "../start-here/#attack-types"
+    },
+    {
+      "caseId": "location-disclosure",
+      "title": {
+        "en": "Location disclosure",
+        "es": "Divulgación de ubicación"
+      },
+      "suggestedRules": [
+        "ask",
+        "bait",
+        "updates"
+      ],
+      "suggestedAttacks": [
+        "phishing",
+        "qr-code-scams",
+        "pretexting"
+      ],
+      "startHereLink": "../start-here/#attack-types"
+    }
+  ]
+}
