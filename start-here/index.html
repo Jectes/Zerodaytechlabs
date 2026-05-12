@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -814,7 +813,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 76px;
+  min-width: 118px;
   padding: 3px 8px;
   border-radius: 999px;
   border: 1px solid rgba(249,115,22,0.30);
@@ -825,13 +824,19 @@
   line-height: 1.2;
 }
 
-.start-page .rule-label.direct{
+.start-page .rule-label.prevent{
   background: var(--start-brand);
   border-color: var(--start-brand);
   color: #fff;
 }
 
-.start-page .rule-label.recovery{
+.start-page .rule-label.limit{
+  background: #fff;
+  border-color: rgba(249,115,22,0.30);
+  color: var(--start-brand-dark);
+}
+
+.start-page .rule-label.response{
   background: rgba(15,23,42,0.08);
   border-color: rgba(15,23,42,0.14);
   color: var(--start-text);
@@ -1213,8 +1218,10 @@
 <div class="mapping-note">
 <strong data-lang="en">How to read the rule labels</strong>
 <strong data-lang="es">Cómo leer las etiquetas de reglas</strong>
-<p data-lang="en"><strong>Direct</strong> means the rule interrupts the attack while it is happening. <strong>Support</strong> means the rule lowers the damage if something gets through. <strong>Recovery</strong> means the rule helps after something already looks wrong.</p>
-<p data-lang="es"><strong>Directa</strong> significa que la regla interrumpe el ataque mientras ocurre. <strong>Apoyo</strong> significa que la regla baja el daño si algo se cuela. <strong>Recuperación</strong> significa que la regla ayuda después de que algo ya se ve mal.</p>
+<p data-lang="en"><strong>Helps Prevent</strong> means the rule can stop the attack from succeeding in the first place. <strong>Limits Damage</strong> means the rule reduces the harm if one layer fails. <strong>After a Mistake</strong> means the rule helps once something already looks wrong, such as money sent, a password shared, or remote access given.</p>
+<p data-lang="es"><strong>Ayuda a prevenir</strong> significa que la regla puede evitar que el ataque tenga éxito desde el inicio. <strong>Limita el daño</strong> significa que la regla reduce el impacto si una capa falla. <strong>Después de un error</strong> significa que la regla ayuda cuando algo ya se ve mal, como dinero enviado, una contraseña compartida o acceso remoto entregado.</p>
+<p data-lang="en"><strong>Important:</strong> not every attack needs all three labels. The goal is to show what actually works best for that specific attack.</p>
+<p data-lang="es"><strong>Importante:</strong> no todos los ataques necesitan las tres etiquetas. La meta es mostrar qué funciona mejor para ese ataque específico.</p>
 </div>
 <div class="interactive-shell" data-zdtl-tabs="attacks">
 <div class="tab-grid attack-tab-grid" role="tablist" aria-label="Common home attack types">
@@ -1375,10 +1382,10 @@
 <div>
 <div class="attack-watch"><strong data-lang="en">Safe action</strong><strong data-lang="es">Acción segura</strong><p data-lang="en">Do not use the link. Open the real app or type the website yourself. Ask before entering a password.</p><p data-lang="es">No uses el enlace. Abre la app real o escribe el sitio tú mismo. Pregunta antes de escribir una contraseña.</p></div>
 <div class="rule-match">
-<strong data-lang="en">Rules that fit this attack</strong>
-<strong data-lang="es">Reglas que encajan con este ataque</strong>
-<ul class="check-list" data-lang="en"><li><span class="rule-label direct">Direct</span><span>Rule 4: do not take the bait; it stops the fake link or fake login page from getting the first click.</span></li><li><span class="rule-label direct">Direct</span><span>Rule 5: ask before acting; a second person can spot pressure or a strange request.</span></li><li><span class="rule-label support">Support</span><span>Rule 1 and Rule 2 reduce damage if a password is stolen.</span></li></ul>
-<ul class="check-list" data-lang="es"><li><span class="rule-label direct">Directa</span><span>Regla 4: no caer en la carnada; evita el primer clic en el enlace o acceso falso.</span></li><li><span class="rule-label direct">Directa</span><span>Regla 5: preguntar antes de actuar; otra persona puede notar presión o una solicitud rara.</span></li><li><span class="rule-label support">Apoyo</span><span>Regla 1 y Regla 2 reducen el daño si roban una contraseña.</span></li></ul>
+<strong data-lang="en">Defense layers that fit this attack</strong>
+<strong data-lang="es">Capas de defensa que encajan con este ataque</strong>
+<ul class="check-list" data-lang="en"><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 4: do not take the bait; it stops the fake link or fake login page from getting the first click.</span></li><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 5: ask before acting; a second person can spot pressure or a strange request.</span></li><li><span class="rule-label limit">Limits Damage</span><span>Rule 1 and Rule 2 reduce damage if a password is stolen.</span></li></ul>
+<ul class="check-list" data-lang="es"><li><span class="rule-label prevent">Previene</span><span>Regla 4: no caer en la carnada; evita el primer clic en el enlace o acceso falso.</span></li><li><span class="rule-label prevent">Previene</span><span>Regla 5: preguntar antes de actuar; otra persona puede notar presión o una solicitud rara.</span></li><li><span class="rule-label limit">Limita daño</span><span>Regla 1 y Regla 2 reducen el daño si roban una contraseña.</span></li></ul>
 </div>
 <div class="link-chips"><button class="chip-button" type="button" data-open-tab="rule-bait-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 4</span><span data-lang="es">Abrir regla 4</span></button><button class="chip-button" type="button" data-open-tab="rule-ask-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 5</span><span data-lang="es">Abrir regla 5</span></button><button class="chip-button" type="button" data-open-tab="rule-password-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 1</span><span data-lang="es">Abrir regla 1</span></button><button class="chip-button" type="button" data-open-tab="rule-mfa-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 2</span><span data-lang="es">Abrir regla 2</span></button></div>
 </div>
@@ -1398,10 +1405,10 @@
 <div>
 <div class="attack-watch"><strong data-lang="en">Safe action</strong><strong data-lang="es">Acción segura</strong><p data-lang="en">Hang up or ignore the text. Contact the company through a number or app you already trust. Never read a sign in code to a caller.</p><p data-lang="es">Cuelga o ignora el texto. Contacta a la compañía usando un número o app que ya conoces. Nunca leas un código de acceso a quien llama.</p></div>
 <div class="rule-match">
-<strong data-lang="en">Rules that fit this attack</strong>
-<strong data-lang="es">Reglas que encajan con este ataque</strong>
-<ul class="check-list" data-lang="en"><li><span class="rule-label direct">Direct</span><span>Rule 5: ask before acting; phone scams lose power when you verify through a trusted contact.</span></li><li><span class="rule-label direct">Direct</span><span>Rule 2: keep sign in codes private; MFA fails if the code is handed over.</span></li><li><span class="rule-label support">Support</span><span>Rule 4 helps with smishing links. Updates may improve spam and warning features, but they do not replace verification.</span></li></ul>
-<ul class="check-list" data-lang="es"><li><span class="rule-label direct">Directa</span><span>Regla 5: preguntar antes de actuar; las estafas por llamada pierden fuerza cuando verificas por un contacto confiable.</span></li><li><span class="rule-label direct">Directa</span><span>Regla 2: mantener privados los códigos de acceso; MFA falla si entregas el código.</span></li><li><span class="rule-label support">Apoyo</span><span>Regla 4 ayuda con enlaces por texto. Las actualizaciones pueden mejorar filtros y alertas, pero no reemplazan la verificación.</span></li></ul>
+<strong data-lang="en">Defense layers that fit this attack</strong>
+<strong data-lang="es">Capas de defensa que encajan con este ataque</strong>
+<ul class="check-list" data-lang="en"><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 5: ask before acting; phone scams lose power when you verify through a trusted contact.</span></li><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 2: keep sign in codes private; MFA fails if the code is handed over.</span></li><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 4 helps with smishing links because many text scams still depend on a fake link getting clicked.</span></li><li><span class="rule-label limit">Limits Damage</span><span>Rule 3 may improve spam filters, caller warnings, browser protections, and app security, but it does not replace verification.</span></li></ul>
+<ul class="check-list" data-lang="es"><li><span class="rule-label prevent">Previene</span><span>Regla 5: preguntar antes de actuar; las estafas por llamada pierden fuerza cuando verificas por un contacto confiable.</span></li><li><span class="rule-label prevent">Previene</span><span>Regla 2: mantener privados los códigos de acceso; MFA falla si entregas el código.</span></li><li><span class="rule-label prevent">Previene</span><span>Regla 4 ayuda con enlaces por texto porque muchas estafas por mensaje todavía dependen de que alguien haga clic.</span></li><li><span class="rule-label limit">Limita daño</span><span>Regla 3 puede mejorar filtros de spam, avisos de llamadas, protección del navegador y seguridad de apps, pero no reemplaza la verificación.</span></li></ul>
 </div>
 <div class="link-chips"><button class="chip-button" type="button" data-open-tab="rule-ask-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 5</span><span data-lang="es">Abrir regla 5</span></button><button class="chip-button" type="button" data-open-tab="rule-mfa-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 2</span><span data-lang="es">Abrir regla 2</span></button><button class="chip-button" type="button" data-open-tab="rule-bait-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 4</span><span data-lang="es">Abrir regla 4</span></button></div>
 </div>
@@ -1421,10 +1428,10 @@
 <div>
 <div class="attack-watch"><strong data-lang="en">Safe action</strong><strong data-lang="es">Acción segura</strong><p data-lang="en">Do not download from unknown links. Do not plug in unknown USB drives. Use official stores and trusted sites.</p><p data-lang="es">No descargues desde enlaces desconocidos. No conectes USB desconocidas. Usa tiendas oficiales y sitios confiables.</p></div>
 <div class="rule-match">
-<strong data-lang="en">Rules that fit this attack</strong>
-<strong data-lang="es">Reglas que encajan con este ataque</strong>
-<ul class="check-list" data-lang="en"><li><span class="rule-label direct">Direct</span><span>Rule 4: the whole attack depends on taking the bait.</span></li><li><span class="rule-label support">Support</span><span>Rule 3 reduces risk if the bait tries to install malware or abuse an old security hole.</span></li><li><span class="rule-label support">Support</span><span>Rule 5 helps when the offer feels too good, too urgent, or too strange.</span></li></ul>
-<ul class="check-list" data-lang="es"><li><span class="rule-label direct">Directa</span><span>Regla 4: todo el ataque depende de que tomes la carnada.</span></li><li><span class="rule-label support">Apoyo</span><span>Regla 3 reduce el riesgo si la carnada intenta instalar malware o abusar de una falla vieja.</span></li><li><span class="rule-label support">Apoyo</span><span>Regla 5 ayuda cuando la oferta se ve demasiado buena, urgente o rara.</span></li></ul>
+<strong data-lang="en">Defense layers that fit this attack</strong>
+<strong data-lang="es">Capas de defensa que encajan con este ataque</strong>
+<ul class="check-list" data-lang="en"><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 4: the whole attack depends on taking the bait.</span></li><li><span class="rule-label limit">Limits Damage</span><span>Rule 3 reduces risk if the bait tries to install malware or abuse an old security hole.</span></li><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 5 helps when the offer feels too good, too urgent, or too strange.</span></li></ul>
+<ul class="check-list" data-lang="es"><li><span class="rule-label prevent">Previene</span><span>Regla 4: todo el ataque depende de que tomes la carnada.</span></li><li><span class="rule-label limit">Limita daño</span><span>Regla 3 reduce el riesgo si la carnada intenta instalar malware o abusar de una falla vieja.</span></li><li><span class="rule-label prevent">Previene</span><span>Regla 5 ayuda cuando la oferta se ve demasiado buena, urgente o rara.</span></li></ul>
 </div>
 <div class="link-chips"><button class="chip-button" type="button" data-open-tab="rule-bait-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 4</span><span data-lang="es">Abrir regla 4</span></button><button class="chip-button" type="button" data-open-tab="rule-updates-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 3</span><span data-lang="es">Abrir regla 3</span></button><button class="chip-button" type="button" data-open-tab="rule-ask-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 5</span><span data-lang="es">Abrir regla 5</span></button></div>
 </div>
@@ -1444,10 +1451,10 @@
 <div>
 <div class="attack-watch"><strong data-lang="en">Safe action</strong><strong data-lang="es">Acción segura</strong><p data-lang="en">Verify the person through a separate known contact. Real help can wait while you check.</p><p data-lang="es">Verifica a la persona por un contacto conocido y separado. La ayuda real puede esperar mientras revisas.</p></div>
 <div class="rule-match">
-<strong data-lang="en">Rules that fit this attack</strong>
-<strong data-lang="es">Reglas que encajan con este ataque</strong>
-<ul class="check-list" data-lang="en"><li><span class="rule-label direct">Direct</span><span>Rule 5: verify the story before sending money, codes, documents, or account details.</span></li><li><span class="rule-label direct">Direct</span><span>Rule 2: never share sign in codes just because the story sounds official.</span></li><li><span class="rule-label support">Support</span><span>Rule 1 limits damage if the story is used to reset or steal an account password.</span></li></ul>
-<ul class="check-list" data-lang="es"><li><span class="rule-label direct">Directa</span><span>Regla 5: verifica la historia antes de enviar dinero, códigos, documentos o datos de cuenta.</span></li><li><span class="rule-label direct">Directa</span><span>Regla 2: nunca compartas códigos de acceso solo porque la historia suena oficial.</span></li><li><span class="rule-label support">Apoyo</span><span>Regla 1 limita el daño si la historia se usa para reiniciar o robar una contraseña.</span></li></ul>
+<strong data-lang="en">Defense layers that fit this attack</strong>
+<strong data-lang="es">Capas de defensa que encajan con este ataque</strong>
+<ul class="check-list" data-lang="en"><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 5: verify the story before sending money, codes, documents, or account details.</span></li><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 2: never share sign in codes just because the story sounds official.</span></li><li><span class="rule-label limit">Limits Damage</span><span>Rule 1 limits damage if the story is used to reset or steal an account password.</span></li></ul>
+<ul class="check-list" data-lang="es"><li><span class="rule-label prevent">Previene</span><span>Regla 5: verifica la historia antes de enviar dinero, códigos, documentos o datos de cuenta.</span></li><li><span class="rule-label prevent">Previene</span><span>Regla 2: nunca compartas códigos de acceso solo porque la historia suena oficial.</span></li><li><span class="rule-label limit">Limita daño</span><span>Regla 1 limita el daño si la historia se usa para reiniciar o robar una contraseña.</span></li></ul>
 </div>
 <div class="link-chips"><button class="chip-button" type="button" data-open-tab="rule-ask-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 5</span><span data-lang="es">Abrir regla 5</span></button><button class="chip-button" type="button" data-open-tab="rule-mfa-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 2</span><span data-lang="es">Abrir regla 2</span></button><button class="chip-button" type="button" data-open-tab="rule-password-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 1</span><span data-lang="es">Abrir regla 1</span></button></div>
 </div>
@@ -1467,10 +1474,10 @@
 <div>
 <div class="attack-watch"><strong data-lang="en">Safe action</strong><strong data-lang="es">Acción segura</strong><p data-lang="en">Close the page. Do not call the number. Do not give remote access. Ask a trusted helper.</p><p data-lang="es">Cierra la página. No llames al número. No des acceso remoto. Pregunta a una persona de confianza.</p></div>
 <div class="rule-match">
-<strong data-lang="en">Rules that fit this attack</strong>
-<strong data-lang="es">Reglas que encajan con este ataque</strong>
-<ul class="check-list" data-lang="en"><li><span class="rule-label direct">Direct</span><span>Rule 5: ask before giving remote access, payment, gift cards, or codes.</span></li><li><span class="rule-label recovery">Recovery</span><span>Emergency rule: stop clicking, document what happened, and use a known phone number for help.</span></li><li><span class="rule-label support">Support</span><span>Rule 3 helps when the scam also involves malware, fake apps, or a browser weakness.</span></li></ul>
-<ul class="check-list" data-lang="es"><li><span class="rule-label direct">Directa</span><span>Regla 5: pregunta antes de dar acceso remoto, pago, tarjetas de regalo o códigos.</span></li><li><span class="rule-label recovery">Recuperación</span><span>Regla de emergencia: detén clics, documenta lo ocurrido y usa un número conocido para pedir ayuda.</span></li><li><span class="rule-label support">Apoyo</span><span>Regla 3 ayuda cuando la estafa también incluye malware, apps falsas o una debilidad del navegador.</span></li></ul>
+<strong data-lang="en">Defense layers that fit this attack</strong>
+<strong data-lang="es">Capas de defensa que encajan con este ataque</strong>
+<ul class="check-list" data-lang="en"><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 5: ask before giving remote access, payment, gift cards, or codes.</span></li><li><span class="rule-label response">After a Mistake</span><span>Emergency rule: stop clicking, document what happened, and use a known phone number for help.</span></li><li><span class="rule-label limit">Limits Damage</span><span>Rule 3 helps when the scam also involves malware, fake apps, or a browser weakness.</span></li></ul>
+<ul class="check-list" data-lang="es"><li><span class="rule-label prevent">Previene</span><span>Regla 5: pregunta antes de dar acceso remoto, pago, tarjetas de regalo o códigos.</span></li><li><span class="rule-label response">Después</span><span>Regla de emergencia: detén clics, documenta lo ocurrido y usa un número conocido para pedir ayuda.</span></li><li><span class="rule-label limit">Limita daño</span><span>Regla 3 ayuda cuando la estafa también incluye malware, apps falsas o una debilidad del navegador.</span></li></ul>
 </div>
 <div class="link-chips"><button class="chip-button" type="button" data-open-tab="rule-ask-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 5</span><span data-lang="es">Abrir regla 5</span></button><button class="chip-button" type="button" data-open-tab="rule-emergency-panel" data-scroll-target="five-rules"><span data-lang="en">Open emergency rule</span><span data-lang="es">Abrir regla de emergencia</span></button><button class="chip-button" type="button" data-open-tab="rule-updates-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 3</span><span data-lang="es">Abrir regla 3</span></button></div>
 </div>
@@ -1490,10 +1497,10 @@
 <div>
 <div class="attack-watch"><strong data-lang="en">Safe action</strong><strong data-lang="es">Acción segura</strong><p data-lang="en">Check the web address before signing in or paying. When possible, use the official app instead of a public code.</p><p data-lang="es">Revisa la dirección antes de entrar o pagar. Cuando sea posible, usa la app oficial en vez de un código público.</p></div>
 <div class="rule-match">
-<strong data-lang="en">Rules that fit this attack</strong>
-<strong data-lang="es">Reglas que encajan con este ataque</strong>
-<ul class="check-list" data-lang="en"><li><span class="rule-label direct">Direct</span><span>Rule 4: do not take the bait; a QR code is just a link wearing a square costume.</span></li><li><span class="rule-label direct">Direct</span><span>Rule 5: ask before paying or signing in from a public code.</span></li><li><span class="rule-label support">Support</span><span>Rule 1 and Rule 2 reduce damage if the QR code leads to a fake login page.</span></li></ul>
-<ul class="check-list" data-lang="es"><li><span class="rule-label direct">Directa</span><span>Regla 4: no caer en la carnada; un QR es básicamente un enlace disfrazado de cuadrito.</span></li><li><span class="rule-label direct">Directa</span><span>Regla 5: pregunta antes de pagar o entrar a una cuenta desde un código público.</span></li><li><span class="rule-label support">Apoyo</span><span>Regla 1 y Regla 2 reducen el daño si el QR lleva a una página falsa de acceso.</span></li></ul>
+<strong data-lang="en">Defense layers that fit this attack</strong>
+<strong data-lang="es">Capas de defensa que encajan con este ataque</strong>
+<ul class="check-list" data-lang="en"><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 4: do not take the bait; a QR code is just a link wearing a square costume.</span></li><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 5: ask before paying or signing in from a public code.</span></li><li><span class="rule-label limit">Limits Damage</span><span>Rule 1 and Rule 2 reduce damage if the QR code leads to a fake login page.</span></li></ul>
+<ul class="check-list" data-lang="es"><li><span class="rule-label prevent">Previene</span><span>Regla 4: no caer en la carnada; un QR es básicamente un enlace disfrazado de cuadrito.</span></li><li><span class="rule-label prevent">Previene</span><span>Regla 5: pregunta antes de pagar o entrar a una cuenta desde un código público.</span></li><li><span class="rule-label limit">Limita daño</span><span>Regla 1 y Regla 2 reducen el daño si el QR lleva a una página falsa de acceso.</span></li></ul>
 </div>
 <div class="link-chips"><button class="chip-button" type="button" data-open-tab="rule-bait-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 4</span><span data-lang="es">Abrir regla 4</span></button><button class="chip-button" type="button" data-open-tab="rule-ask-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 5</span><span data-lang="es">Abrir regla 5</span></button><button class="chip-button" type="button" data-open-tab="rule-password-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 1</span><span data-lang="es">Abrir regla 1</span></button><button class="chip-button" type="button" data-open-tab="rule-mfa-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 2</span><span data-lang="es">Abrir regla 2</span></button></div>
 </div>
@@ -1513,10 +1520,10 @@
 <div>
 <div class="attack-watch"><strong data-lang="en">Safe action</strong><strong data-lang="es">Acción segura</strong><p data-lang="en">Use unique passwords and turn on two step verification. Change reused passwords first on email and banking.</p><p data-lang="es">Usa contraseñas únicas y activa verificación en dos pasos. Cambia primero las repetidas en correo y banco.</p></div>
 <div class="rule-match">
-<strong data-lang="en">Rules that fit this attack</strong>
-<strong data-lang="es">Reglas que encajan con este ataque</strong>
-<ul class="check-list" data-lang="en"><li><span class="rule-label direct">Direct</span><span>Rule 1: unique passwords stop one leaked password from opening every account.</span></li><li><span class="rule-label direct">Direct</span><span>Rule 2: two step verification can block many logins even when the password is known.</span></li><li><span class="rule-label recovery">Recovery</span><span>Emergency rule helps if you are locked out or see account changes you did not make.</span></li></ul>
-<ul class="check-list" data-lang="es"><li><span class="rule-label direct">Directa</span><span>Regla 1: contraseñas únicas evitan que una filtración abra todas las cuentas.</span></li><li><span class="rule-label direct">Directa</span><span>Regla 2: la verificación en dos pasos puede bloquear muchos accesos aunque sepan la contraseña.</span></li><li><span class="rule-label recovery">Recuperación</span><span>La regla de emergencia ayuda si quedas fuera de la cuenta o ves cambios que no hiciste.</span></li></ul>
+<strong data-lang="en">Defense layers that fit this attack</strong>
+<strong data-lang="es">Capas de defensa que encajan con este ataque</strong>
+<ul class="check-list" data-lang="en"><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 1: unique passwords stop one leaked password from opening every account.</span></li><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 2: two step verification can block many logins even when the password is known.</span></li><li><span class="rule-label response">After a Mistake</span><span>Emergency rule helps if you are locked out, see account changes you did not make, or receive login alerts.</span></li></ul>
+<ul class="check-list" data-lang="es"><li><span class="rule-label prevent">Previene</span><span>Regla 1: contraseñas únicas evitan que una filtración abra todas las cuentas.</span></li><li><span class="rule-label prevent">Previene</span><span>Regla 2: la verificación en dos pasos puede bloquear muchos accesos aunque sepan la contraseña.</span></li><li><span class="rule-label response">Después</span><span>La regla de emergencia ayuda si quedas fuera de la cuenta, ves cambios que no hiciste o recibes alertas de acceso.</span></li></ul>
 </div>
 <div class="link-chips"><button class="chip-button" type="button" data-open-tab="rule-password-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 1</span><span data-lang="es">Abrir regla 1</span></button><button class="chip-button" type="button" data-open-tab="rule-mfa-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 2</span><span data-lang="es">Abrir regla 2</span></button><button class="chip-button" type="button" data-open-tab="rule-emergency-panel" data-scroll-target="five-rules"><span data-lang="en">Open emergency rule</span><span data-lang="es">Abrir regla de emergencia</span></button></div>
 </div>
@@ -1536,10 +1543,10 @@
 <div>
 <div class="attack-watch"><strong data-lang="en">Safe action</strong><strong data-lang="es">Acción segura</strong><p data-lang="en">Download from official stores, keep devices updated, and remove apps you do not recognize.</p><p data-lang="es">Descarga desde tiendas oficiales, mantén dispositivos actualizados y elimina apps que no reconozcas.</p></div>
 <div class="rule-match">
-<strong data-lang="en">Rules that fit this attack</strong>
-<strong data-lang="es">Reglas que encajan con este ataque</strong>
-<ul class="check-list" data-lang="en"><li><span class="rule-label direct">Direct</span><span>Rule 3: updates close known holes that malware often abuses.</span></li><li><span class="rule-label direct">Direct</span><span>Rule 4: do not install surprise files, fake apps, or unknown extensions.</span></li><li><span class="rule-label recovery">Recovery</span><span>Emergency rule helps if the device starts acting strange or remote access is involved.</span></li></ul>
-<ul class="check-list" data-lang="es"><li><span class="rule-label direct">Directa</span><span>Regla 3: las actualizaciones cierran fallas conocidas que el malware suele abusar.</span></li><li><span class="rule-label direct">Directa</span><span>Regla 4: no instales archivos sorpresa, apps falsas o extensiones desconocidas.</span></li><li><span class="rule-label recovery">Recuperación</span><span>La regla de emergencia ayuda si el dispositivo actúa raro o hay acceso remoto.</span></li></ul>
+<strong data-lang="en">Defense layers that fit this attack</strong>
+<strong data-lang="es">Capas de defensa que encajan con este ataque</strong>
+<ul class="check-list" data-lang="en"><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 3: updates close known holes that malware often abuses.</span></li><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 4: do not install surprise files, fake apps, or unknown extensions.</span></li><li><span class="rule-label response">After a Mistake</span><span>Emergency rule helps if the device starts acting strange or remote access is involved.</span></li></ul>
+<ul class="check-list" data-lang="es"><li><span class="rule-label prevent">Previene</span><span>Regla 3: las actualizaciones cierran fallas conocidas que el malware suele abusar.</span></li><li><span class="rule-label prevent">Previene</span><span>Regla 4: no instales archivos sorpresa, apps falsas o extensiones desconocidas.</span></li><li><span class="rule-label response">Después</span><span>La regla de emergencia ayuda si el dispositivo actúa raro o hay acceso remoto.</span></li></ul>
 </div>
 <div class="link-chips"><button class="chip-button" type="button" data-open-tab="rule-updates-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 3</span><span data-lang="es">Abrir regla 3</span></button><button class="chip-button" type="button" data-open-tab="rule-bait-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 4</span><span data-lang="es">Abrir regla 4</span></button><button class="chip-button" type="button" data-open-tab="rule-emergency-panel" data-scroll-target="five-rules"><span data-lang="en">Open emergency rule</span><span data-lang="es">Abrir regla de emergencia</span></button></div>
 </div>
@@ -1559,10 +1566,10 @@
 <div>
 <div class="attack-watch"><strong data-lang="en">Safe action</strong><strong data-lang="es">Acción segura</strong><p data-lang="en">Disconnect the device, do not pay from panic, and ask for help. Use a clean device for password changes and recovery steps.</p><p data-lang="es">Desconecta el dispositivo, no pagues por pánico y pide ayuda. Usa un dispositivo limpio para cambiar contraseñas y hacer recuperación.</p></div>
 <div class="rule-match">
-<strong data-lang="en">Rules that fit this attack</strong>
-<strong data-lang="es">Reglas que encajan con este ataque</strong>
-<ul class="check-list" data-lang="en"><li><span class="rule-label direct">Direct</span><span>Rule 3: updates reduce the chance of known ransomware paths working.</span></li><li><span class="rule-label direct">Direct</span><span>Rule 4: avoid surprise downloads, unknown attachments, and fake software prompts.</span></li><li><span class="rule-label recovery">Recovery</span><span>Emergency rule: stop the damage first, then recover calmly from a clean device.</span></li></ul>
-<ul class="check-list" data-lang="es"><li><span class="rule-label direct">Directa</span><span>Regla 3: las actualizaciones reducen la posibilidad de que funcionen caminos conocidos de ransomware.</span></li><li><span class="rule-label direct">Directa</span><span>Regla 4: evita descargas sorpresa, archivos desconocidos y avisos falsos de software.</span></li><li><span class="rule-label recovery">Recuperación</span><span>Regla de emergencia: detén el daño primero y luego recupera con calma desde un dispositivo limpio.</span></li></ul>
+<strong data-lang="en">Defense layers that fit this attack</strong>
+<strong data-lang="es">Capas de defensa que encajan con este ataque</strong>
+<ul class="check-list" data-lang="en"><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 3: updates reduce the chance of known ransomware paths working.</span></li><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 4: avoid surprise downloads, unknown attachments, and fake software prompts.</span></li><li><span class="rule-label response">After a Mistake</span><span>Emergency rule: stop the damage first, then recover calmly from a clean device.</span></li></ul>
+<ul class="check-list" data-lang="es"><li><span class="rule-label prevent">Previene</span><span>Regla 3: las actualizaciones reducen la posibilidad de que funcionen caminos conocidos de ransomware.</span></li><li><span class="rule-label prevent">Previene</span><span>Regla 4: evita descargas sorpresa, archivos desconocidos y avisos falsos de software.</span></li><li><span class="rule-label response">Después</span><span>Regla de emergencia: detén el daño primero y luego recupera con calma desde un dispositivo limpio.</span></li></ul>
 </div>
 <div class="link-chips"><button class="chip-button" type="button" data-open-tab="rule-updates-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 3</span><span data-lang="es">Abrir regla 3</span></button><button class="chip-button" type="button" data-open-tab="rule-bait-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 4</span><span data-lang="es">Abrir regla 4</span></button><button class="chip-button" type="button" data-open-tab="rule-emergency-panel" data-scroll-target="five-rules"><span data-lang="en">Open emergency rule</span><span data-lang="es">Abrir regla de emergencia</span></button></div>
 </div>
@@ -1582,10 +1589,10 @@
 <div>
 <div class="attack-watch"><strong data-lang="en">Safe action</strong><strong data-lang="es">Acción segura</strong><p data-lang="en">Close the page. Do not call the number, pay, install anything, or give remote access. Use a trusted helper or the real support site if you need help.</p><p data-lang="es">Cierra la página. No llames al número, no pagues, no instales nada y no des acceso remoto. Usa una persona de confianza o el sitio real de soporte si necesitas ayuda.</p></div>
 <div class="rule-match">
-<strong data-lang="en">Rules that fit this attack</strong>
-<strong data-lang="es">Reglas que encajan con este ataque</strong>
-<ul class="check-list" data-lang="en"><li><span class="rule-label direct">Direct</span><span>Rule 4: do not take the bait; the scare screen needs you to click, call, or install.</span></li><li><span class="rule-label direct">Direct</span><span>Rule 5: ask before acting; a second person can break the panic loop.</span></li><li><span class="rule-label support">Support</span><span>Rule 3 may reduce malicious pop ups and browser abuse, but it does not replace verification.</span></li><li><span class="rule-label recovery">Recovery</span><span>Emergency rule helps if payment, passwords, or remote access were already given.</span></li></ul>
-<ul class="check-list" data-lang="es"><li><span class="rule-label direct">Directa</span><span>Regla 4: no caer en la carnada; la pantalla de miedo necesita que hagas clic, llames o instales.</span></li><li><span class="rule-label direct">Directa</span><span>Regla 5: pregunta antes de actuar; otra persona puede romper el ciclo de pánico.</span></li><li><span class="rule-label support">Apoyo</span><span>Regla 3 puede reducir ventanas maliciosas y abuso del navegador, pero no reemplaza la verificación.</span></li><li><span class="rule-label recovery">Recuperación</span><span>La regla de emergencia ayuda si ya diste pago, contraseñas o acceso remoto.</span></li></ul>
+<strong data-lang="en">Defense layers that fit this attack</strong>
+<strong data-lang="es">Capas de defensa que encajan con este ataque</strong>
+<ul class="check-list" data-lang="en"><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 4: do not take the bait; the scare screen needs you to click, call, or install.</span></li><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 5: ask before acting; a second person can break the panic loop.</span></li><li><span class="rule-label limit">Limits Damage</span><span>Rule 3 may reduce malicious pop ups and browser abuse, but it does not replace verification.</span></li><li><span class="rule-label response">After a Mistake</span><span>Emergency rule helps if payment, passwords, or remote access were already given.</span></li></ul>
+<ul class="check-list" data-lang="es"><li><span class="rule-label prevent">Previene</span><span>Regla 4: no caer en la carnada; la pantalla de miedo necesita que hagas clic, llames o instales.</span></li><li><span class="rule-label prevent">Previene</span><span>Regla 5: pregunta antes de actuar; otra persona puede romper el ciclo de pánico.</span></li><li><span class="rule-label limit">Limita daño</span><span>Regla 3 puede reducir ventanas maliciosas y abuso del navegador, pero no reemplaza la verificación.</span></li><li><span class="rule-label response">Después</span><span>La regla de emergencia ayuda si ya diste pago, contraseñas o acceso remoto.</span></li></ul>
 </div>
 <div class="link-chips"><button class="chip-button" type="button" data-open-tab="rule-bait-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 4</span><span data-lang="es">Abrir regla 4</span></button><button class="chip-button" type="button" data-open-tab="rule-ask-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 5</span><span data-lang="es">Abrir regla 5</span></button><button class="chip-button" type="button" data-open-tab="rule-updates-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 3</span><span data-lang="es">Abrir regla 3</span></button><button class="chip-button" type="button" data-open-tab="rule-emergency-panel" data-scroll-target="five-rules"><span data-lang="en">Open emergency rule</span><span data-lang="es">Abrir regla de emergencia</span></button></div>
 </div>
@@ -1605,10 +1612,10 @@
 <div>
 <div class="attack-watch"><strong data-lang="en">Safe action</strong><strong data-lang="es">Acción segura</strong><p data-lang="en">Pause, use a family code word, and call the real person through a number you already know.</p><p data-lang="es">Pausa, usa una palabra clave familiar y llama a la persona real usando un número que ya conoces.</p></div>
 <div class="rule-match">
-<strong data-lang="en">Rules that fit this attack</strong>
-<strong data-lang="es">Reglas que encajan con este ataque</strong>
-<ul class="check-list" data-lang="en"><li><span class="rule-label direct">Direct</span><span>Rule 5: ask before sending money, gift cards, photos, documents, or personal details.</span></li><li><span class="rule-label recovery">Recovery</span><span>Emergency rule helps if money was sent or private information was shared.</span></li><li><span class="rule-label support">Support</span><span>Rule 2 helps if the scam moves into account access or code theft.</span></li></ul>
-<ul class="check-list" data-lang="es"><li><span class="rule-label direct">Directa</span><span>Regla 5: pregunta antes de enviar dinero, tarjetas de regalo, fotos, documentos o datos personales.</span></li><li><span class="rule-label recovery">Recuperación</span><span>La regla de emergencia ayuda si se envió dinero o información privada.</span></li><li><span class="rule-label support">Apoyo</span><span>Regla 2 ayuda si la estafa pasa a acceso de cuentas o robo de códigos.</span></li></ul>
+<strong data-lang="en">Defense layers that fit this attack</strong>
+<strong data-lang="es">Capas de defensa que encajan con este ataque</strong>
+<ul class="check-list" data-lang="en"><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 5: ask before sending money, gift cards, photos, documents, or personal details.</span></li><li><span class="rule-label response">After a Mistake</span><span>Emergency rule helps if money was sent or private information was shared.</span></li><li><span class="rule-label limit">Limits Damage</span><span>Rule 2 helps if the scam moves into account access or code theft.</span></li></ul>
+<ul class="check-list" data-lang="es"><li><span class="rule-label prevent">Previene</span><span>Regla 5: pregunta antes de enviar dinero, tarjetas de regalo, fotos, documentos o datos personales.</span></li><li><span class="rule-label response">Después</span><span>La regla de emergencia ayuda si se envió dinero o información privada.</span></li><li><span class="rule-label limit">Limita daño</span><span>Regla 2 ayuda si la estafa pasa a acceso de cuentas o robo de códigos.</span></li></ul>
 </div>
 <div class="link-chips"><button class="chip-button" type="button" data-open-tab="rule-ask-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 5</span><span data-lang="es">Abrir regla 5</span></button><button class="chip-button" type="button" data-open-tab="rule-emergency-panel" data-scroll-target="five-rules"><span data-lang="en">Open emergency rule</span><span data-lang="es">Abrir regla de emergencia</span></button><button class="chip-button" type="button" data-open-tab="rule-mfa-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 2</span><span data-lang="es">Abrir regla 2</span></button></div>
 </div>
@@ -1628,10 +1635,10 @@
 <div>
 <div class="attack-watch"><strong data-lang="en">Safe action</strong><strong data-lang="es">Acción segura</strong><p data-lang="en">Track packages from the official site. Pay through trusted platforms and never rush because of a countdown.</p><p data-lang="es">Rastrea paquetes desde el sitio oficial. Paga por plataformas confiables y nunca te apresures por una cuenta regresiva.</p></div>
 <div class="rule-match">
-<strong data-lang="en">Rules that fit this attack</strong>
-<strong data-lang="es">Reglas que encajan con este ataque</strong>
-<ul class="check-list" data-lang="en"><li><span class="rule-label direct">Direct</span><span>Rule 4: avoid fake links, surprise fees, and payment pages sent by message.</span></li><li><span class="rule-label direct">Direct</span><span>Rule 5: ask before paying outside a trusted platform.</span></li><li><span class="rule-label support">Support</span><span>Rule 1 and Rule 2 reduce damage if the scam also steals an account login.</span></li></ul>
-<ul class="check-list" data-lang="es"><li><span class="rule-label direct">Directa</span><span>Regla 4: evita enlaces falsos, cargos sorpresa y páginas de pago enviadas por mensaje.</span></li><li><span class="rule-label direct">Directa</span><span>Regla 5: pregunta antes de pagar fuera de una plataforma confiable.</span></li><li><span class="rule-label support">Apoyo</span><span>Regla 1 y Regla 2 reducen el daño si la estafa también roba un acceso de cuenta.</span></li></ul>
+<strong data-lang="en">Defense layers that fit this attack</strong>
+<strong data-lang="es">Capas de defensa que encajan con este ataque</strong>
+<ul class="check-list" data-lang="en"><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 4: avoid fake links, surprise fees, and payment pages sent by message.</span></li><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 5: ask before paying outside a trusted platform.</span></li><li><span class="rule-label limit">Limits Damage</span><span>Rule 1 and Rule 2 reduce damage if the scam also steals an account login.</span></li></ul>
+<ul class="check-list" data-lang="es"><li><span class="rule-label prevent">Previene</span><span>Regla 4: evita enlaces falsos, cargos sorpresa y páginas de pago enviadas por mensaje.</span></li><li><span class="rule-label prevent">Previene</span><span>Regla 5: pregunta antes de pagar fuera de una plataforma confiable.</span></li><li><span class="rule-label limit">Limita daño</span><span>Regla 1 y Regla 2 reducen el daño si la estafa también roba un acceso de cuenta.</span></li></ul>
 </div>
 <div class="link-chips"><button class="chip-button" type="button" data-open-tab="rule-bait-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 4</span><span data-lang="es">Abrir regla 4</span></button><button class="chip-button" type="button" data-open-tab="rule-ask-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 5</span><span data-lang="es">Abrir regla 5</span></button><button class="chip-button" type="button" data-open-tab="rule-password-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 1</span><span data-lang="es">Abrir regla 1</span></button><button class="chip-button" type="button" data-open-tab="rule-mfa-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 2</span><span data-lang="es">Abrir regla 2</span></button></div>
 </div>
@@ -1651,10 +1658,10 @@
 <div>
 <div class="attack-watch"><strong data-lang="en">Safe action</strong><strong data-lang="es">Acción segura</strong><p data-lang="en">Use a strong router password, update firmware, replace default admin passwords, and remove devices you no longer use.</p><p data-lang="es">Usa una contraseña fuerte para el router, actualiza firmware, cambia contraseñas de administrador por defecto y retira dispositivos que ya no usas.</p></div>
 <div class="rule-match">
-<strong data-lang="en">Rules that fit this attack</strong>
-<strong data-lang="es">Reglas que encajan con este ataque</strong>
-<ul class="check-list" data-lang="en"><li><span class="rule-label direct">Direct</span><span>Rule 1: strong, unique router and admin passwords block easy access.</span></li><li><span class="rule-label direct">Direct</span><span>Rule 3: updates and firmware patches close known device weaknesses.</span></li><li><span class="rule-label support">Support</span><span>Rule 5 helps when a router setting, camera alert, or smart device message looks strange.</span></li></ul>
-<ul class="check-list" data-lang="es"><li><span class="rule-label direct">Directa</span><span>Regla 1: contraseñas fuertes y únicas para router y administrador bloquean accesos fáciles.</span></li><li><span class="rule-label direct">Directa</span><span>Regla 3: actualizaciones y firmware cierran debilidades conocidas de dispositivos.</span></li><li><span class="rule-label support">Apoyo</span><span>Regla 5 ayuda cuando una configuración del router, alerta de cámara o mensaje de dispositivo se ve raro.</span></li></ul>
+<strong data-lang="en">Defense layers that fit this attack</strong>
+<strong data-lang="es">Capas de defensa que encajan con este ataque</strong>
+<ul class="check-list" data-lang="en"><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 1: strong, unique router and admin passwords block easy access.</span></li><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 3: updates and firmware patches close known device weaknesses.</span></li><li><span class="rule-label prevent">Helps Prevent</span><span>Rule 5 helps when a router setting, camera alert, or smart device message looks strange.</span></li></ul>
+<ul class="check-list" data-lang="es"><li><span class="rule-label prevent">Previene</span><span>Regla 1: contraseñas fuertes y únicas para router y administrador bloquean accesos fáciles.</span></li><li><span class="rule-label prevent">Previene</span><span>Regla 3: actualizaciones y firmware cierran debilidades conocidas de dispositivos.</span></li><li><span class="rule-label prevent">Previene</span><span>Regla 5 ayuda cuando una configuración del router, alerta de cámara o mensaje de dispositivo se ve raro.</span></li></ul>
 </div>
 <div class="link-chips"><button class="chip-button" type="button" data-open-tab="rule-password-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 1</span><span data-lang="es">Abrir regla 1</span></button><button class="chip-button" type="button" data-open-tab="rule-updates-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 3</span><span data-lang="es">Abrir regla 3</span></button><button class="chip-button" type="button" data-open-tab="rule-ask-panel" data-scroll-target="five-rules"><span data-lang="en">Open Rule 5</span><span data-lang="es">Abrir regla 5</span></button></div>
 </div>
